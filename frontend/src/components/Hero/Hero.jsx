@@ -1,3 +1,5 @@
+// src/components/Hero.jsx
+
 import './Hero.css'
 import mainImage from '../../assets/hero-morocco.jpg'
 import { Users, MapPin } from 'lucide-react';
