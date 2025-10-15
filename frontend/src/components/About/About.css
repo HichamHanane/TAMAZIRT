@@ -1,0 +1,156 @@
+/*
+  --- VARIABLES DE COULEUR (réutilisées) ---
+*/
+:root {
+  --color-dark-brown: #5d4a3b; 
+  --color-light-beige: #f1e9d8; 
+  --color-text-dark: #333333; 
+  --color-cta-primary: #8c6a5a; 
+  --color-box-shadow: rgba(0, 0, 0, 0.05);
+  --color-border-light: #e0e0e0; /* Couleur pour les bordures légères */
+}
+
+/* ------------------- SECTION WHY US ------------------- */
+
+.why-us-section {
+    padding: 100px 60px; /* Moins de padding en haut, car plus de titre de section */
+    background-color: white; 
+}
+
+.why-us-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex; /* Utilisation de Flexbox pour la disposition à deux colonnes */
+    align-items: center; /* Centrer verticalement le contenu */
+    justify-content: space-between;
+    gap: 80px; /* Espacement entre les colonnes */
+}
+
+/* --- Contenu de gauche : Points clés --- */
+.why-us-content-left {
+    flex: 1; /* Prend l'espace disponible */
+    max-width: 550px; /* Limite la largeur pour une meilleure lisibilité */
+}
+
+.advantage-item {
+    display: flex; /* Pour aligner l'icône et le texte */
+    align-items: flex-start; /* L'icône est alignée en haut du texte */
+    margin-bottom: 40px; /* Espacement entre chaque point clé */
+}
+
+.advantage-item:last-child {
+    margin-bottom: 0; /* Pas de marge en bas pour le dernier élément */
+}
+
+.advantage-icon-wrapper {
+    width: 45px; /* Taille fixe pour le cercle d'icône */
+    height: 45px;
+    border-radius: 50%; /* Rendre le wrapper circulaire */
+    background-color: var(--color-light-beige); /* Fond clair du cercle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Empêche le wrapper de rétrécir */
+    margin-right: 20px;
+}
+
+.advantage-icon {
+    /* La couleur de l'icône dans le design semble être un marron */
+    color: var(--color-cta-primary); 
+}
+
+.advantage-text {
+    flex: 1; /* Prend l'espace restant */
+}
+
+.advantage-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-dark-brown);
+    margin: 0 0 8px 0;
+}
+
+.advantage-description {
+    font-size: 15px;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+/* --- Contenu de droite : Média (Image / Lottie) --- */
+.why-us-media-right {
+    flex-shrink: 0; /* Empêche la partie média de rétrécir */
+    width: 450px; /* Largeur fixe pour l'image/animation */
+    height: 450px; /* Hauteur fixe pour l'image/animation */
+    border-radius: 50%; /* Rendre l'image circulaire */
+    overflow: hidden; /* Cache tout ce qui dépasse du cercle */
+    /* box-shadow: 0 10px 30px var(--color-box-shadow);  */
+}
+
+.why-us-image, .lottie-animation {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que l'image couvre le cercle sans être étirée */
+    display: block; /* Supprime l'espace sous l'image */
+}
+
+/* ------------------- RESPONSIVE DESIGN ------------------- */
+
+/* Pour les tablettes et petits ordinateurs (max-width: 992px) */
+@media (max-width: 992px) {
+    .why-us-container {
+        flex-direction: column; /* Les éléments s'empilent verticalement */
+        gap: 50px;
+        text-align: center; /* Centre le texte lorsque les éléments s'empilent */
+    }
+
+    .why-us-content-left {
+        max-width: 100%; /* Prend toute la largeur disponible */
+        order: 2; /* Les points clés passent en dessous de l'image sur mobile */
+    }
+
+    .why-us-media-right {
+        order: 1; /* L'image passe au-dessus des points clés sur mobile */
+        width: 350px; /* Taille plus petite pour les écrans plus petits */
+        height: 350px;
+    }
+
+    .advantage-item {
+        flex-direction: column; /* Icône au-dessus du texte sur mobile */
+        align-items: center;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .advantage-icon-wrapper {
+        margin-right: 0; /* Supprime la marge à droite */
+        margin-bottom: 15px; /* Ajoute de la marge en bas */
+    }
+
+    .why-us-title {
+        font-size: 30px;
+    }
+    
+    .advantage-title {
+        font-size: 20px;
+    }
+    
+    .advantage-description {
+        font-size: 14px;
+    }
+}
+
+/* Pour les téléphones mobiles (max-width: 768px) */
+@media (max-width: 768px) {
+    .why-us-section {
+        padding: 60px 20px; /* Padding réduit sur mobile */
+    }
+
+    .why-us-container {
+        gap: 40px;
+    }
+
+    .why-us-media-right {
+        width: 280px; /* Encore plus petit sur mobile */
+        height: 280px;
+    }
+}

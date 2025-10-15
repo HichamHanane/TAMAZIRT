@@ -1,0 +1,227 @@
+/*
+  --- VARIABLES DE COULEUR (du thème) ---
+*/
+:root {
+    /* Utilise la couleur du header pour le fond du footer */
+    --color-footer-bg: #212529;
+    /* Noir très sombre/bleu marine pour le contraste */
+    --color-dark-brown: #5d4a3b;
+    --color-text-light: #f1e9d8;
+    --color-cta-primary1: #ff7f50;
+    /* Orange/Corail pour les hover */
+    --color-text-subtle: #adb5bd;
+    /* Gris clair pour les liens et texte secondaire */
+}
+
+/* ------------------- FOOTER ------------------- */
+
+.footer {
+    background-color: var(--color-footer-bg);
+    color: var(--color-text-light);
+    padding: 60px 60px 0 60px;
+    font-size: 14px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Ligne de séparation */
+}
+
+.footer-col {
+    /* Donne une base de flexibilité pour la répartition */
+    flex-basis: 25%;
+}
+
+/* --- Colonne 1 : Info --- */
+.footer-info {
+    flex-basis: 35%;
+    /* Pour donner plus de place au logo et à la description */
+}
+
+.footer-logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--color-text-light);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.footer-tagline {
+    color: var(--color-text-subtle);
+    line-height: 1.6;
+}
+
+/* Cache le copyright mobile par défaut */
+.copyright-mobile {
+    display: none;
+}
+
+/* --- Liens rapides et Villes --- */
+.footer-heading {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-text-light);
+    margin-top: 0;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.footer-link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-link-list li {
+    margin-bottom: 10px;
+}
+
+.footer-link-list a {
+    color: var(--color-text-subtle);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link-list a:hover {
+    color: var(--color-cta-primary1);
+    /* Orange au survol */
+}
+
+/* --- Colonne 4 : Social Media --- */
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: var(--color-text-subtle);
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--color-cta-primary1);
+}
+
+/* --- Bas de page (Copyright et Termes) --- */
+.footer-bottom {
+    padding: 20px 0;
+}
+
+.footer-bottom-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-subtle);
+}
+
+.privacy-link {
+    color: var(--color-text-subtle);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.privacy-link:hover {
+    color: var(--color-cta-primary1);
+}
+
+/* ------------------- RESPONSIVE DESIGN ------------------- */
+
+@media (max-width: 992px) {
+    .footer {
+        padding: 50px 40px 0 40px;
+    }
+
+    .footer-container {
+        /* Passe de 4 colonnes à 2x2 */
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .footer-col {
+        flex-basis: calc(50% - 20px);
+        /* Chaque colonne prend la moitié de l'espace */
+    }
+
+    .footer-info {
+        flex-basis: 100%;
+        /* La colonne d'info prend toute la largeur */
+        text-align: center;
+    }
+
+    .footer-logo {
+        font-size: 1.4rem;
+    }
+
+    /* Centrer les blocs restants pour un look propre */
+    .footer-links,
+    .footer-cities,
+    .footer-social {
+        flex-basis: calc(50% - 20px);
+    }
+
+    /* Le bas de page est empilé */
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .copyright-desktop {
+        display: none;
+    }
+
+    .copyright-mobile {
+        display: block;
+        /* Affiche le copyright centré */
+        margin-top: 20px;
+    }
+
+    .footer-social {
+        /* Centrer les icônes sociales sur toute la ligne */
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer {
+        padding: 40px 20px 0 20px;
+    }
+
+    .footer-container {
+        /* Tous les éléments s'empilent sur une seule colonne */
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-col {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .footer-links,
+    .footer-cities {
+        /* Centrer les titres et les listes */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-link-list {
+        display: inline-block;
+        /* Pour que la liste s'adapte au centre */
+        text-align: left;
+    }
+}

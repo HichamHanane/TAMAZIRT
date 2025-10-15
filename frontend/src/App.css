@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-dark-brown: #5d4a3b; /* La couleur de la barre de navigation */
+  --color-light-beige: #f1e9d8; /* La couleur de l'arrière-plan principal */
+  --color-text-dark: #333333; /* Pour le titre */
+  --color-cta-primary: #8c6a5a; /* Bouton plein (marron moyen) */
+  --color-cta-secondary: #5d4a3b; /* Bordure pour le second bouton */
+  --color-box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-light-beige);
+
+}
+
+.landing-page-container {
+  /* Prend toute la hauteur de la vue pour centrer le contenu si besoin */
+  min-height: 100vh;
+  /* Optionnel : pour centrer le contenu sur de très grands écrans */
+  /* max-width: 1400px; */
+  /* margin: 0 auto; */
+}

@@ -1,0 +1,142 @@
+/*
+  --- VARIABLES DE COULEUR (du thème) ---
+*/
+:root {
+    --color-primary-brown: #5d4a3b;
+    /* Marron foncé du header */
+    --color-secondary-orange: #ff7f50;
+    /* Orange/Corail des boutons */
+    --color-light-beige: #f1e9d8;
+    /* Beige du Hero */
+    --color-text-dark: #333333;
+    --color-text-subtle: #6c757d;
+    --color-border-light: #e0e0e0;
+}
+
+/* ------------------- PAGE TERMS & POLICY ------------------- */
+
+.terms-policy-main {
+    background-color: white;
+    /* Fond blanc pour la clarté */
+    padding: 40px 0;
+}
+
+.terms-policy-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* --- Bannière de titre --- */
+.policy-header-banner {
+    background-color: var(--color-light-beige);
+    /* Utilise la couleur du Hero */
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    border-left: 5px solid var(--color-secondary-orange);
+    /* Touche de couleur du thème */
+}
+
+.policy-main-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--color-primary-brown);
+    /* Utilise le marron foncé */
+    margin: 0;
+}
+
+.policy-subtitle {
+    font-size: 16px;
+    color: var(--color-text-subtle);
+    margin-top: 5px;
+}
+
+/* --- Contenu des termes --- */
+.policy-content {
+    line-height: 1.7;
+    color: var(--color-text-dark);
+}
+
+.policy-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--color-border-light);
+}
+
+.policy-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.policy-section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-secondary-orange);
+    /* Fait ressortir les titres en orange */
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+}
+
+.policy-section p {
+    margin: 0 0 15px 0;
+    font-size: 15px;
+}
+
+.policy-section a {
+    color: var(--color-secondary-orange);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.policy-section a:hover {
+    text-decoration: underline;
+}
+
+/* --- Bouton de retour --- */
+.policy-return-cta {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.return-button {
+    /* Style du bouton CTA (Orange) */
+    background-color: var(--color-secondary-orange);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.return-button:hover {
+    background-color: #ff9370;
+}
+
+/* ------------------- RESPONSIVE DESIGN ------------------- */
+
+@media (max-width: 768px) {
+    .terms-policy-container {
+        padding: 0 20px;
+    }
+
+    .policy-header-banner {
+        padding: 30px 20px;
+    }
+
+    .policy-main-title {
+        font-size: 28px;
+    }
+
+    .policy-section-title {
+        font-size: 18px;
+    }
+
+    .policy-section p {
+        font-size: 14px;
+    }
+}

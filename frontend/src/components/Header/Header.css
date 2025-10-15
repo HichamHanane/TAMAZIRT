@@ -1,0 +1,161 @@
+/* --- Variables pour l'uniformité --- */
+:root {
+  --color-dark-brown: #5d4a3b;
+  --color-light-beige: #f1e9d8;
+  --header-height: 70px;
+  /* Marges latérales initiales basées sur ton design : (60px à gauche, 100px à droite) */
+  --header-initial-margin-left: 60px;
+  --header-initial-margin-right: 100px;
+}
+
+/* ------------------- HEADER ET STICKY (Pleine largeur) ------------------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* Le HEADER lui-même est toujours pleine largeur et sans marge */
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  /* Arrière-plan flou (appliqué au header pour l'effet sticky) */
+  background-color: rgba(93, 74, 59, 0.9);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  /* Styles de base */
+  height: var(--header-height);
+  display: flex;
+  justify-content: center;
+  /* Centrer le contenu à l'intérieur */
+
+  /* L'ARRONDI initial doit être appliqué ici pour correspondre à ton design */
+  border-bottom-left-radius: 5px;
+  /* Pour un effet initial plus joli */
+  border-bottom-right-radius: 5px;
+}
+
+/* ------------------- CONTENU INTERNE (Largeur limitée au départ) ------------------- */
+.header-content {
+  /* Largeur et marges initiales */
+  width: 100%;
+  /* La max-width calcule l'espace entre le contenu et les bords */
+  max-width: calc(100% - var(--header-initial-margin-left) - var(--header-initial-margin-right));
+
+  /* Centrage du contenu dans le header sticky */
+  margin: 0 auto;
+
+  /* Rangement interne */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Padding pour l'espace vertical du contenu */
+  padding: 0 10px;
+  /* Petit padding horizontal pour ne pas coller aux bords */
+  height: 100%;
+  /* S'assurer qu'il prend toute la hauteur du header parent */
+}
+
+/* --- LOGO --- */
+.header-logo {
+  color: var(--color-light-beige);
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* --- NAVIGATION (DESKTOP) --- */
+.header-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: var(--color-light-beige);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  color: #e0e0e0;
+}
+
+/* Cacher les éléments mobile par défaut */
+.header-nav--mobile {
+  display: none;
+}
+
+.burger-button {
+  display: none;
+}
+
+/* ------------------- MEDIA QUERIES (RESPONSIVE) ------------------- */
+
+@media (max-width: 900px) {
+
+  /* Sur mobile, le header doit être pleine largeur de suite */
+  .header-content {
+    max-width: 100%;
+    padding: 0 20px;
+    /* Utiliser un padding de 20px pour l'espace sur mobile */
+  }
+
+  .header {
+    /* Retirer l'arrondi sur mobile pour un look plus traditionnel */
+    border-radius: 0;
+  }
+
+
+  /* Cache le menu desktop */
+  .header-nav--desktop {
+    display: none;
+  }
+
+  /* Affiche le bouton burger */
+  .burger-button {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--color-light-beige);
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+  }
+
+  /* --- MENU MOBILE COULISSANT --- */
+  .header-nav--mobile {
+    position: fixed;
+    /* Utiliser fixed pour le menu overlay */
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-dark-brown);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    gap: 25px;
+    z-index: 999;
+    /* Sous le burger */
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* État ouvert */
+  .header-nav--mobile.is-open {
+    transform: translateX(0);
+  }
+
+  .header-nav--mobile .nav-link {
+    font-size: 1.5rem;
+    padding: 10px 0;
+    width: 80%;
+    text-align: center;
+  }
+}

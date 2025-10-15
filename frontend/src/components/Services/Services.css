@@ -1,0 +1,192 @@
+/*
+  --- VARIABLES DE COULEUR (réutilisées) ---
+*/
+:root {
+    --color-dark-brown: #5d4a3b;
+    --color-text-light: #f1e9d8;
+    --color-text-dark: #333333;
+    --color-overlay-dark: rgba(0, 0, 0, 0.6);
+    --color-overlay-gradient: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%);
+    --color-box-shadow: rgba(0, 0, 0, 0.15);
+    --section-padding-x: 60px;
+}
+
+/* ------------------- SECTION SERVICES ------------------- */
+
+.services-section {
+    padding: 80px var(--section-padding-x);
+    background-color: white;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Entête de la section --- */
+.services-header {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.services-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin: 0 0 10px 0;
+}
+
+.services-subtitle {
+    font-size: 16px;
+    color: var(--color-text-dark);
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* --- Grille des services --- */
+.services-grid {
+    display: grid;
+    /* ASSURE LA HAUTEUR DE LA VUE SUR DESKTOP */
+    min-height: 100vh;
+
+    grid-template-columns: repeat(2, 1fr);
+    /* Les 3 lignes se partagent la hauteur (1fr) */
+    grid-template-rows: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px var(--color-box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.service-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-card-image {
+    transform: scale(1.05);
+}
+
+.service-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* width:100%; */
+    /* PADDING UNIFORME DE 30PX */
+    padding: 30px;
+
+    background: var(--color-overlay-gradient);
+    color: var(--color-text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.service-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.service-card-description {
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --- DISPOSITION SPÉCIFIQUE DE LA GRILLE (pour les 4 cartes) --- */
+
+.service-card-1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / span 2;
+    /* S'étend sur les 2 premières lignes */
+}
+
+.service-card-2 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    /* Ligne 1 */
+}
+
+.service-card-3 {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    /* Ligne 3 */
+}
+
+.service-card-4 {
+    grid-column: 2 / 3;
+    grid-row: 2 / span 2;
+    /* S'étend de la ligne 2 à la 3 */
+}
+
+
+/* ------------------- RESPONSIVE DESIGN ------------------- */
+
+@media (max-width: 992px) {
+    .services-section {
+        padding: 60px 40px;
+    }
+
+    .services-title {
+        font-size: 30px;
+    }
+
+    /* MOBILE: Retire min-height: 100vh et passe en colonne */
+    .services-grid {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 25px;
+    }
+
+    /* Toutes les cartes reprennent une taille normale sur mobile */
+    .service-card-1,
+    .service-card-2,
+    .service-card-3,
+    .service-card-4 {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 280px;
+    }
+
+    .service-card-overlay {
+        
+        padding: 20px;
+        /* Réduit le padding du texte sur mobile */
+    }
+
+    .service-card-title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-section {
+        padding: 40px 20px;
+    }
+
+    .services-title {
+        font-size: 26px;
+    }
+
+    .service-card-title {
+        font-size: 20px;
+    }
+}
