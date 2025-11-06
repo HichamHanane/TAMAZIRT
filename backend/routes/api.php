@@ -53,6 +53,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 // reviews routes
 Route::middleware(['auth:sanctum'])->group(function () {
     // Tourist routes
+    Route::get('/my-reviews', [ReviewController::class, 'myReviews']);
     Route::post('/reviews', [ReviewController::class, 'store']);
     Route::patch('/reviews/{id}', [ReviewController::class, 'update']);
     Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
