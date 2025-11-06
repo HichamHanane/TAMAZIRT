@@ -4,6 +4,7 @@ use App\Http\Controllers\NavigatorApplicationController;
 use App\Http\Controllers\NavigatorProfileController;
 use App\Http\Controllers\NavigatorRequestController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\TouristController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,7 +48,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/navigator/requests', [NavigatorRequestController::class, 'index']);
     Route::patch('/navigator/requests/{id}/status', [NavigatorRequestController::class, 'updateStatus']);
-    // Route::delete(uri: '/navigator/requests/{id}', [NavigatorRequestController::class, 'destroy']);
 });
 
 // reviews routes
@@ -63,6 +63,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // Admin view all reviews
     Route::get('/reviews', [ReviewController::class, 'index']);
+});
+
+// tourist routes 
+Route::get('/tourist/navigators', [TouristController::class, 'getNavigators']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/tourist/requests', [TouristController::class, 'storeRequest']);
+    Route::get('/tourist/requests', [TouristController::class, 'myRequests']);
+    Route::delete('/tourist/requests/{id}', [TouristController::class, 'destroy']);
+    // Route::delete(uri: '/tourist/requests/{id}', [TouristController::class, 'destroy']);
+
 });
 
 
