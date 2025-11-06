@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NavigatorApplicationController;
 use App\Http\Controllers\NavigatorProfileController;
+use App\Http\Controllers\NavigatorRequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/navigator-profiles', [NavigatorProfileController::class, 'index']);
     Route::put('/navigator-profiles/{id}', [NavigatorProfileController::class, 'update']);
     Route::delete('/navigator-profiles/{id}', [NavigatorProfileController::class, 'destroy']);
+});
+
+
+// navigator requests routes 
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/navigator/requests', [NavigatorRequestController::class, 'index']);
+    Route::patch('/navigator/requests/{id}/status', [NavigatorRequestController::class, 'updateStatus']);
+    // Route::delete(uri: '/navigator/requests/{id}', [NavigatorRequestController::class, 'destroy']);
 });
 
 
