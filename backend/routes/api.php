@@ -48,6 +48,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/navigator/requests', [NavigatorRequestController::class, 'index']);
     Route::patch('/navigator/requests/{id}/status', [NavigatorRequestController::class, 'updateStatus']);
+    Route::put('/admin/navigators/{id}', [NavigatorProfileController::class, 'adminUpdate']);
 });
 
 // reviews routes

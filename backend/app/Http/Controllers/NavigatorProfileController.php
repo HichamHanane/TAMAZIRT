@@ -79,6 +79,52 @@ class NavigatorProfileController extends Controller
         ], 201);
     }
 
+    //Admin-only: Update any navigator profile
+    public function adminUpdate(Request $request, $id)
+    {
+        $admin = $request->user();
+
+        if (!$admin->hasRole('admin')) {
+            return response()->json([
+                'message' => 'Unauthorized: admin access required.'
+            ], 403);
+        }
+
+        $profile = NavigatorProfile::with('user')->findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|unique:users,email,' . $profile->user->id,
+            'password' => 'nullable|string|min:8',
+            'city' => 'nullable|string|max:255',
+            'bio' => 'nullable|string|max:1000',
+            'languages' => 'nullable|array',
+            'phone_number' => 'nullable|string|max:20',
+            'verified' => 'nullable|boolean',
+        ]);
+
+        $profile->user->update([
+            'name' => $validated['name'] ?? $profile->user->name,
+            'email' => $validated['email'] ?? $profile->user->email,
+            'password' => isset($validated['password'])
+                ? Hash::make($validated['password'])
+                : $profile->user->password,
+        ]);
+
+        $profile->update([
+            'city' => $validated['city'] ?? $profile->city,
+            'bio' => $validated['bio'] ?? $profile->bio,
+            'languages' => $validated['languages'] ?? $profile->languages,
+            'phone_number' => $validated['phone_number'] ?? $profile->phone_number,
+            'verified' => $validated['verified'] ?? $profile->verified,
+        ]);
+
+        return response()->json([
+            'message' => 'Navigator profile updated successfully by admin.',
+            'data' => $profile->load('user')
+        ], 200);
+    }
+
     // Update profile
     public function update(Request $request, $id)
     {
