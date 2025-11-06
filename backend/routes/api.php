@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminTouristController;
 use App\Http\Controllers\NavigatorApplicationController;
 use App\Http\Controllers\NavigatorProfileController;
 use App\Http\Controllers\NavigatorRequestController;
@@ -74,6 +75,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/tourist/requests/{id}', [TouristController::class, 'destroy']);
     // Route::delete(uri: '/tourist/requests/{id}', [TouristController::class, 'destroy']);
 
+});
+
+//Admin routes (manage tourist)
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/admin/tourists', [AdminTouristController::class, 'index']);
+    Route::post('/admin/tourists', [AdminTouristController::class, 'store']);
+    Route::put('/admin/tourists/{id}', [AdminTouristController::class, 'update']);
+    Route::delete('/admin/tourists/{id}', [AdminTouristController::class, 'destroy']);
 });
 
 
