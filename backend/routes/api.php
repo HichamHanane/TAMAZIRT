@@ -3,6 +3,7 @@
 use App\Http\Controllers\NavigatorApplicationController;
 use App\Http\Controllers\NavigatorProfileController;
 use App\Http\Controllers\NavigatorRequestController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 // navigator profile routes
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/navigator-profiles', [NavigatorProfileController::class, 'store']); 
+    Route::post('/navigator-profiles', [NavigatorProfileController::class, 'store']);
     Route::get('/navigator-profiles', [NavigatorProfileController::class, 'index']);
     Route::put('/navigator-profiles/{id}', [NavigatorProfileController::class, 'update']);
     Route::delete('/navigator-profiles/{id}', [NavigatorProfileController::class, 'destroy']);
@@ -49,11 +50,26 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Route::delete(uri: '/navigator/requests/{id}', [NavigatorRequestController::class, 'destroy']);
 });
 
+// reviews routes
+Route::middleware(['auth:sanctum'])->group(function () {
+    // Tourist routes
+    Route::post('/reviews', [ReviewController::class, 'store']);
+    Route::patch('/reviews/{id}', [ReviewController::class, 'update']);
+    Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
 
-Route::get('/test',function(){
+    // Public view for navigator reviews
+    Route::get('/navigators/{id}/reviews', [ReviewController::class, 'navigatorReviews']);
+
+    // Admin view all reviews
+    Route::get('/reviews', [ReviewController::class, 'index']);
+});
+
+
+
+Route::get('/test', function () {
     return 'hello hicham hnn';
 });
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
