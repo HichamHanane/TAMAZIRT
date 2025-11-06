@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NavigatorApplicationController;
+use App\Http\Controllers\NavigatorProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/navigator-applications', [NavigatorApplicationController::class, 'index']);
     Route::patch('/navigator-applications/{id}/status', [NavigatorApplicationController::class, 'updateStatus']);
     Route::delete('/navigator-applications/{id}', [NavigatorApplicationController::class, 'destroy']);
+});
+
+
+
+// navigator profile routes
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/navigator-profiles', [NavigatorProfileController::class, 'store']); 
+    Route::get('/navigator-profiles', [NavigatorProfileController::class, 'index']);
+    Route::put('/navigator-profiles/{id}', [NavigatorProfileController::class, 'update']);
+    Route::delete('/navigator-profiles/{id}', [NavigatorProfileController::class, 'destroy']);
 });
 
 

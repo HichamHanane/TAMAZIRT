@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->text('bio')->nullable();
             $table->json('languages')->nullable(); 
             $table->boolean('verified')->default(false);
-            $table->string('contact_info')->nullable();
+            $table->string('phone_number')->nullable();
             $table->timestamps();
         });
     }

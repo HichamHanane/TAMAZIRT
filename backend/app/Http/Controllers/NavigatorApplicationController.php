@@ -14,7 +14,7 @@ class NavigatorApplicationController extends Controller
 
         if (!$user->hasRole('admin')) {
             return response()->json([
-                "message" => 'unauthorize , admin only can see applications'
+                "message" => 'Unauthorized: admin access required.'
             ], 403);
         }
 
@@ -55,7 +55,7 @@ class NavigatorApplicationController extends Controller
 
         if (!$user->hasRole('admin')) {
             return response()->json([
-                "message" => 'unauthorize , for admin only'
+                "message" => 'Unauthorized: admin access required.'
             ], 403);
         }
         $validated = $req->validate([
@@ -79,7 +79,7 @@ class NavigatorApplicationController extends Controller
 
         if (!$user->hasRole('admin')) {
             return response()->json([
-                "message" => 'unauthorize , for admin only'
+                "message" => 'Unauthorized: admin access required.'
             ], 403);
         }
         $application = NavigatorApplication::findOrFail($id);
