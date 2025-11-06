@@ -17,17 +17,17 @@ return [
             'requests' => 'c,r,u,d',
             'reviews' => 'r,d',
             'profiles' => 'r,u',
-            'handoff' => 'c,r,u', // action clé : partager les contacts
+            'handoff' => 'c,r,u', 
         ],
         'navigator' => [
             'profiles' => 'c,r,u',
-            'requests' => 'r,u',   // confirmer mission
+            'requests' => 'r,u',   
             'reviews' => 'r',
         ],
         'tourist' => [
             'requests' => 'c,r,u',
             'reviews' => 'c,r',
-            'profiles' => 'r',     // lire les profils de navigateurs
+            'profiles' => 'r', 
         ],
     ],
 
