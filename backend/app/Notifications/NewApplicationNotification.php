@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\NavigatorApplication;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -10,13 +11,14 @@ use Illuminate\Notifications\Notification;
 class NewApplicationNotification extends Notification
 {
     use Queueable;
-
+    protected $application;
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(NavigatorApplication $application)
     {
         //
+        $this->application = $application;
     }
 
     /**
@@ -35,8 +37,10 @@ class NewApplicationNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->subject('New Navigator send an Application to join us ')
+                    ->line('Hello Support Team')
+                    ->line("Please Check the Admin panel , new navigatore sent an application with name ,{$this->application->full_name}")
+                    ->line("Please Contact ,{$this->application->full_name} , To confirm the application")
                     ->line('Thank you for using our application!');
     }
 
