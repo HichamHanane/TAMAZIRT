@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SentRequest;
 use App\Models\NavigatorProfile;
 use Illuminate\Http\Request;
 
@@ -64,6 +65,10 @@ class TouristController extends Controller
             'message' => $validated['message'] ?? null,
             'status' => 'Pending',
         ]);
+
+        // $tourist_request = \App\Models\Request::where('tourist_id', $requestData->tourist_id)->with(['tourist:id,name,email', 'navigator:id,name,email'])->get();
+
+        SentRequest::dispatch($requestData);
 
         return response()->json([
             'message' => 'Request sent successfully!',
