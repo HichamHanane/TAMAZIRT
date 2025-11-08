@@ -40,6 +40,7 @@ class NavigatorApplicationController extends Controller
         ]);
 
         $application = NavigatorApplication::create($validated);
+        
 
         return response()->json([
             'message' => 'Application submitted successfully!',

@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class NavigatorProfile extends Model
 {
     protected $fillable = [
-    'user_id',
-    'city',
-    'bio',
-    'languages',
-    'verified',
-    'phone_number',
-];
+        'user_id',
+        'city',
+        'bio',
+        'languages',
+        'verified',
+        'phone_number',
+        'average_rating',
+    ];
 
     protected $casts = [
         'languages' => 'array',
