@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ApplicationApproved;
+use App\Events\ApplicationRejected;
+use App\Jobs\NewApplication;
 use App\Models\NavigatorApplication;
 use Illuminate\Http\Request;
 
@@ -41,7 +44,7 @@ class NavigatorApplicationController extends Controller
 
         $application = NavigatorApplication::create($validated);
         
-
+        NewApplication::dispatch($application);
         return response()->json([
             'message' => 'Application submitted successfully!',
             'data' => $application,
@@ -63,9 +66,17 @@ class NavigatorApplicationController extends Controller
             'status' => 'required|in:pending,approved,rejected',
         ]);
 
+        
         $application = NavigatorApplication::findOrFail($id);
         $application->update(['status' => $validated['status']]);
 
+        if ($validated['status'] == "approved") {
+            ApplicationApproved::dispatch($application);
+    
+        }
+        else {
+            ApplicationRejected::dispatch($application);
+        }
         return response()->json([
             'message' => 'Application status updated successfully.',
             'data' => $application
