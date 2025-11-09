@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\NavigatorRejectRequest;
+use App\Jobs\NavigatorRequestResponse;
 use Illuminate\Http\Request;
 
 class NavigatorRequestController extends Controller
@@ -54,6 +56,12 @@ class NavigatorRequestController extends Controller
             'status' => $validated['status'],
         ]);
 
+        // if ($validated['status'] == "HandOff") {
+        //     NavigatorRejectRequest::dispatch($requestModel);
+        // }
+
+        NavigatorRequestResponse::dispatch($requestModel);
+
         return response()->json([
             'message' => 'Request status updated successfully.',
             'data' => $requestModel
@@ -65,23 +73,18 @@ class NavigatorRequestController extends Controller
     public function destroy(Request $req, $id)
     {
         $navigator = $req->user();
-
         if (!$navigator->hasRole('navigator')) {
             return response()->json([
                 'message' => 'Unauthorized: navigator access required.'
             ], 403);
         }
-
         $requestModel = \App\Models\Request::findOrFail($id);
-
         if ($requestModel->navigator_id !== $navigator->id) {
             return response()->json([
                 'message' => 'You can only delete your assigned requests.'
             ], 403);
         }
-
         $requestModel->delete();
-
         return response()->json([
             'message' => 'Request deleted successfully.'
         ]);
