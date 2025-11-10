@@ -1,0 +1,264 @@
+:root {
+    --color-primary-brown: #5d4a3b;
+    --color-light-beige: #f1e9d8;
+    --color-primary-brown: #8c6a5a;
+    /* Primary CTA / Orange */
+    --color-text-dark: #333333;
+    --color-text-subtle: #6c757d;
+    --color-border-light: #e0e0e0;
+    --color-input-bg: white;
+    --color-error: #dc3545;
+    /* Red for error messages */
+}
+
+/* ------------------- REGISTER PAGE FINAL LAYOUT ------------------- */
+
+.register-final-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    /* Right panel background */
+    background-color: var(--color-light-beige);
+}
+
+/* --- 1. Visual Panel (Left Column - Image) --- */
+.register-final-visual-panel {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    /* Hidden by default, shown on desktop (min-width: 992px) */
+    display: none;
+}
+
+.register-final-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* --- 2. Form Panel (Right Column - Beige Background) --- */
+.register-final-form-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.register-final-card {
+    width: 100%;
+    max-width: 400px;
+    /* Form width limit */
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* --- Form Headers --- */
+.register-final-logo {
+    font-family: "Keania One", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-primary-brown);
+    margin: 0 0 5px 0;
+}
+
+.register-final-welcome {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary-brown);
+    margin: 10px 0 5px 0;
+}
+
+.register-final-subtitle {
+    font-size: 14px;
+    color: var(--color-text-subtle);
+    margin-bottom: 30px;
+}
+
+/* --- Form Elements (Shared with Login) --- */
+.register-final-form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Reduced gap slightly for more fields */
+}
+
+.form-group-final {
+    text-align: left;
+    display: block;
+}
+
+.form-label-final {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    margin-bottom: 8px;
+}
+
+.input-container-final {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-border-light);
+    border-radius: 6px;
+    padding: 0 10px;
+}
+
+.input-icon-final {
+    color: var(--color-text-subtle);
+    margin-right: 10px;
+}
+
+.form-input-final {
+    flex-grow: 1;
+    border: none;
+    padding: 12px 0;
+    font-size: 15px;
+    background-color: transparent;
+    outline: none;
+    color: var(--color-text-dark);
+}
+
+.form-input-final::placeholder {
+    color: var(--color-text-subtle);
+}
+
+.password-toggle-final {
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.password-icon-final {
+    color: var(--color-text-subtle);
+}
+
+.error-message {
+    color: var(--color-error);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* --- CTA Button --- */
+.primary-button-final {
+    width: 100%;
+    background-color: #5d4a3b;
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.primary-button-final:hover {
+    background-color: #8c6a5a;
+}
+
+/* --- Social Login and Separator --- */
+.social-login-separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0;
+    font-size: 13px;
+    color: var(--color-text-subtle);
+}
+
+.social-login-separator hr {
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid var(--color-border-light);
+    margin: 0 10px;
+}
+
+.google-login-button {
+    width: 100%;
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-border-light);
+    color: var(--color-text-dark);
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.google-login-button:hover {
+    background-color: #f8f8f8;
+}
+
+.google-icon-final {
+    color: #4285F4;
+    /* Standard Google blue */
+    margin-right: 10px;
+}
+
+/* --- Footer Link --- */
+.register-final-footer-links {
+    margin-top: 30px;
+    font-size: 14px;
+    color: var(--color-text-subtle);
+}
+
+.register-final-footer-links a {
+    color: var(--color-primary-brown);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.register-final-footer-links a:hover {
+    color: var(--color-secondary-orange);
+}
+
+
+/* ------------------- RESPONSIVE DESIGN ------------------- */
+
+@media (min-width: 992px) {
+
+    /* Show the image panel on desktop/large tablets */
+    .register-final-visual-panel {
+        display: block;
+    }
+}
+
+@media (max-width: 991px) {
+
+    /* On smaller screens, the image is hidden and the form panel takes full width */
+    .register-final-form-panel {
+        flex: 1;
+        background-color: var(--color-light-beige);
+    }
+
+    .register-final-card {
+        max-width: 450px;
+        padding: 40px;
+        background-color: white;
+        /* Form card is white on mobile/tablet */
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 576px) {
+    .register-final-card {
+        padding: 30px 20px;
+        margin: 0 10px;
+    }
+
+    .register-final-logo,
+    .register-final-welcome {
+        font-size: 20px;
+    }
+}
