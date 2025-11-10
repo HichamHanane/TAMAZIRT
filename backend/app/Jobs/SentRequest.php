@@ -22,7 +22,6 @@ class SentRequest implements ShouldQueue
     public function __construct(Request $tourist_request)
     {
         //
-
         $this->tourist_request = $tourist_request;
     }
 

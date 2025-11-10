@@ -1,15 +1,13 @@
-/*
-  --- VARIABLES DE COULEUR (réutilisées) ---
-*/
+
 :root {
-  --color-dark-brown: #5d4a3b; 
-  --color-light-gray-bg: #f8f9fa; /* Fond de section très clair */
-  --color-form-bg: white; 
-  --color-text-dark: #333333; 
-  --color-text-subtle: #6c757d; /* Pour les notes et placeholders */
-  --color-cta-primary: #8c6a5a; /* Marron clair pour le thème */
-  --color-border-light: #e0e0e0; 
-  --color-box-shadow: rgba(0, 0, 0, 0.08);
+    --color-dark-brown: #5d4a3b;
+    --color-light-gray-bg: #f8f9fa;
+    --color-form-bg: white;
+    --color-text-dark: #333333;
+    --color-text-subtle: #6c757d;
+    --color-cta-primary: #8c6a5a;
+    --color-border-light: #e0e0e0;
+    --color-box-shadow: rgba(0, 0, 0, 0.08);
 }
 
 /* ------------------- SECTION CONTACT US ------------------- */
@@ -23,14 +21,17 @@
 .contact-us-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex; /* Disposition en deux colonnes */
+    display: flex;
+    /* Disposition en deux colonnes */
     gap: 60px;
-    align-items: flex-start; /* Alignement en haut */
+    align-items: flex-start;
+    /* Alignement en haut */
 }
 
 /* --- Colonne 1 : Infos --- */
 .contact-info-column {
-    flex: 1; /* Prend l'espace restant */
+    flex: 1;
+    /* Prend l'espace restant */
     padding-right: 40px;
 }
 
@@ -47,7 +48,8 @@
 
 .contact-subtitle {
     font-size: 18px;
-    color: var(--color-cta-primary); /* Utiliser le marron clair pour le sous-titre */
+    color: var(--color-cta-primary);
+    /* Utiliser le marron clair pour le sous-titre */
     margin-top: 5px;
 }
 
@@ -101,8 +103,10 @@
 
 /* --- Colonne 2 : Formulaire --- */
 .contact-form-column {
-    flex-basis: 50%; /* Largeur fixe pour le formulaire */
-    max-width: 500px; /* Limite pour ne pas qu'il soit trop large */
+    flex-basis: 50%;
+    /* Largeur fixe pour le formulaire */
+    max-width: 500px;
+    /* Limite pour ne pas qu'il soit trop large */
     background-color: var(--color-form-bg);
     padding: 40px;
     border-radius: 12px;
@@ -128,7 +132,8 @@
     border: 1px solid var(--color-border-light);
     border-radius: 8px;
     font-size: 15px;
-    box-sizing: border-box; /* Inclut padding et border dans la width */
+    box-sizing: border-box;
+    /* Inclut padding et border dans la width */
     color: var(--color-text-dark);
     resize: vertical;
     transition: border-color 0.2s;
@@ -143,7 +148,7 @@
 .submit-button {
     /* Reprend le style du bouton orange de la section How It Works */
     width: 100%;
-    background-color: var(--color-cta-secondary); 
+    background-color: var(--color-cta-secondary);
     border: none;
     color: white;
     padding: 14px 25px;
@@ -165,12 +170,59 @@
     margin-top: 15px;
 }
 
+.status-message {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+.status-message .status-icon {
+    margin-right: 10px;
+    min-width: 20px;
+}
+
+.status-message.success {
+    background-color: #e6ffed;
+    color: #00873c;
+    border: 1px solid #b7e4c7;
+}
+
+.status-message.error {
+    background-color: #fff0f0;
+    color: #c90000;
+    border: 1px solid #f99d9d;
+}
+
+
+.submit-button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-animation {
+    animation: spin 1s linear infinite;
+}
+
 /* ------------------- RESPONSIVE DESIGN ------------------- */
 
 @media (max-width: 992px) {
     .contact-us-container {
         /* Les colonnes s'empilent sur tablette */
-        flex-direction: column; 
+        flex-direction: column;
         gap: 40px;
     }
 
@@ -179,7 +231,7 @@
         text-align: center;
         width: 100%;
     }
-    
+
     .contact-header {
         margin-bottom: 20px;
     }
@@ -190,21 +242,22 @@
 
     /* Centrer les détails de contact */
     .contact-details {
-        display: inline-block; /* Permet de centrer les blocs */
+        display: inline-block;
+        /* Permet de centrer les blocs */
         text-align: left;
     }
-    
+
     .follow-us {
         text-align: center;
     }
-    
+
     .social-links {
         justify-content: center;
     }
 
     .contact-form-column {
         /* Prend toute la largeur disponible */
-        flex-basis: auto; 
+        flex-basis: auto;
         max-width: 100%;
         padding: 30px;
     }
@@ -218,7 +271,7 @@
     .contact-us-section {
         padding: 50px 20px;
     }
-    
+
     .contact-form-column {
         padding: 20px;
     }
