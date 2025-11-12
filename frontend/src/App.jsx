@@ -11,6 +11,7 @@ import NavigatorApplication from './components/Applications/NavigatorApplication
 import DashboardLayout from './pages/DashboardLayout/DashboardLayout'
 import DashboardStatistic from './components/Dashboard/DashboardStatistic'
 import NavigatorsManagement from './components/Navigators/AllNavigators/NavigatorsManagement'
+import TouristManagement from './components/Tourists/TouristManagement/TouristManagement'
 
 function App() {
 
@@ -25,9 +26,9 @@ function App() {
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardStatistic />} />
           <Route path="navigators" element={<NavigatorsManagement />} />
+          <Route path="tourists" element={<TouristManagement />} />
           {/* <Route path="dashboard" element={<DashboardContent />} /> */}
           {/* <Route path="users" element={<UsersManagement />} /> */}
-          {/* <Route path="tourists" element={<TouristsManagement />} /> */}
           {/* <Route path="settings" element={<SettingsPage />} /> */}
           {/* Ajoutez d'autres routes ici si nécessaire */}
         </Route>

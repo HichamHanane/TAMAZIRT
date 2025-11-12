@@ -11,6 +11,9 @@ import EditNavigatorModal from '../EditNavigatorModal/EditNavigatorModal';
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal';
 import { toast } from 'sonner';
 
+const avatarPlaceholder = "https://i.pravatar.cc/150";
+
+
 const NavigatorsManagement = () => {
     const dispatch = useDispatch();
     const { isLoading, error, list } = useSelector((state) => state.navigators);
@@ -24,17 +27,11 @@ const NavigatorsManagement = () => {
     const [selectedNavigator, setSelectedNavigator] = useState(null);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-    const [isDeleting, setIsDeleting] = useState(false);
+
     useEffect(() => {
         dispatch(fetchNavigators());
     }, [status]);
 
-    const avatarPlaceholder = "https://i.pravatar.cc/150";
-
-    // const handleAddNavigator = (newNavigatorData) => {
-    //     console.log("Adding new navigator:", newNavigatorData);
-
-    // };
 
     const openDetailsModal = (navigatorProfile) => {
         setSelectedNavigator(navigatorProfile);

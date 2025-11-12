@@ -24,7 +24,7 @@ class AdminTouristController extends Controller
         $tourists = User::all()->filter(function ($user) {
             return $user->hasRole('tourist');
         });
-
+        $tourists = $tourists->values();
         return response()->json([
             'data' => $tourists
         ], 200);
