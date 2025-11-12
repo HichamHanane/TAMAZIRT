@@ -98,7 +98,7 @@ class NavigatorProfileController extends Controller
         $profile = NavigatorProfile::with('user')->findOrFail($id);
 
         $validated = $request->validate([
-            'name' => 'nullable|string|max:255',
+            'full_name' => 'nullable|string|max:255',
             'email' => 'nullable|email|unique:users,email,' . $profile->user->id,
             'password' => 'nullable|string|min:8',
             'city' => 'nullable|string|max:255',
@@ -109,7 +109,7 @@ class NavigatorProfileController extends Controller
         ]);
 
         $profile->user->update([
-            'name' => $validated['name'] ?? $profile->user->name,
+            'name' => $validated['full_name'] ?? $profile->user->name,
             'email' => $validated['email'] ?? $profile->user->email,
             'password' => isset($validated['password'])
                 ? Hash::make($validated['password'])

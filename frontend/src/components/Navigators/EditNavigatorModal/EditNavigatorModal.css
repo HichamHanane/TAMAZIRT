@@ -1,0 +1,347 @@
+/* src/components/EditNavigatorModal.css */
+
+/* --- Modal Overlay & Base Content --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.edit-modal-content {
+    background-color: var(--color-light-beige);
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 800px;
+    /* Largeur pour deux colonnes */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    /* GESTION DE LA HAUTEUR : Rendre le modal scrollable dans l'overlay */
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Cache le défilement général */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-shrink: 0;
+    /* Empêche l'en-tête de rétrécir lors du défilement */
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin: 0;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-subtle);
+    padding: 5px;
+    border-radius: 5px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+/* --- Formulaire Défilable (Le corps) --- */
+.edit-form-scrollable {
+    flex-grow: 1;
+    /* Prend l'espace restant entre le header et le footer */
+    overflow-y: auto;
+    /* REND LE CONTENU DU FORMULAIRE DÉFILABLE */
+    padding-right: 10px;
+    /* Espace pour la barre de défilement */
+    margin-right: -10px;
+    /* Compense le padding pour la barre de défilement */
+}
+
+/* --- Form Layout (Two Columns) --- */
+.edit-form-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 20px;
+    /* Espace avant le pied de page */
+}
+
+.form-column {
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.column-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary-brown);
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-border-light);
+}
+
+/* --- Form Groups & Inputs --- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 8px;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    color: var(--color-text-subtle);
+}
+
+.input-with-icon input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 15px 14px 45px;
+    border: 1px solid var(--color-border-light);
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--color-text-dark);
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group textarea {
+    padding: 14px 15px;
+    height: 100px;
+    /* Hauteur réduite pour le besoin */
+    resize: vertical;
+}
+
+/* Styles d'erreur et d'indice */
+.error-message {
+    color: var(--color-error);
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.hint-message {
+    font-size: 12px;
+    color: var(--color-text-subtle);
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+
+/* --- Avatar Section --- */
+.avatar-preview-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.profile-avatar-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-primary-brown);
+}
+
+.change-photo-btn {
+    background-color: var(--color-cta-secondary);
+    color: var(--color-text-dark);
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* --- Verification Toggle (Switch custom) --- */
+.verification-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-light-beige);
+    padding: 10px 15px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.verification-group .status-icon {
+    color: var(--color-primary-brown);
+}
+
+.verification-group .toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Styles du switch (bascule) */
+.switch {
+    /* ... (copier ici les styles du switch) ... */
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+    margin: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background-color: var(--color-primary-brown);
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 25px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* --- Form Actions (Footer fixé) --- */
+.modal-actions.full-width-actions {
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-border-light);
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    flex-shrink: 0;
+    /* Empêche le pied de page de rétrécir lors du défilement */
+}
+
+/* Styles des boutons */
+.cancel-btn,
+.add-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cancel-btn {
+    background: none;
+    border: 1px solid var(--color-border-light);
+    color: var(--color-text-dark);
+}
+
+.add-btn {
+    background-color: var(--color-primary-brown);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.add-btn:hover {
+    background-color: #483a2d;
+}
+
+/* --- Responsivity --- */
+@media (max-width: 850px) {
+    .edit-modal-content {
+        max-width: 95%;
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .edit-form-layout {
+        flex-direction: column;
+        /* Empile les colonnes sur les petits écrans */
+        gap: 20px;
+    }
+
+    .form-column {
+        min-width: 100%;
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .edit-modal-content {
+        padding: 15px;
+    }
+
+    .modal-actions.full-width-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cancel-btn,
+    .add-btn {
+        width: 100%;
+    }
+}

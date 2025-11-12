@@ -4,24 +4,84 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Search, Eye, Edit, Trash2, Plus, ChevronLeft, ChevronRight, Loader2, AlertTriangle } from 'lucide-react';
 import './NavigatorsManagement.css';
-import { fetchNavigators } from '../../../feature/NavigatorSlice';
+import { deleteNavigator, fetchNavigators } from '../../../feature/NavigatorSlice';
 import AddNavigatorModal from '../AddNavigatorModal/AddNavigatorModal';
+import NavigatorDetailsModal from '../NavigatorDetailsModal/NavigatorDetailsModal';
+import EditNavigatorModal from '../EditNavigatorModal/EditNavigatorModal';
+import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal';
+import { toast } from 'sonner';
 
 const NavigatorsManagement = () => {
     const dispatch = useDispatch();
     const { isLoading, error, list } = useSelector((state) => state.navigators);
     const { status } = useSelector((state) => state.navigators.add_navigator);
+    const { delete_navigator } = useSelector((state) => state.navigators);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+
+    const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+    const [selectedNavigator, setSelectedNavigator] = useState(null);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
     useEffect(() => {
         dispatch(fetchNavigators());
     }, [status]);
 
     const avatarPlaceholder = "https://i.pravatar.cc/150";
 
-    const handleAddNavigator = (newNavigatorData) => {
-        console.log("Adding new navigator:", newNavigatorData);
+    // const handleAddNavigator = (newNavigatorData) => {
+    //     console.log("Adding new navigator:", newNavigatorData);
+
+    // };
+
+    const openDetailsModal = (navigatorProfile) => {
+        setSelectedNavigator(navigatorProfile);
+        setIsDetailsModalOpen(true);
+    };
+
+    const closeDetailsModal = () => {
+        setIsDetailsModalOpen(false);
+        setSelectedNavigator(null);
+    };
+
+    const openEditModal = (navigatorProfile) => {
+        setSelectedNavigator(navigatorProfile);
+        setIsEditModalOpen(true);
+    };
+
+    const closeEditModal = () => {
+        setIsEditModalOpen(false);
+        setSelectedNavigator(null);
+    };
+
+
+    const openDeleteModal = (navigatorProfile) => {
+        setSelectedNavigator(navigatorProfile);
+        setIsDeleteModalOpen(true);
+    };
+
+    const closeDeleteModal = () => {
+        setIsDeleteModalOpen(false);
+    };
+
+    const handleConfirmDelete = async () => {
+        try {
+            if (!selectedNavigator) return;
+            console.log("Deleting navigator with ID:", selectedNavigator.id);
+
+            let result = await dispatch(deleteNavigator(selectedNavigator.id));
+            if (result.meta.requestStatus == "fulfilled") {
+                setIsDeleteModalOpen(false);
+                toast.success('The Navigator Deleted SuccessFully');
+                return
+            }
+        } catch (error) {
+            console.log('Error while deleting the navigatore :', error);
+            setIsDeleteModalOpen(false);
+
+        }
 
     };
     let content;
@@ -76,9 +136,27 @@ const NavigatorsManagement = () => {
                                     <td data-label="City" className="hide-on-mobile">{profile?.city}</td>
                                     <td data-label="Actions" className="actions-cell">
                                         <div className="action-icons">
-                                            <button title="View" className="action-btn view-btn"><Eye size={18} /></button>
-                                            <button title="Edit" className="action-btn edit-btn"><Edit size={18} /></button>
-                                            <button title="Delete" className="action-btn delete-btn"><Trash2 size={18} /></button>
+                                            <button
+                                                title="View"
+                                                className="action-btn view-btn"
+                                                onClick={() => openDetailsModal(profile)}
+                                            >
+                                                <Eye size={18} />
+                                            </button>
+                                            <button
+                                                title="Edit"
+                                                className="action-btn edit-btn"
+                                                onClick={() => openEditModal(profile)}
+                                            >
+                                                <Edit size={18} />
+                                            </button>
+                                            <button
+                                                title="Delete"
+                                                className="action-btn delete-btn"
+                                                onClick={() => openDeleteModal(profile)}
+                                            >
+                                                <Trash2 size={18} />
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -115,21 +193,40 @@ const NavigatorsManagement = () => {
                 </button>
             </div>
 
-            <div className="navigators-search-bar-container">
+            {/* <div className="navigators-search-bar-container">
                 <Search size={20} className="search-icon-navigators" />
                 <input
                     type="text"
                     placeholder="Search by name, email, or city..."
                     className="navigators-search-input"
                 />
-            </div>
+            </div> */}
 
             {content}
 
             <AddNavigatorModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-                onAddNavigator={handleAddNavigator}
+            // onAddNavigator={handleAddNavigator}
+            />
+            <NavigatorDetailsModal
+                isOpen={isDetailsModalOpen}
+                onClose={closeDetailsModal}
+                navigator={selectedNavigator}
+            />
+
+            <EditNavigatorModal
+                isOpen={isEditModalOpen}
+                onClose={closeEditModal}
+                navigator={selectedNavigator}
+            />
+
+            <DeleteConfirmationModal
+                isOpen={isDeleteModalOpen}
+                onClose={closeDeleteModal}
+                onConfirm={handleConfirmDelete}
+                navigatorName={selectedNavigator?.user.name}
+                isDeleting={delete_navigator.isLoqding}
             />
         </div>
     );
