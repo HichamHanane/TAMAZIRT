@@ -9,8 +9,8 @@ import RegisterPage from './pages/RegisterPage/RegisterPage'
 import Test from './pages/test'
 import NavigatorApplication from './components/Applications/NavigatorApplication/ApplicationForm'
 import DashboardLayout from './pages/DashboardLayout/DashboardLayout'
-import DashboardContent from './components/DashboardContent'
 import DashboardStatistic from './components/Dashboard/DashboardStatistic'
+import NavigatorsManagement from './components/Navigators/AllNavigators/NavigatorsManagement'
 
 function App() {
 
@@ -24,9 +24,9 @@ function App() {
         <Route path="/application-form" element={<NavigatorApplication />} />
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardStatistic />} />
+          <Route path="navigators" element={<NavigatorsManagement />} />
           {/* <Route path="dashboard" element={<DashboardContent />} /> */}
           {/* <Route path="users" element={<UsersManagement />} /> */}
-          {/* <Route path="navigators" element={<NavigatorsManagement />} /> */}
           {/* <Route path="tourists" element={<TouristsManagement />} /> */}
           {/* <Route path="settings" element={<SettingsPage />} /> */}
           {/* Ajoutez d'autres routes ici si nécessaire */}

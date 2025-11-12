@@ -1,5 +1,7 @@
+// src/components/Sidebar.jsx
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
     LayoutDashboard,
     Users,
@@ -9,9 +11,20 @@ import {
     LogOut,
     MessageSquareText,
 } from 'lucide-react';
-import '../../pages/DashboardLayout/DashboardLayout.css'; 
+import '../../pages/DashboardLayout/DashboardLayout.css';
 
 const Sidebar = () => {
+    const location = useLocation();
+
+    const isActive = (path) => {
+        const currentPath = location.pathname;
+        if (path === '/dashboard') {
+            return currentPath === path || currentPath === path + '/';
+        }
+        return currentPath.startsWith(path) && (currentPath.length === path.length || currentPath.charAt(path.length) === '/');
+    };
+
+
     return (
         <aside className="dashboard-sidebar">
             <div className="sidebar-header">
@@ -22,31 +35,46 @@ const Sidebar = () => {
             <nav className="sidebar-nav">
                 <ul>
                     <li>
-                        <Link to="/dashboard" className="nav-item active">
+                        <Link
+                            to="/dashboard"
+                            className={`nav-item ${isActive('/dashboard') ? 'active' : ''}`}
+                        >
                             <LayoutDashboard size={20} className="nav-icon" />
                             <span>Dashboard</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/users" className="nav-item">
+                        <Link
+                            to="/dashboard/users"
+                            className={`nav-item ${isActive('/dashboard/users') ? 'active' : ''}`}
+                        >
                             <Users size={20} className="nav-icon" />
                             <span>Users</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/navigators" className="nav-item">
+                        <Link
+                            to="/dashboard/navigators"
+                            className={`nav-item ${isActive('/dashboard/navigators') ? 'active' : ''}`}
+                        >
                             <Briefcase size={20} className="nav-icon" />
                             <span>Navigators</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/tourists" className="nav-item">
+                        <Link
+                            to="/dashboard/tourists"
+                            className={`nav-item ${isActive('/dashboard/tourists') ? 'active' : ''}`}
+                        >
                             <UserCircle size={20} className="nav-icon" />
                             <span>Tourists</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/settings" className="nav-item">
+                        <Link
+                            to="/dashboard/settings"
+                            className={`nav-item ${isActive('/dashboard/settings') ? 'active' : ''}`}
+                        >
                             <Settings size={20} className="nav-icon" />
                             <span>Settings</span>
                         </Link>

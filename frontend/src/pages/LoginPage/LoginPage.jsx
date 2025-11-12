@@ -37,7 +37,7 @@ const LoginPage = () => {
             let result = await dispatch(SignIn(data));
 
             if (result.meta.requestStatus == "fulfilled") {
-                navigate('/test')
+                navigate('/')
                 toast.success('You Successfully Logged in');
                 return
             }

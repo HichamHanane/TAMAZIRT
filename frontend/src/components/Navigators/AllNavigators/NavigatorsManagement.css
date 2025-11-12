@@ -1,0 +1,361 @@
+/* src/components/NavigatorsManagement.css */
+
+/* --- Header et Bouton d'Ajout --- */
+
+.navigators-header-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin: 0;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: var(--color-text-subtle);
+    margin-top: 5px;
+}
+
+.add-navigator-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background-color: var(--color-primary-brown);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 8px rgba(93, 74, 59, 0.2);
+}
+
+.add-navigator-btn:hover {
+    background-color: #483a2d;
+}
+
+/* --- Barre de Recherche --- */
+
+.navigators-search-bar-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px var(--color-shadow);
+}
+
+.search-icon-navigators {
+    color: var(--color-text-subtle);
+    margin-right: 15px;
+}
+
+.navigators-search-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    color: var(--color-text-dark);
+}
+
+.navigators-search-input::placeholder {
+    color: var(--color-text-subtle);
+}
+
+/* --- Tableau --- */
+
+.navigators-table-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--color-shadow);
+    overflow: hidden;
+}
+
+.responsive-table-wrapper {
+    overflow-x: auto;
+    /* Permet le défilement horizontal sur les petits écrans */
+}
+
+.navigators-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.navigators-table thead tr {
+    background-color: var(--color-light-beige);
+    color: var(--color-text-dark);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.navigators-table th,
+.navigators-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.navigators-table th:last-child {
+    text-align: right;
+}
+
+.navigators-table td {
+    font-size: 15px;
+    color: var(--color-text-dark);
+    font-weight: 500;
+}
+
+.navigators-table tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+.navigator-profile-cell {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navigator-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-border-light);
+}
+
+/* --- Actions --- */
+.actions-column {
+    text-align: right !important;
+    width: 150px;
+}
+
+.actions-cell {
+    white-space: nowrap;
+    text-align: right !important;
+}
+
+.action-icons {
+    display: inline-flex;
+    gap: 5px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.view-btn {
+    color: var(--color-text-subtle);
+}
+
+.view-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.edit-btn {
+    color: #007bff;
+    /* Bleu pour édition */
+}
+
+.edit-btn:hover {
+    background-color: #e6f2ff;
+}
+
+.delete-btn {
+    color: #dc3545;
+    /* Rouge pour suppression */
+}
+
+.delete-btn:hover {
+    background-color: #f8d7da;
+}
+
+/* --- Pagination --- */
+
+.navigators-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.pagination-btn {
+    background: none;
+    border: 1px solid var(--color-border-light);
+    color: var(--color-text-subtle);
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pagination-btn:not([disabled]):hover {
+    background-color: #f0f0f0;
+}
+
+.pagination-btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-number {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.page-number.active {
+    background-color: var(--color-primary-brown);
+    color: white;
+    font-weight: 600;
+}
+
+.page-number:not(.active):not(.dots):hover {
+    background-color: #f0f0f0;
+}
+
+.page-number.dots {
+    cursor: default;
+    background: none;
+}
+
+
+.status-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    gap: 10px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px var(--color-shadow);
+}
+
+.status-message.loading {
+    background-color: #f0f8ff;
+    color: #007bff;
+}
+
+.status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.status-message.empty {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ------------------- RÉACTIVITÉ ------------------- */
+
+@media (max-width: 768px) {
+    .navigators-header-area {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    .add-navigator-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Masquer les colonnes pour la vue mobile */
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .navigators-table th,
+    .navigators-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        padding: 10px 15px;
+    }
+
+    .navigators-table td {
+        text-align: right !important;
+        position: relative;
+    }
+
+    /* Afficher le label de la colonne */
+    .navigators-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--color-text-subtle);
+        font-size: 12px;
+    }
+
+    .navigators-table thead {
+        display: none;
+    }
+
+    .navigators-table tbody tr {
+        margin-bottom: 20px;
+        display: block;
+        border: 1px solid var(--color-border-light);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .navigators-table tbody tr:hover {
+        background-color: white;
+    }
+
+    /* Centrer/Aligner la cellule Profil */
+    .navigator-profile-cell {
+        justify-content: flex-end;
+    }
+
+    /* Réajuster les actions */
+    .actions-cell {
+        border-bottom: none !important;
+    }
+
+    .action-icons {
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
