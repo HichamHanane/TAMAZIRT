@@ -7,6 +7,10 @@ import TermsPolicyPage from './pages/TermsPolicyPage/TermsPolicyPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import RegisterPage from './pages/RegisterPage/RegisterPage'
 import Test from './pages/test'
+import NavigatorApplication from './components/Applications/NavigatorApplication/ApplicationForm'
+import DashboardLayout from './pages/DashboardLayout/DashboardLayout'
+import DashboardContent from './components/DashboardContent'
+import DashboardStatistic from './components/Dashboard/DashboardStatistic'
 
 function App() {
 
@@ -17,6 +21,17 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/application-form" element={<NavigatorApplication />} />
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<DashboardStatistic />} />
+          {/* <Route path="dashboard" element={<DashboardContent />} /> */}
+          {/* <Route path="users" element={<UsersManagement />} /> */}
+          {/* <Route path="navigators" element={<NavigatorsManagement />} /> */}
+          {/* <Route path="tourists" element={<TouristsManagement />} /> */}
+          {/* <Route path="settings" element={<SettingsPage />} /> */}
+          {/* Ajoutez d'autres routes ici si nécessaire */}
+        </Route>
+
         <Route path="/terms" element={<TermsPolicyPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

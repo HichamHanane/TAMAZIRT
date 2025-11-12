@@ -1,0 +1,320 @@
+/*
+  --- COLOR VARIABLES (Thème du projet) ---
+*/
+:root {
+    --color-primary-brown: #5d4a3b;
+    --color-light-beige: #f1e9d8;
+    --color-accent-orange: #6c757d;
+    --color-card-background: #ffffff;
+    --color-sidebar-bg: var(--color-primary-brown);
+    --color-sidebar-text: rgba(255, 255, 255, 0.8);
+    --color-sidebar-active-bg: rgba(255, 255, 255, 0.1);
+    --color-header-bg: #ffffff;
+    --color-content-bg: #f7f3ed;
+    --color-border-light: #e0e0e0;
+    --color-shadow: rgba(0, 0, 0, 0.05);
+    --color-text-dark: #333333;
+    --color-text-subtle: #6c757d;
+    --color-status-confirmed: #d4edda;
+    --color-status-pending: #fff3cd;
+    --color-status-completed: #d1ecf1;
+    --color-status-text-confirmed: #155724;
+    --color-status-text-pending: #856404;
+    --color-status-text-completed: #0c5460;
+}
+
+/* ------------------- CADRE GLOBAL DU TABLEAU DE BORD ------------------- */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-light-beige);
+}
+
+/* ------------------- BARRE LATÉRALE (GAUCHE) ------------------- */
+
+.dashboard-sidebar {
+    width: 250px;
+    background-color: var(--color-sidebar-bg);
+    color: var(--color-sidebar-text);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 0 5px var(--color-shadow);
+    z-index: 1000;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo-icon {
+    color: var(--color-accent-orange);
+    margin-bottom: 10px;
+}
+
+.sidebar-app-name {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    color: white;
+}
+
+.sidebar-admin-panel {
+    font-size: 14px;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--color-sidebar-text);
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    border-radius: 8px;
+    margin: 0 15px;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.nav-item.active {
+    background-color: var(--color-accent-orange);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(255, 127, 80, 0.2);
+}
+
+.nav-icon {
+    margin-right: 15px;
+    color: inherit;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: auto;
+}
+
+.nav-item.logout {
+    color: var(--color-sidebar-text);
+}
+
+.nav-item.logout:hover {
+    background-color:rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+/* ------------------- CONTENU PRINCIPAL (DROITE) ------------------- */
+
+.dashboard-main-content {
+    flex-grow: 1;
+    margin-left: 250px;
+    background-color: var(--color-content-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header du contenu principal */
+.dashboard-header {
+    background-color: var(--color-header-bg);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 2px 4px var(--color-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.header-user-info {
+    text-align: right;
+    margin-right: 15px;
+}
+
+.user-name {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.user-role {
+    font-size: 13px;
+    color: var(--color-text-subtle);
+}
+
+.header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--color-border-light);
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Zone de contenu défilante */
+.dashboard-content-area {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* ------------------- STYLE DES CARTES DE STATISTIQUES (POUR L'APERÇU) ------------------- */
+
+
+
+/* ------------------- RÉACTIVITÉ ------------------- */
+
+@media (max-width: 992px) {
+    .dashboard-sidebar {
+        width: 80px;
+    }
+
+    .sidebar-app-name,
+    .sidebar-admin-panel {
+        display: none;
+    }
+
+    .sidebar-nav .nav-item {
+        margin: 0;
+        justify-content: center;
+        border-radius: 0;
+    }
+
+    .sidebar-nav .nav-icon {
+        margin-right: 0;
+    }
+
+    .sidebar-nav span,
+    .sidebar-footer span {
+        display: none;
+    }
+
+    .dashboard-main-content {
+        margin-left: 80px;
+    }
+
+    .dashboard-header {
+        padding: 15px 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-header {
+        display: none;
+    }
+
+    .sidebar-nav {
+        flex-grow: unset;
+        width: 100%;
+        padding: 0;
+    }
+
+    .sidebar-nav ul {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .sidebar-nav li {
+        flex: 1;
+        text-align: center;
+        margin: 0;
+    }
+
+    .nav-item {
+        padding: 10px 5px;
+        border-radius: 0;
+    }
+
+    .dashboard-main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .dashboard-header {
+        justify-content: space-between;
+        padding: 15px 15px;
+    }
+
+    .header-user-info {
+        margin-right: 0;
+        text-align: left;
+    }
+
+    .dashboard-content-area {
+        padding: 20px;
+    }
+
+    .requests-table th,
+    .requests-table td {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-sidebar {
+        flex-wrap: wrap;
+    }
+
+    .sidebar-nav ul {
+        flex-wrap: wrap;
+    }
+
+    .sidebar-nav li {
+        width: 50%;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+}

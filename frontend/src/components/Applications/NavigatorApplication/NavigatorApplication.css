@@ -1,0 +1,266 @@
+:root {
+    --color-primary-brown: #5d4a3b;
+    --color-light-beige: #f1e9d8;
+    --color-cta-orange: #ff7f50;
+    --color-text-dark: #333333;
+    --color-text-subtle: #6c757d;
+    --color-input-border: #e0e0e0;
+    --color-input-bg: white;
+    --color-panel-background: #f7f3ed;
+}
+
+
+.app-container {
+    min-height: 100vh;
+    background-color: var(--color-light-beige);
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    background-color: transparent;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.app-logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-primary-brown);
+    text-decoration: none;
+}
+
+.app-home-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+
+.navigator-app-main {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+.app-content-panel {
+    flex: 1;
+    padding: 50px 40px;
+    background-color: var(--color-panel-background);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.app-content-panel::before {
+    content: '';
+    background-image: url(../../../assets/Moroccan-Culture.jpg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.app-main-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-primary-brown);
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.app-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.app-feature-item {
+    padding-left: 30px;
+    position: relative;
+}
+
+.feature-icon {
+    color: var(--color-cta-orange);
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.feature-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-primary-brown);
+    margin: 0 0 5px 0;
+}
+
+.feature-description {
+    font-size: 13px;
+    color: var(--color-text-subtle);
+    margin: 0;
+}
+
+.app-content-footer {
+    margin-top: 50px;
+    font-size: 12px;
+    color: var(--color-text-subtle);
+    position: relative;
+    z-index: 1;
+}
+
+
+.app-form-panel {
+    flex: 1;
+    padding: 50px 40px;
+    background-color: var(--color-input-bg);
+    /* Blanc */
+}
+
+.app-form-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin: 0;
+}
+
+.app-form-subtitle {
+    font-size: 14px;
+    color: var(--color-text-subtle);
+    margin: 5px 0 30px 0;
+}
+
+.app-form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group-app {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    border-radius: 6px;
+    padding: 0 15px;
+    height: 45px;
+}
+
+.form-group-app.textarea-group {
+    height: auto;
+    align-items: flex-start;
+    padding: 10px 15px;
+}
+
+.input-icon-app {
+    color: var(--color-text-subtle);
+    margin-right: 10px;
+}
+
+.textarea-icon {
+    margin-top: 5px;
+}
+
+.form-input-app,
+.form-textarea-app {
+    flex-grow: 1;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    background-color: transparent;
+    outline: none;
+    color: var(--color-text-dark);
+    resize: none;
+    height: 100%;
+}
+
+.form-textarea-app {
+    padding: 5px 0;
+}
+
+.submit-button-app {
+    width: 100%;
+    background-color: var(--color-primary-brown);
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.submit-button-app:hover {
+    background-color: #4a3b30;
+}
+
+.error-message {
+    color: var(--color-error, #dc3545);
+    font-size: 12px;
+    /* Ajuste l'espace entre le champ et l'erreur */
+    margin-left: 15px;
+    text-align: left;
+}
+
+
+
+@media (max-width: 992px) {
+    .navigator-app-main {
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .app-header-nav {
+        padding: 15px 20px;
+    }
+
+    .app-content-panel {
+        padding: 40px 30px;
+        order: 2;
+    }
+
+    .app-form-panel {
+        padding: 40px 30px;
+        order: 1;
+    }
+
+    .app-content-panel::before {
+        display: none;
+    }
+
+    .app-content-footer {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navigator-app-main {
+        margin: 10px;
+    }
+
+    .app-main-title {
+        font-size: 26px;
+    }
+}

@@ -34,17 +34,18 @@ class NavigatorApplicationController extends Controller
     //add new navigator application.
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:navigator_applications,email',
-            'phone_number' => 'required|string|max:20',
-            'city' => 'nullable|string|max:255',
-            'motivation' => 'nullable|string|max:1000',
-        ]);
+            $validated = $request->validate([
+                'full_name' => 'required|string|max:255',
+                'email' => 'required|email|unique:navigator_applications,email',
+                'phone_number' => 'required|string|max:20',
+                'city' => 'nullable|string|max:255',
+                'motivation' => 'nullable|string|max:1000',
+            ]);
 
         $application = NavigatorApplication::create($validated);
         
         NewApplication::dispatch($application);
+        
         return response()->json([
             'message' => 'Application submitted successfully!',
             'data' => $application,

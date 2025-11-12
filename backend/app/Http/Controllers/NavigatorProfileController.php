@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SentCredentialsJob;
 use App\Models\NavigatorProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -69,6 +70,10 @@ class NavigatorProfileController extends Controller
             'verified' => true,
             'phone_number' => $validated['phone_number'] ?? null,
         ]);
+
+        
+
+        SentCredentialsJob::dispatch($user);
 
         return response()->json([
             'message' => 'Navigator account and profile created successfully.',

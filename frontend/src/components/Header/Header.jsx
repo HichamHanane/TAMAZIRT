@@ -1,10 +1,10 @@
 // src/components/Header.jsx
 
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react'; // Assure-toi d'avoir installé lucide-react
+import { Menu, X } from 'lucide-react';
 import './Header.css'
+import { useNavigate } from 'react-router-dom';
 
-// Composant pour les liens de navigation (simulés)
 const NavLinks = () => (
   <>
     <a href="#hero" className="nav-link">Home</a>
@@ -15,35 +15,45 @@ const NavLinks = () => (
 );
 
 const Header = () => {
-  // État pour gérer l'ouverture/fermeture du menu mobile
+  const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Fonction pour basculer l'état du menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    // Le header reste sticky et prend 100% de la largeur du viewport
     <header className="header">
-      {/* Ce conteneur a la largeur limitée au départ (le design initial) */}
       <div className="header-content">
 
         {/* Logo */}
         <div className="header-logo">TAMAZIRET</div>
 
-        {/* Menu Desktop (Visible sur grand écran) */}
         <nav className="header-nav header-nav--desktop">
           <NavLinks />
         </nav>
 
-        {/* Bouton Burger (Visible sur mobile) */}
+        <div className='auth-btn'>
+          <button
+            className='login-btn'
+            onClick={() => navigate('/login')}
+
+          >
+            Login
+          </button>
+
+
+          <button
+            className='register-btn'
+            onClick={() => navigate('/register')}
+          >
+            Register
+          </button>
+        </div>
         <button className="burger-button" onClick={toggleMenu} aria-expanded={isMenuOpen}>
-          {/* Afficher l'icône X si le menu est ouvert, sinon l'icône Menu */}
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* Menu Mobile coulissant */}
         <nav className={`header-nav header-nav--mobile ${isMenuOpen ? 'is-open' : ''}`}>
           <NavLinks />
         </nav>

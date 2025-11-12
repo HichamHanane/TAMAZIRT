@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import loginImage from '../../assets/Casablanca-6954.webp';
+import loginImage from '../../assets/IMG_3755.webp';
 import './LoginPage.css';
 import { SignIn } from '../../feature/AuthSlice';
 import { useDispatch } from 'react-redux';

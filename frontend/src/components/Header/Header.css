@@ -85,6 +85,42 @@
   color: #e0e0e0;
 }
 
+.auth-btn{
+  display: flex;
+  gap: 15px;
+}
+.auth-btn ,
+.login-btn,
+.register-btn{
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.login-btn{
+  background: #f1e9d8;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  color: #5d4a3b;
+  transition: 0.3s;
+
+}
+
+.register-btn{
+  background: transparent;
+  border: 1px solid #f1e9d8;
+  color: #f1e9d8;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+.login-btn:hover{
+  background-color: #f1e9d856;
+}
+.register-btn:hover{
+  background-color: #f1e9d856;
+}
+
 /* Cacher les éléments mobile par défaut */
 .header-nav--mobile {
   display: none;
