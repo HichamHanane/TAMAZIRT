@@ -1,14 +1,20 @@
 import React from 'react';
 import { Instagram, Facebook, Linkedin, Heart, Youtube } from 'lucide-react';
 import './Footer.css';
+import { HashLink } from 'react-router-hash-link';
 
+
+const scrollWithOffset = (el, offset) => {
+  const yCoordinate = el.getBoundingClientRect().top + window.scrollY;
+  const yOffset = -offset;
+  window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+};
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
 
-        {/* Colonne 1 : Logo et Description */}
         <div className="footer-col footer-info">
           <h3 className="footer-logo">TAMAZIRT</h3>
           <p className="footer-tagline">
@@ -23,11 +29,27 @@ const Footer = () => {
         <div className="footer-col footer-links">
           <h4 className="footer-heading">QUICK LINKS</h4>
           <ul className="footer-link-list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about-us">About Us</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#blog">Blog</a></li>
+            <li>
+
+              <HashLink to='/#hero' scroll={(el) => scrollWithOffset(el, 70)}>Home</HashLink>
+            </li>
+            <li><HashLink to='/#why-us' scroll={(el) => scrollWithOffset(el, 70)}>About us</HashLink></li>
+            <li>
+              <HashLink
+                to="/#navigators"
+                scroll={(el) => scrollWithOffset(el, 70)}
+              >
+                How It Works
+              </HashLink>
+            </li>
+            <li>
+              <HashLink
+                to="/#contact"
+                scroll={(el) => scrollWithOffset(el, 70)}
+              >
+                Contact
+              </HashLink>
+            </li>
           </ul>
         </div>
 

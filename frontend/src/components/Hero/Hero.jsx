@@ -8,7 +8,7 @@ const Hero = () => {
 
   const navigate = useNavigate();
   return (
-    <section className="hero-section">
+    <section className="hero-section" id="hero">
       <div className="hero-content">
         <h1 className="hero-title">
           DISCOVER MOROCCO <br />

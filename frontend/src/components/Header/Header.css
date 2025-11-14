@@ -65,6 +65,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 2px;
+  text-decoration: none;
 }
 
 /* --- NAVIGATION (DESKTOP) --- */
@@ -85,19 +86,27 @@
   color: #e0e0e0;
 }
 
-.auth-btn{
+.auth-btn {
   display: flex;
   gap: 15px;
 }
-.auth-btn ,
-.login-btn,
-.register-btn{
-  padding: 10px;
+
+.auth-btn button {
+  padding: 10px 15px;
+  /* Un peu plus de padding horizontal */
   font-size: 1rem;
   cursor: pointer;
   font-weight: bold;
+  border-radius: 30px;
+  transition: 0.3s;
+  display: flex;
+  /* Pour aligner l'icône et le texte */
+  align-items: center;
+  gap: 8px;
+  /* Espace entre l'icône et le texte */
 }
-.login-btn{
+
+.login-btn {
   background: #f1e9d8;
   border: none;
   outline: none;
@@ -107,27 +116,49 @@
 
 }
 
-.register-btn{
+.register-btn {
   background: transparent;
   border: 1px solid #f1e9d8;
   color: #f1e9d8;
   border-radius: 30px;
   transition: 0.3s;
 }
-.login-btn:hover{
-  background-color: #f1e9d856;
-}
-.register-btn:hover{
+
+.login-btn:hover {
   background-color: #f1e9d856;
 }
 
-/* Cacher les éléments mobile par défaut */
+.register-btn:hover {
+  background-color: #f1e9d856;
+}
+
 .header-nav--mobile {
   display: none;
 }
 
 .burger-button {
   display: none;
+}
+
+.dashboard-btn {
+  background: #f1e9d8;
+  border: none;
+  color: var(--color-dark-brown);
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid #f1e9d8;
+  color: #f1e9d8;
+}
+
+.dashboard-btn:hover {
+  background-color: #f1e9d856;
+  color: #f1e9d8;
+}
+
+.logout-btn:hover {
+  background-color: #f1e9d856;
 }
 
 /* ------------------- MEDIA QUERIES (RESPONSIVE) ------------------- */

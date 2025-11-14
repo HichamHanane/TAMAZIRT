@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminStatisticsController;
 use App\Http\Controllers\AdminTouristController;
 use App\Http\Controllers\NavigatorApplicationController;
 use App\Http\Controllers\NavigatorProfileController;
@@ -21,9 +22,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+    $user = $request->user();
+    return response()->json([
+        'message' => 'fetched success',
+        'user' => [
+            'name' => $user->name,
+            'email' => $user->email,
+            'role' => $user->roles->pluck('name')->first(),
+        ],
+    ], 200);
 });
 
+
+//edit profile
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::put('/profile/{id}', [AdminStatisticsController::class, 'editProfile']);
+});
 
 
 //applications routes 

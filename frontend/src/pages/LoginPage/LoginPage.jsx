@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import loginImage from '../../assets/IMG_3755.webp';
 import './LoginPage.css';
 import { SignIn } from '../../feature/AuthSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
 
 const validationSchema = yup.object().shape({
@@ -20,6 +20,7 @@ const validationSchema = yup.object().shape({
 });
 
 const LoginPage = () => {
+    const { error, isLoading } = useSelector(state => state.auth.user_login)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {
@@ -35,11 +36,23 @@ const LoginPage = () => {
             console.log('Form Data Validated and Ready for API:', data);
 
             let result = await dispatch(SignIn(data));
+            console.log('Login result :', result);
 
             if (result.meta.requestStatus == "fulfilled") {
-                navigate('/')
                 toast.success('You Successfully Logged in');
-                return
+                if (result.payload.user.role == "admin") {
+                    navigate('/dashboard')
+                    return
+                }
+                if (result.payload.user.role == "navigator") {
+                    navigate('/dashboard/navigator/profile')
+                    return
+                }
+                if (result.payload.user.role == "tourist") {
+                    navigate('/dashboard')
+                    return
+                }
+
             }
         } catch (error) {
             console.error('Submission Error:', error);
@@ -108,11 +121,9 @@ const LoginPage = () => {
                             className="primary-button-final login-final-button"
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? 'Logging in...' : 'Login'}
+                            {isSubmitting && isLoading ? 'Logging in...' : 'Login'}
                         </button>
-
-
-
+                        {error && <p className="error-message">{error}</p>}
                     </form>
 
 

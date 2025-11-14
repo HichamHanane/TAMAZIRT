@@ -21,9 +21,6 @@ body {
 }
 
 .landing-page-container {
-  /* Prend toute la hauteur de la vue pour centrer le contenu si besoin */
   min-height: 100vh;
-  /* Optionnel : pour centrer le contenu sur de très grands écrans */
-  /* max-width: 1400px; */
-  /* margin: 0 auto; */
 }
+

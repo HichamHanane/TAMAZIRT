@@ -26,7 +26,7 @@ const About = () => {
   ];
 
   return (
-    <section className="why-us-section">
+    <section className="why-us-section" id="why-us">
       <div className="why-us-container">
 
         {/* Contenu de gauche : Les points clés */}

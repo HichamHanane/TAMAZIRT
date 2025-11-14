@@ -1,0 +1,71 @@
+.app-loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-light-beige, #f9f7f4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: var(--color-text-dark, #333333);
+}
+
+.loader-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 40px 50px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.app-loader-icon {
+    color: var(--color-primary-brown, #6f4e37);
+    margin-bottom: 10px;
+}
+
+.spinner-loader {
+    color: var(--color-cta-primary, #007bff);
+    animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text-dark);
+    letter-spacing: 2px;
+}
+
+.loader-subtitle {
+    font-size: 14px;
+    color: var(--color-text-subtle, #6c757d);
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

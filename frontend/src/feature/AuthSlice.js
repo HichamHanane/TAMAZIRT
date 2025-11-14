@@ -43,7 +43,7 @@ export const logoutUser = createAsyncThunk(
         } catch (error) {
             console.log('Error while log out the user :', error);
             return rejectWithValue(error.response.data);
-        }
+        } 
     }
 );
 
@@ -117,7 +117,7 @@ const AuthSlice = createSlice({
 
                 state.user = action.payload.user;
                 state.token = action.payload.token;
-                state.role = action.payload.roles;
+                state.role = action.payload.user.role;
                 state.isAuthenticated = true;
             })
             .addCase(SignIn.rejected, (state, action) => {
@@ -161,7 +161,7 @@ const AuthSlice = createSlice({
             .addCase(fetchUser.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.user = action.payload.user;
-                state.role = action.payload.roles;
+                state.role = action.payload.user.role;
                 state.isAuthenticated = true;
             })
             .addCase(fetchUser.rejected, (state, action) => {
