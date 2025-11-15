@@ -5,6 +5,7 @@ import NavigatoreSlice from '../feature/NavigatorSlice'
 import touristsReducer from '../feature/touristsSlice'
 import ProfileSlice from '../feature/ProfileSlice'
 import RequestSlice from '../feature/RequestSlice'
+import ReviewSlice from '../feature/ReviewSlice'
 export const store = configureStore({
     reducer: {
         auth: AuthSlice,
@@ -12,6 +13,7 @@ export const store = configureStore({
         navigators: NavigatoreSlice,
         tourists: touristsReducer,
         profile: ProfileSlice,
-        requests: RequestSlice
+        requests: RequestSlice,
+        reviews: ReviewSlice,
     },
 });

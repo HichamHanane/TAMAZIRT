@@ -1,0 +1,278 @@
+/* src/pages/guide/GuideReviewsPage.css */
+
+:root {
+    /* Couleurs générales héritées des autres composants Guide */
+    --g-rev-bg-color: #f9f7f4;
+    --g-rev-text-dark: #333333;
+    --g-rev-text-light: #6c757d;
+    --g-rev-primary-brown: #6f4e37;
+    --g-rev-card-bg: #ffffff;
+    --g-rev-shadow: rgba(0, 0, 0, 0.08);
+    --g-rev-border-light: #e0e0e0;
+
+    /* Couleur Accent pour les étoiles */
+    --g-rev-accent-gold: #FFC300; 
+}
+
+.g-rev-container {
+    padding: 20px 0;
+}
+
+/* --- Header et Recherche --- */
+
+.g-rev-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--g-rev-border-light);
+}
+
+.g-rev-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--g-rev-primary-brown);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.g-rev-icon {
+    color: var(--g-rev-accent-gold); 
+}
+
+.g-search-bar {
+    position: relative;
+    width: 300px;
+}
+
+.g-search-input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid var(--g-rev-border-light);
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+.g-search-input:focus {
+    border-color: var(--g-rev-primary-brown);
+    outline: none;
+}
+
+.g-search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--g-rev-text-light);
+}
+
+
+/* --- Liste des Avis --- */
+
+.g-rev-list {
+    display: grid;
+    /* Utilise une grille pour afficher les cartes côte à côte sur les grands écrans */
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+.g-rev-card {
+    background-color: var(--g-rev-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--g-rev-shadow);
+    padding: 25px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.g-rev-card:hover {
+    transform: translateY(-2px);
+}
+
+/* --- Header de la Carte (Avatar, Titre, Note) --- */
+.g-rev-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--g-rev-border-light);
+}
+
+.g-rev-tourist-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.g-rev-tourist-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--g-rev-border-light);
+}
+
+.g-rev-trip-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--g-rev-text-dark);
+    margin: 0;
+}
+
+.g-rev-from-tourist {
+    font-size: 14px;
+    color: var(--g-rev-text-light);
+    margin: 3px 0 0 0;
+}
+
+/* Étoiles */
+.g-review-stars {
+    display: flex;
+    gap: 2px;
+}
+
+/* --- Commentaire --- */
+.g-rev-comment-section {
+    margin-bottom: 25px;
+}
+
+.g-rev-comment-text {
+    font-size: 16px;
+    color: var(--g-rev-text-dark);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- Footer (Date et Bouton Répondre) --- */
+.g-rev-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid var(--g-rev-border-light);
+}
+
+.g-rev-date {
+    font-size: 14px;
+    color: var(--g-rev-text-light);
+    margin: 0;
+}
+
+.g-rev-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    background-color: var(--g-rev-primary-brown);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.g-rev-action-btn:hover {
+    background-color: #5a3c30; 
+}
+
+/* Message d'absence de résultats/chargement */
+.g-no-results-message, .g-loading-state {
+    grid-column: 1 / -1; /* Permet de centrer sur toute la largeur de la grille */
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--g-rev-text-light);
+    font-style: italic;
+    font-size: 16px;
+}
+
+.g-loading-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-style: normal;
+}
+
+.g-loader-spin {
+    animation: spin 1s linear infinite;
+    color: var(--g-rev-primary-brown);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* --- RESPONSIVITY (Mobile) --- */
+
+/* Tablettes et petits écrans (jusqu'à 992px) */
+@media (max-width: 992px) {
+    .g-rev-list {
+        /* Permet une seule colonne sur les tablettes pour un meilleur affichage */
+        grid-template-columns: 1fr; 
+    }
+
+    .g-rev-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .g-search-bar {
+        width: 100%;
+    }
+}
+
+/* Mobiles (jusqu'à 600px) */
+@media (max-width: 600px) {
+    .g-rev-title {
+        font-size: 26px;
+    }
+
+    .g-rev-card {
+        padding: 20px;
+    }
+
+    .g-rev-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .g-review-stars {
+        /* Déplacer les étoiles en bas du bloc d'informations pour la clarté */
+        order: 1; 
+    }
+
+    .g-rev-tourist-info {
+        order: 2;
+        flex-direction: row;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .g-rev-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .g-rev-date {
+        order: 2;
+    }
+
+    .g-rev-action-btn {
+        width: 100%; 
+        justify-content: center;
+        order: 1;
+    }
+}

@@ -75,7 +75,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
 
     // Public view for navigator reviews
-    Route::get('/navigators/{id}/reviews', [ReviewController::class, 'navigatorReviews']);
+    Route::get('/navigators/reviews', [ReviewController::class, 'navigatorReviews']);
 
     // Admin view all reviews
     Route::get('/reviews', [ReviewController::class, 'index']);

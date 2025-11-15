@@ -72,10 +72,20 @@ class ReviewController extends Controller
 
 
     // View all reviews for a specific navigator
-    public function navigatorReviews($navigatorId)
+    public function navigatorReviews(Request $request)
     {
+        logger("navigator reviews");
+
+        $user = $request->user();
+
+
+        if (!$user->hasRole('navigator')) {
+            return response()->json([
+                'message' => 'Unauthorized. Only navigator can view their reviews.'
+            ], 403);
+        }
         $reviews = Review::with('tourist:id,name,email')
-            ->where('navigator_id', $navigatorId)
+            ->where('navigator_id', $user->id)
             ->latest()
             ->get();
 

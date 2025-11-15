@@ -23,6 +23,7 @@ import GuideDashboardLayout from './Layouts/GuideDashboardLayout/GuideDashboardL
 import GuideDashboardHome from './components/NavigatorDashboard/GuideDashboardHome/GuideDashboardHome'
 import GuideProfilePage from './components/NavigatorDashboard/GuideProfilePage/GuideProfilePage'
 import GuideRequestsPage from './components/NavigatorDashboard/GuideRequestsPage/GuideRequestsPage'
+import GuideReviewsPage from './components/NavigatorDashboard/GuideReviewsPage/GuideReviewsPage'
 
 function App() {
 
@@ -71,12 +72,12 @@ function App() {
         {/* navigator dashboard */}
 
         <Route path="/guide" element={<GuideDashboardLayout />}>
-          <Route index element={<GuideDashboardHome />} />
-          <Route path="dashboard" element={<GuideDashboardHome />} />
+          <Route index element={<GuideProfilePage />} />
+          <Route path="dashboard" element={<GuideProfilePage />} />
           <Route path="profile" element={<GuideProfilePage />} />
           <Route path="requests" element={<GuideRequestsPage />} />
+          <Route path="reviews" element={<GuideReviewsPage />} />
           {/* Add other guide-specific pages here (Trip Requests, Reviews, Calendar) */}
-          {/* <Route path="reviews" element={<ReviewsPage />} /> */}
           {/* <Route path="calendar" element={<GuideCalendarPage />} /> */}
         </Route>
         <Route path="dashboard/navigator/profile" element={<Test />} />
