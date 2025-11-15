@@ -54,7 +54,7 @@ const NavLinks = ({ handleLinkClick }) => (
 );
 
 const AuthButtons = ({ navigate, handleLinkClick }) => {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
@@ -77,8 +77,15 @@ const AuthButtons = ({ navigate, handleLinkClick }) => {
         <button
           className='dashboard-btn'
           onClick={() => {
-            navigate('/dashboard');
             handleLinkClick();
+            if (user?.role == "admin") {
+              navigate('/dashboard');
+              return
+            }
+            if (user?.role == "navigator") {
+              navigate('/guide');
+              return
+            }
           }}
         >
           <LayoutDashboard size={18} />
@@ -130,7 +137,6 @@ const Header = () => {
 
   const handleLinkClick = () => {
     console.log("clicked");
-
     setIsMenuOpen(false);
   };
 

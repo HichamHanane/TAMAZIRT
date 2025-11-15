@@ -7,6 +7,8 @@ use App\Models\NavigatorProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class NavigatorProfileController extends Controller
 {
@@ -71,7 +73,7 @@ class NavigatorProfileController extends Controller
             'phone_number' => $validated['phone_number'] ?? null,
         ]);
 
-        
+
 
         SentCredentialsJob::dispatch($user);
 
@@ -133,29 +135,60 @@ class NavigatorProfileController extends Controller
     // Update profile
     public function update(Request $request, $id)
     {
-        $profile = NavigatorProfile::findOrFail($id);
+        $profile = NavigatorProfile::with('user')->findOrFail($id);
 
         $user = $request->user();
 
-        if (!$user->hasRole('navigator') && $user->id !== $profile->user_id) {
+        if (!$user->hasRole('navigator') || $user->id !== $profile->user_id) {
             return response()->json([
                 'message' => 'Unauthorized access.'
             ], 403);
         }
 
         $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users', 'email')->ignore($profile->user_id),
+            ],
             'city' => 'nullable|string|max:255',
             'bio' => 'nullable|string|max:1000',
             'languages' => 'nullable|array',
             'phone_number' => 'nullable|string|max:20',
             'verified' => 'nullable|boolean',
+            'profile_picture' => 'nullable|image|max:5120',
         ]);
+
+        logger($request->all());
+
+
+        // If a new image is uploaded, store and delete the old file
+        if ($request->hasFile('profile_picture')) {
+            // delete old if exists
+            if ($profile->profile_picture) {
+                Storage::disk('public')->delete($profile->profile_picture);
+            }
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $validated['profile_picture'] = $path;
+        }
+
+        $userData = [
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+        ];
+
+        $profileData = collect($validated)->except(['name', 'emailAddress'])->all();
 
         if (!$user->hasRole('admin')) {
             unset($validated['verified']);
         }
 
-        $profile->update($validated);
+        $profile->user->update($userData);
+
+        $profile->update($profileData);
+
 
         return response()->json([
             'message' => 'Profile updated successfully.',
@@ -182,5 +215,50 @@ class NavigatorProfileController extends Controller
         return response()->json([
             'message' => 'Navigator profile deleted successfully.'
         ]);
+    }
+
+
+    public function myProfile(Request $request)
+    {
+        logger("my profile");
+        $user = $request->user();
+        if (!$user->hasRole('navigator')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthorized: navigator access required.'
+            ], 403);
+        }
+
+        $profile = NavigatorProfile::with('user')->where('user_id', $user->id)->firstOrFail();
+        return response()->json([
+            "data" => $profile
+        ], 200);
+
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = $request->user();
+
+        logger($request->all());
+
+        $request->validate([
+            'current_password' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json([
+                'message' => 'The provided current password does not match your actual password.'
+            ], 400);
+        }
+
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json([
+            'message' => 'Password updated successfully.',
+        ], 200);
     }
 }

@@ -56,7 +56,6 @@ const EditNavigatorModal = ({ isOpen, onClose, navigator }) => {
             city: data.city,
             phone_number: data.phoneNumber,
             bio: data.bio,
-            // Conversion de la chaîne de langues en tableau
             languages: data.languages ? data.languages.split(',').map(lang => lang.trim()).filter(lang => lang) : [],
             verified: data.verified,
         };

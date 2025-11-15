@@ -99,7 +99,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/admin/tourists/{id}', [AdminTouristController::class, 'destroy']);
 });
 
-
+// navigator profile
+Route::get('/navigator-profile', [NavigatorProfileController::class, 'myProfile'])->middleware('auth:sanctum');
+Route::put('/user/password', [NavigatorProfileController::class, 'updatePassword'])->middleware('auth:sanctum');
 
 Route::get('/test', function () {
     return 'hello hicham hnn';

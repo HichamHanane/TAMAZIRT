@@ -45,7 +45,7 @@ const LoginPage = () => {
                     return
                 }
                 if (result.payload.user.role == "navigator") {
-                    navigate('/dashboard/navigator/profile')
+                    navigate('/guide')
                     return
                 }
                 if (result.payload.user.role == "tourist") {

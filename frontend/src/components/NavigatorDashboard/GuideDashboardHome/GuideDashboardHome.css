@@ -1,0 +1,380 @@
+/* src/pages/guide/GuideDashboardHome.css */
+
+:root {
+    --guide-bg-light: #f9f7f4;
+    --guide-primary-brown: #6f4e37;
+    --guide-text-dark: #333333;
+    --guide-text-subtle: #6c757d;
+    --guide-border-light: #e0e0e0;
+    --guide-card-bg: #ffffff;
+    --guide-shadow: rgba(0, 0, 0, 0.08);
+
+    /* Specific Card Colors */
+    --color-stat-blue: #3b82f6;
+    --color-stat-red: #ef4444;
+    --color-stat-green: #10b981;
+    --color-stat-yellow: #f59e0b;
+
+    /* Status Colors */
+    --status-pending: #f59e0b;
+    /* Yellow/Orange */
+    --status-confirmed: #10b981;
+    /* Green */
+    --status-completed: #3b82f6;
+    /* Blue */
+}
+
+/* Base container for padding inherited from GuideDashboardLayout.css */
+.g-home-container {
+    padding: 0;
+    /* Dashboard Layout provides padding, set to 0 here */
+}
+
+/* --- 1. Statistics Cards Grid --- */
+
+.g-home-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.g-home-stat-card {
+    background-color: var(--guide-card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 10px var(--guide-shadow);
+    transition: transform 0.2s;
+    border-left: 5px solid;
+    /* Placeholder for color accent */
+}
+
+.g-home-stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.g-home-card-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Light background for the icon area */
+}
+
+.g-home-stat-card.card-blue {
+    border-color: var(--color-stat-blue);
+}
+
+.g-home-stat-card.card-red {
+    border-color: var(--color-stat-red);
+}
+
+.g-home-stat-card.card-green {
+    border-color: var(--color-stat-green);
+}
+
+.g-home-stat-card.card-yellow {
+    border-color: var(--color-stat-yellow);
+}
+
+.g-home-stat-card.card-blue .g-home-card-icon {
+    color: var(--color-stat-blue);
+}
+
+.g-home-stat-card.card-red .g-home-card-icon {
+    color: var(--color-stat-red);
+}
+
+.g-home-stat-card.card-green .g-home-card-icon {
+    color: var(--color-stat-green);
+}
+
+.g-home-stat-card.card-yellow .g-home-card-icon {
+    color: var(--color-stat-yellow);
+}
+
+.g-home-card-content {
+    text-align: left;
+}
+
+.g-home-card-title {
+    font-size: 14px;
+    color: var(--guide-text-subtle);
+    margin: 0 0 5px 0;
+    font-weight: 500;
+}
+
+.g-home-card-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--guide-text-dark);
+    margin: 0;
+}
+
+/* --- 2. Main Content Grid (Requests + Upcoming Trips) --- */
+
+.g-home-main-grid {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    /* Requests = 2.5 parts, Upcoming = 1 part */
+    gap: 30px;
+    align-items: flex-start;
+    /* Aligns cards to the top */
+}
+
+.g-home-section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--guide-primary-brown);
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--guide-border-light);
+}
+
+/* Latest Requests Card */
+.g-home-requests-card {
+    background-color: var(--guide-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--guide-shadow);
+    padding: 30px;
+    flex-grow: 1;
+}
+
+.g-home-requests-table-container {
+    overflow-x: auto;
+    /* For responsive table overflow */
+}
+
+.g-home-requests-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.g-home-requests-table thead th {
+    text-align: left;
+    color: var(--guide-text-subtle);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--guide-border-light);
+}
+
+.g-home-requests-table tbody tr {
+    transition: background-color 0.1s;
+}
+
+.g-home-requests-table tbody tr:hover {
+    background-color: var(--guide-bg-light);
+}
+
+.g-home-requests-table tbody td {
+    padding: 15px 0;
+    font-size: 15px;
+    color: var(--guide-text-dark);
+    border-bottom: 1px dashed var(--guide-border-light);
+    vertical-align: middle;
+}
+
+.g-home-requests-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status Badge */
+.g-home-request-status-badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.g-home-request-status-badge.pending {
+    background-color: var(--status-pending);
+    color: white;
+}
+
+.g-home-request-status-badge.confirmed {
+    background-color: var(--status-confirmed);
+    color: white;
+}
+
+.g-home-request-status-badge.completed {
+    background-color: var(--status-completed);
+    color: white;
+}
+
+/* Action Button */
+.g-home-action-view-details {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: var(--guide-primary-brown);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.1s;
+}
+
+.g-home-action-view-details:hover {
+    color: #5a3c30;
+}
+
+/* --- Upcoming Trips Card --- */
+
+.g-home-upcoming-trips-card {
+    background-color: var(--guide-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--guide-shadow);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.g-home-placeholder-text {
+    font-size: 15px;
+    color: var(--guide-text-dark);
+    line-height: 1.5;
+    margin-bottom: 25px;
+    flex-grow: 1;
+    /* Pousse le bouton vers le bas */
+}
+
+.g-home-view-calendar-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--guide-primary-brown);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.g-home-view-calendar-btn:hover {
+    background-color: #5a3c30;
+}
+
+
+/* --- RESPONSIVENESS --- */
+
+/* Tablets (up to 1200px) */
+@media (max-width: 1200px) {
+    .g-home-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 colonnes */
+    }
+
+    .g-home-main-grid {
+        grid-template-columns: 1fr;
+        /* 1 colonne */
+        gap: 25px;
+    }
+
+    .g-home-upcoming-trips-card {
+        min-height: auto;
+        /* Reset min height */
+    }
+
+    .g-home-requests-card,
+    .g-home-upcoming-trips-card {
+        padding: 25px;
+    }
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+    .g-home-stats-grid {
+        grid-template-columns: 1fr;
+        /* 1 colonne pour les cartes de stats */
+        gap: 20px;
+    }
+
+    .g-home-stat-card {
+        padding: 15px;
+    }
+
+    .g-home-card-value {
+        font-size: 22px;
+    }
+
+    .g-home-requests-card {
+        padding: 20px;
+    }
+
+    .g-home-section-title {
+        font-size: 18px;
+    }
+
+    /* Responsive Table (Display block) */
+    .g-home-requests-table {
+        display: block;
+    }
+
+    .g-home-requests-table thead {
+        /* Cacher l'en-tête de la table classique */
+        display: none;
+    }
+
+    .g-home-requests-table tbody,
+    .g-home-requests-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .g-home-requests-table tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--guide-border-light);
+        border-radius: 8px;
+        box-shadow: 0 2px 5px var(--guide-shadow);
+        overflow: hidden;
+    }
+
+    .g-home-requests-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 10px 15px;
+        border-bottom: 1px dashed var(--guide-border-light);
+        font-size: 14px;
+    }
+
+    /* Afficher l'étiquette de la colonne comme titre */
+    .g-home-requests-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--guide-text-subtle);
+        text-transform: uppercase;
+        font-size: 12px;
+        text-align: left;
+        padding-right: 10px;
+    }
+
+    .g-home-requests-table td:last-child {
+        border-bottom: none;
+    }
+
+    .g-home-request-status-badge {
+        font-size: 11px;
+    }
+
+    .g-home-action-view-details {
+        font-size: 13px;
+    }
+
+    .g-home-upcoming-trips-card {
+        padding: 20px;
+    }
+}

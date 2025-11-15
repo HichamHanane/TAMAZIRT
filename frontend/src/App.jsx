@@ -19,6 +19,9 @@ import { fetchUser } from './feature/AuthSlice'
 import api from './utils/api/axios'
 import AppLoader from './components/AppLoader/AppLoader'
 import AdminProtectedRoutes from './components/ProtectedRoutes/AdminProtectedRoutes'
+import GuideDashboardLayout from './Layouts/GuideDashboardLayout/GuideDashboardLayout'
+import GuideDashboardHome from './components/NavigatorDashboard/GuideDashboardHome/GuideDashboardHome'
+import GuideProfilePage from './components/NavigatorDashboard/GuideProfilePage/GuideProfilePage'
 
 function App() {
 
@@ -31,10 +34,10 @@ function App() {
     if (token) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
       dispatch(fetchUser())
-      .catch((error)=> console.log('Error while fetching the user :',error))
-      .finally(()=>setAuthInitializing(false))
+        .catch((error) => console.log('Error while fetching the user :', error))
+        .finally(() => setAuthInitializing(false))
     }
-    else{
+    else {
       setAuthInitializing(false)
     }
   }, [dispatch])
@@ -54,6 +57,7 @@ function App() {
         <Route path="/test" element={<Test />} />
         <Route path="/application-form" element={<NavigatorApplication />} />
 
+        {/* admin dashboard */}
         <Route element={<AdminProtectedRoutes />}>
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<DashboardStatistic />} />
@@ -61,6 +65,18 @@ function App() {
             <Route path="tourists" element={<TouristManagement />} />
             <Route path="settings" element={<UserProfile />} />
           </Route>
+        </Route>
+
+        {/* navigator dashboard */}
+
+        <Route path="/guide" element={<GuideDashboardLayout />}>
+          <Route index element={<GuideDashboardHome />} />
+          <Route path="dashboard" element={<GuideDashboardHome />} />
+          <Route path="profile" element={<GuideProfilePage />} />
+          {/* Add other guide-specific pages here (Trip Requests, Reviews, Calendar) */}
+          {/* <Route path="trip-requests" element={<TripRequestsPage />} /> */}
+          {/* <Route path="reviews" element={<ReviewsPage />} /> */}
+          {/* <Route path="calendar" element={<GuideCalendarPage />} /> */}
         </Route>
         <Route path="dashboard/navigator/profile" element={<Test />} />
 

@@ -1,0 +1,400 @@
+:root {
+    --profile-bg-light: #f9f7f4;
+    --profile-primary-brown: #6f4e37;
+    --profile-text-dark: #333333;
+    --profile-text-subtle: #6c757d;
+    --profile-border-light: #e0e0e0;
+    --profile-card-bg: #ffffff;
+    --profile-shadow-light: rgba(0, 0, 0, 0.05);
+    --profile-accent-gold: #FFD700;
+    --profile-cta-brown: #6f4e37;
+    /* Used for save button */
+    --profile-cta-brown-hover: #5a3c30;
+    --profile-error-red: #e53e3e;
+    --profile-input-border: #ccc;
+    --profile-input-focus: #b2b2b2;
+}
+
+.guide-profile-page {
+    padding: 20px 0;
+}
+
+/* --- Profile Header (Title and Save Button) --- */
+.profile-header {
+    background-color: #5a3c30;
+    display: flex;
+    justify-content: flex-start;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--profile-border-light);
+}
+
+.guide-profile_header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--profile-border-light);
+}
+
+/* ... (Existing styles for profile-heading-group and titles) ... */
+
+.guide-save-changes-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: var(--profile-cta-brown);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    /* NEW: Ensures the button doesn't shrink on desktop */
+    flex-shrink: 0;
+}
+
+.guide-profile-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--profile-primary-brown);
+    margin: 0;
+}
+
+.guide-profile-subtitle {
+    font-size: 16px;
+    color: var(--profile-text-subtle);
+    margin-top: 5px;
+}
+
+.guide-save-changes-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--profile-cta-brown);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.guide-save-changes-btn:hover:not(:disabled) {
+    background-color: var(--profile-cta-brown-hover);
+}
+
+.guide-save-changes-btn:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+/* --- Profile Content Wrapper (Left and Right Columns) --- */
+.guide-profile-content-wrapper {
+    display: flex;
+    gap: 30px; 
+    margin-top: 20px;
+    align-items: flex-start; 
+    /* The main change for desktop: columns side-by-side */
+}
+
+
+/* --- Left Column: Profile Card --- */
+.guide-profile-card {
+    flex: 0 0 300px;
+    /* Fixed width for the profile card */
+    background-color: var(--profile-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--profile-shadow-light);
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.guide-profile-picture-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.guide-profile-picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--profile-border-light);
+}
+
+.guide-edit-picture-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: var(--profile-primary-brown);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px var(--profile-shadow-light);
+    transition: background-color 0.2s;
+}
+
+.edit-picture-btn:hover {
+    background-color: var(--profile-cta-brown-hover);
+}
+
+.guide-profile-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--profile-primary-brown);
+    margin: 0 0 5px 0;
+}
+
+.guide-profile-email {
+    font-size: 15px;
+    color: var(--profile-text-subtle);
+    margin-bottom: 15px;
+}
+
+.guide-profile-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 15px;
+    color: var(--profile-text-dark);
+}
+
+.guide-profile-rating svg {
+    color: var(--profile-accent-gold);
+}
+
+
+/* --- Right Column: Personal Information Form --- */
+.guide-personal-info-form-container {
+    flex-grow: 1;
+    /* Takes remaining space */
+    background-color: var(--profile-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--profile-shadow-light);
+    padding: 30px;
+}
+
+.guide-form-section-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--profile-primary-brown);
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--profile-border-light);
+}
+
+.guide-personal-info-form .guide-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Two columns by default */
+    gap: 20px 30px;
+    /* Row gap, Column gap */
+}
+
+.guide-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.guide-form-group.guide-full-width {
+    grid-column: 1 / -1;
+    /* Spans across all columns */
+}
+
+.guide-form-group label {
+    font-size: 14px;
+    color: var(--profile-text-dark);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.guide-form-group input,
+.guide-form-group textarea {
+    padding: 12px 15px;
+    border: 1px solid var(--profile-input-border);
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--profile-text-dark);
+    background-color: var(--profile-bg-light);
+    /* Light background for inputs */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.guide-form-group input:focus,
+.guide-form-group textarea:focus {
+    border-color: var(--profile-input-focus);
+    box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.1);
+    /* Subtle brown focus ring */
+    outline: none;
+}
+
+.guide-form-group textarea {
+    resize: vertical;
+    /* Allow vertical resizing for bio */
+    min-height: 100px;
+}
+
+.input-error {
+    border-color: var(--profile-error-red) !important;
+}
+
+.error-message {
+    font-size: 12px;
+    color: var(--profile-error-red);
+    margin-top: 5px;
+}
+
+.guide-profile-content-wrapper {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.guide-profile-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.guide-personal-info-form-container {
+    flex: 2;
+    min-width: 450px;
+}
+
+/* Tablets and larger mobiles (up to 1024px) */
+@media (max-width: 1024px) {
+    .guide-profile-content-wrapper {
+        flex-direction: column;
+        /* Stack profile card and form vertically */
+        gap: 30px;
+    }
+
+    .guide-profile-card {
+        flex: none;
+        /* Remove fixed width, let it adapt */
+        width: 100%;
+        /* Take full width */
+    }
+
+    .guide-personal-info-form-container {
+        padding: 25px;
+    }
+
+
+
+    .guide-save-changes-btn {
+        width: 100%;
+        /* Make button full width */
+        justify-content: center;
+    }
+
+
+}
+
+/* Smaller mobiles (up to 768px) */
+@media (max-width: 768px) {
+    .profile-title {
+        font-size: 28px;
+    }
+
+    .guide-profile-subtitle {
+        font-size: 15px;
+    }
+
+    .guide-personal-info-form .guide-form-grid {
+        grid-template-columns: 1fr;
+        /* Stack form fields into a single column */
+        gap: 20px;
+    }
+
+    .guide-form-group.guide-full-width {
+        grid-column: auto;
+        /* Reset full width property for single column layout */
+    }
+
+    .guide-profile-card {
+        padding: 25px;
+    }
+
+    .guide-profile-name {
+        font-size: 22px;
+    }
+
+    .guide-profile-email,
+    .guide-profile-rating {
+        font-size: 14px;
+    }
+
+    .guide-form-section-title {
+        font-size: 20px;
+    }
+}
+
+/* Very small mobiles (up to 480px) */
+@media (max-width: 480px) {
+    .guide-profile_header {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+
+    .profile-title {
+        font-size: 24px;
+    }
+
+    .guide-profile-subtitle {
+        font-size: 14px;
+    }
+
+    .guide-profile-card {
+        padding: 20px;
+    }
+
+    .guide-profile-picture-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .edit-picture-btn {
+        width: 30px;
+        height: 30px;
+        bottom: 0;
+        right: 0;
+    }
+
+    .guide-profile-name {
+        font-size: 20px;
+    }
+
+    .guide-personal-info-form-container {
+        padding: 20px;
+    }
+
+    .guide-form-group input,
+    .guide-form-group textarea {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+}
