@@ -40,6 +40,8 @@ class NavigatorRequestController extends Controller
             ], 403);
         }
 
+        logger($req->all());
+
         $validated = $req->validate([
             'status' => 'required|in:Pending,Confirmed,HandOff',
         ]);

@@ -22,6 +22,7 @@ import AdminProtectedRoutes from './components/ProtectedRoutes/AdminProtectedRou
 import GuideDashboardLayout from './Layouts/GuideDashboardLayout/GuideDashboardLayout'
 import GuideDashboardHome from './components/NavigatorDashboard/GuideDashboardHome/GuideDashboardHome'
 import GuideProfilePage from './components/NavigatorDashboard/GuideProfilePage/GuideProfilePage'
+import GuideRequestsPage from './components/NavigatorDashboard/GuideRequestsPage/GuideRequestsPage'
 
 function App() {
 
@@ -73,8 +74,8 @@ function App() {
           <Route index element={<GuideDashboardHome />} />
           <Route path="dashboard" element={<GuideDashboardHome />} />
           <Route path="profile" element={<GuideProfilePage />} />
+          <Route path="requests" element={<GuideRequestsPage />} />
           {/* Add other guide-specific pages here (Trip Requests, Reviews, Calendar) */}
-          {/* <Route path="trip-requests" element={<TripRequestsPage />} /> */}
           {/* <Route path="reviews" element={<ReviewsPage />} /> */}
           {/* <Route path="calendar" element={<GuideCalendarPage />} /> */}
         </Route>

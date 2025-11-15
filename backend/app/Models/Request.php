@@ -9,7 +9,13 @@ class Request extends Model
 {
     use Notifiable;
     protected $fillable = [
-        'tourist_id', 'navigator_id', 'status', 'date', 'message'
+        'tourist_id',
+        'navigator_id',
+        'status',
+        'date',
+        'message',
+        'destination',
+        'number_of_people'
     ];
 
     public function tourist()

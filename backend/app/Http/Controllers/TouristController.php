@@ -43,7 +43,9 @@ class TouristController extends Controller
         $validated = $request->validate([
             'navigator_id' => 'required|exists:users,id',
             'date' => 'required|date|after:now',
-            'message' => 'nullable|string|max:1000'
+            'message' => 'nullable|string|max:1000',
+            'destination' => 'required|string|max:255',
+            'number_of_people' => 'required|integer|min:1',
         ]);
 
         // stop duplicate requests
@@ -63,6 +65,8 @@ class TouristController extends Controller
             'navigator_id' => $validated['navigator_id'],
             'date' => $validated['date'],
             'message' => $validated['message'] ?? null,
+            'destination' => $validated['destination'],
+            'number_of_people' => $validated['number_of_people'],
             'status' => 'Pending',
         ]);
 

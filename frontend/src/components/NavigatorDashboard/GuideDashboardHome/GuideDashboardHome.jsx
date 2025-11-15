@@ -10,6 +10,7 @@ import {
     Loader2
 } from 'lucide-react';
 import './GuideDashboardHome.css';
+import { useSelector } from 'react-redux';
 
 // --- MOCK DATA ---
 const statsData = [
@@ -87,17 +88,15 @@ const StatCard = ({ title, value, icon: Icon, colorClass }) => (
 
 
 const GuideDashboardHome = () => {
-    // In a real application, you would fetch the data here:
-    // const { data, isLoading } = useGuideDashboardData();
-
+    const { error, profile, isLoading } = useSelector(state => state.profile.user_profile);
     return (
         <div className="g-home-container">
             <header className="g-main-header">
                 <div className="g-header-left">
-                    <h1 className="g-header-greeting">Hello, Alex!</h1>
+                    <h1 className="g-header-greeting">Hello, {profile?.user?.name}!</h1>
                     <p className="g-header-subtitle">Welcome back. Here's what's happening today.</p>
                 </div>
-                
+
             </header>
             {/* --- 1. Statistics Cards Grid --- */}
             <div className="g-home-stats-grid">
