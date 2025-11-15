@@ -1,6 +1,4 @@
-/*
-  --- COLOR VARIABLES (Thème du projet) ---
-*/
+
 :root {
     --color-primary-brown: #5d4a3b;
     --color-light-beige: #f1e9d8;
@@ -23,7 +21,6 @@
     --color-status-text-completed: #0c5460;
 }
 
-/* ------------------- CADRE GLOBAL DU TABLEAU DE BORD ------------------- */
 
 .dashboard-container {
     display: flex;
@@ -32,7 +29,6 @@
     background-color: var(--color-light-beige);
 }
 
-/* ------------------- BARRE LATÉRALE (GAUCHE) ------------------- */
 
 .dashboard-sidebar {
     width: 250px;
@@ -127,11 +123,10 @@
 }
 
 .nav-item.logout:hover {
-    background-color:rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.05);
     color: white;
 }
 
-/* ------------------- CONTENU PRINCIPAL (DROITE) ------------------- */
 
 .dashboard-main-content {
     flex-grow: 1;
@@ -141,7 +136,6 @@
     flex-direction: column;
 }
 
-/* Header du contenu principal */
 .dashboard-header {
     background-color: var(--color-header-bg);
     padding: 15px 30px;
@@ -186,18 +180,12 @@
     object-fit: cover;
 }
 
-/* Zone de contenu défilante */
 .dashboard-content-area {
     flex-grow: 1;
     padding: 30px;
     overflow-y: auto;
 }
 
-/* ------------------- STYLE DES CARTES DE STATISTIQUES (POUR L'APERÇU) ------------------- */
-
-
-
-/* ------------------- RÉACTIVITÉ ------------------- */
 
 @media (max-width: 992px) {
     .dashboard-sidebar {

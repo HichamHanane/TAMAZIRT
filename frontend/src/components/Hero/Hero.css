@@ -1,13 +1,8 @@
-/*
-  --- VARIABLES DE COULEUR (Pour référence) ---
-*/
 :root {
   --color-dark-brown: #5d4a3b;
   --color-light-beige: #f1e9d8;
   --color-text-dark: #333333;
   --color-cta-primary: #8c6a5a;
-  /* Marron clair */
-  /* Orange/Corail */
   --color-box-shadow: rgba(0, 0, 0, 0.15);
   --section-padding-x: 60px;
 }
@@ -17,11 +12,9 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  /* Utilise la couleur de fond beige de ta capture d'écran */
   background-color: var(--color-light-beige);
 }
 
-/* --- HERO - Contenu (Gauche) --- */
 
 .hero-content {
   width: 48%;
@@ -46,7 +39,6 @@
   margin-top: -10px;
 }
 
-/* --- HERO - CTAs (Boutons) --- */
 
 .hero-ctas {
   display: flex;
@@ -63,7 +55,6 @@
   text-transform: uppercase;
   font-size: 14px;
   text-decoration: none;
-  /* Pour les liens si tu les utilises */
 }
 
 .cta-button.primary {
@@ -75,7 +66,6 @@
 .cta-button.secondary {
   background-color: transparent;
   color: var(--color-cta-primary);
-  /* Utilise la couleur primaire pour le texte sur fond clair */
   border: 2px solid var(--color-cta-primary);
 }
 
@@ -89,7 +79,6 @@
 }
 
 
-/* --- HERO - Images (Droite) --- */
 
 .hero-images {
   display: grid;
@@ -114,7 +103,6 @@
   border-radius: 5px;
 }
 
-/* --- HERO - Boîte de pied de page (Bas) --- */
 
 .hero-footer-box {
   position: absolute;
@@ -166,23 +154,15 @@
   min-width: 16px;
 }
 
-/* ========================================================== */
-/* ------------------- RESPONSIVE DESIGN -------------------- */
-/* ========================================================== */
 
-/* --- 1. Pour les tablettes (max-width: 992px) --- */
 @media (max-width: 992px) {
   .hero-section {
-    /* Empiler le contenu (colonne) */
     flex-direction: column;
     padding: 60px 40px 150px 40px;
-    /* Plus de padding en bas pour la boîte */
   }
 
-  /* Contenu du texte et des boutons */
   .hero-content {
     width: 100%;
-    /* Prend toute la largeur */
     text-align: center;
     align-items: center;
     margin-bottom: 40px;
@@ -190,46 +170,33 @@
 
   .hero-title {
     font-size: 48px;
-    /* Réduire la taille du titre */
   }
 
-  /* Images */
   .hero-images {
     width: 90%;
-    /* Prend plus de place sur la largeur */
     height: 350px;
-    /* Hauteur fixe pour éviter l'étirement */
     transform: translateX(0);
-    /* Annuler la translation */
     margin: 0 auto;
-    /* Centrer le bloc d'images */
   }
 
-  /* Boîte de pied de page (Statistiques) */
   .hero-footer-box {
     width: 80%;
-    /* Occupe une grande partie de la largeur */
     left: 50%;
     transform: translate(-50%, 50%);
-    /* Reste centré en bas */
   }
 }
 
 
-/* --- 2. Pour les mobiles (max-width: 600px) --- */
 @media (max-width: 600px) {
   .hero-section {
     padding: 40px 20px 220px 20px;
-    /* Encore plus de padding en bas pour la boîte empilée */
   }
 
   .hero-title {
     font-size: 36px;
-    /* Taille encore réduite */
     line-height: 1.2;
   }
 
-  /* Les boutons CTA s'empilent */
   .hero-ctas {
     flex-direction: column;
     gap: 15px;
@@ -241,11 +208,9 @@
     padding: 12px 20px;
   }
 
-  /* Boîte de pied de page (Statistiques) */
   .hero-footer-box {
     width: 90%;
     flex-direction: column;
-    /* Les stats s'empilent */
     padding: 10px 0;
     border-radius: 10px;
   }
@@ -253,9 +218,7 @@
   .footer-stat-item {
     width: 100%;
     border-left: none;
-    /* Supprimer les séparateurs verticaux */
     border-top: 1px solid #e0e0e0;
-    /* Ajouter des séparateurs horizontaux */
     padding: 15px 10px;
   }
 
@@ -263,11 +226,9 @@
     border-top: none;
   }
 
-  /* Images sur mobile: n'afficher que la grande image */
   .hero-images {
     height: 250px;
     width: 100%;
-    /* La grille devient une seule colonne pour n'afficher qu'un seul élément */
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
   }
@@ -278,7 +239,6 @@
   }
 
   .image-side {
-    /* Masquer les petites images sur mobile pour la clarté */
     display: none;
   }
 }

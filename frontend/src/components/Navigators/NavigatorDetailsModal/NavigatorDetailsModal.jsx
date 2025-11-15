@@ -1,10 +1,7 @@
-// src/components/NavigatorDetailsModal.jsx
-
 import React, { useEffect } from 'react';
 import { X, User, Mail, Home, Phone, Star, CheckCircle, Clock, MapPin } from 'lucide-react';
 import './NavigatorDetailsModal.css';
 
-// Placeholder avatar function
 const getAvatarUrl = (userId) => {
     return `https://i.pravatar.cc/150?img=${userId}`;
 };
@@ -39,7 +36,6 @@ const NavigatorDetailsModal = ({ isOpen, onClose, navigator }) => {
 
                 <div className="details-card-container">
 
-                    {/* --- Profile Header (Top Section) --- */}
                     <div className="profile-header">
                         <img
                             src={getAvatarUrl(id)}
@@ -84,7 +80,6 @@ const NavigatorDetailsModal = ({ isOpen, onClose, navigator }) => {
                             </div>
                         </div>
 
-                        {/* Languages */}
                         <div className="detail-group full-width">
                             <div className="detail-item full-width">
                                 <User size={18} className="detail-icon" />
@@ -99,7 +94,6 @@ const NavigatorDetailsModal = ({ isOpen, onClose, navigator }) => {
                             </div>
                         </div>
 
-                        {/* Bio (Long Text) */}
                         <div className="detail-group full-width">
                             <div className="detail-item full-width bio-item">
                                 <div className="detail-text">
@@ -109,7 +103,6 @@ const NavigatorDetailsModal = ({ isOpen, onClose, navigator }) => {
                             </div>
                         </div>
 
-                        {/* Registration Date */}
                         <div className="detail-group full-width">
                             <div className="detail-item">
                                 <Clock size={18} className="detail-icon" />
@@ -121,7 +114,6 @@ const NavigatorDetailsModal = ({ isOpen, onClose, navigator }) => {
                         </div>
                     </div>
 
-                    {/* --- Footer Actions (for future use) --- */}
                     <div className="modal-actions">
                         <button className="primary-btn" onClick={onClose}>Close</button>
                     </div>

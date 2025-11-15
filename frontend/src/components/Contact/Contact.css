@@ -9,7 +9,6 @@
     --color-box-shadow: rgba(0, 0, 0, 0.08);
 }
 
-/* ------------------- SECTION CONTACT US ------------------- */
 
 .contact-us-section {
     background-color: var(--color-light-gray-bg);
@@ -231,7 +230,6 @@
 
     .contact-details {
         display: inline-block;
-        /* Permet de centrer les blocs */
         text-align: left;
     }
 
@@ -261,7 +259,6 @@
     }
 
     .contact-us-container {
-        /* Remove horizontal padding on container for max space */
         padding: 0;
     }
 

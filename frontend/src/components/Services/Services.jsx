@@ -1,9 +1,3 @@
-// src/components/Services.jsx
-
-import React from 'react';
-
-// Importe tes images pour chaque service
-// Assure-toi d'avoir ces images dans ton dossier src/assets/
 import serviceImage1 from '../../assets/berber-morocco.avif';
 import serviceImage2 from '../../assets/service2.jpg';
 import serviceImage3 from '../../assets/service1.jpg';
@@ -38,7 +32,6 @@ const Services = () => {
   return (
     <section className="services-section">
       <div className="services-container">
-        {/* Titre et Sous-titre de la section */}
         <div className="services-header">
           <h2 className="services-title">EXPLORE WHAT WE OFFER</h2>
           <p className="services-subtitle">
@@ -46,7 +39,6 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Grille des services */}
         <div className="services-grid">
           {servicesList.map((service, index) => (
             <div key={index} className={`service-card service-card-${index + 1}`}>

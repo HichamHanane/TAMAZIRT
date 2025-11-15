@@ -1,5 +1,3 @@
-/* src/pages/guide/GuideDashboardHome.css */
-
 :root {
     --guide-bg-light: #f9f7f4;
     --guide-primary-brown: #6f4e37;
@@ -9,28 +7,20 @@
     --guide-card-bg: #ffffff;
     --guide-shadow: rgba(0, 0, 0, 0.08);
 
-    /* Specific Card Colors */
     --color-stat-blue: #3b82f6;
     --color-stat-red: #ef4444;
     --color-stat-green: #10b981;
     --color-stat-yellow: #f59e0b;
 
-    /* Status Colors */
     --status-pending: #f59e0b;
-    /* Yellow/Orange */
     --status-confirmed: #10b981;
-    /* Green */
     --status-completed: #3b82f6;
-    /* Blue */
 }
 
-/* Base container for padding inherited from GuideDashboardLayout.css */
 .g-home-container {
     padding: 0;
-    /* Dashboard Layout provides padding, set to 0 here */
 }
 
-/* --- 1. Statistics Cards Grid --- */
 
 .g-home-stats-grid {
     display: grid;
@@ -49,7 +39,6 @@
     box-shadow: 0 4px 10px var(--guide-shadow);
     transition: transform 0.2s;
     border-left: 5px solid;
-    /* Placeholder for color accent */
 }
 
 .g-home-stat-card:hover {
@@ -64,7 +53,6 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.8);
-    /* Light background for the icon area */
 }
 
 .g-home-stat-card.card-blue {
@@ -117,15 +105,12 @@
     margin: 0;
 }
 
-/* --- 2. Main Content Grid (Requests + Upcoming Trips) --- */
 
 .g-home-main-grid {
     display: grid;
     grid-template-columns: 2.5fr 1fr;
-    /* Requests = 2.5 parts, Upcoming = 1 part */
     gap: 30px;
     align-items: flex-start;
-    /* Aligns cards to the top */
 }
 
 .g-home-section-title {
@@ -138,7 +123,6 @@
     border-bottom: 1px solid var(--guide-border-light);
 }
 
-/* Latest Requests Card */
 .g-home-requests-card {
     background-color: var(--guide-card-bg);
     border-radius: 12px;
@@ -149,7 +133,6 @@
 
 .g-home-requests-table-container {
     overflow-x: auto;
-    /* For responsive table overflow */
 }
 
 .g-home-requests-table {
@@ -186,7 +169,6 @@
     border-bottom: none;
 }
 
-/* Status Badge */
 .g-home-request-status-badge {
     padding: 5px 10px;
     border-radius: 6px;
@@ -211,7 +193,6 @@
     color: white;
 }
 
-/* Action Button */
 .g-home-action-view-details {
     display: inline-flex;
     align-items: center;
@@ -229,7 +210,6 @@
     color: #5a3c30;
 }
 
-/* --- Upcoming Trips Card --- */
 
 .g-home-upcoming-trips-card {
     background-color: var(--guide-card-bg);
@@ -246,7 +226,6 @@
     line-height: 1.5;
     margin-bottom: 25px;
     flex-grow: 1;
-    /* Pousse le bouton vers le bas */
 }
 
 .g-home-view-calendar-btn {
@@ -267,24 +246,18 @@
 }
 
 
-/* --- RESPONSIVENESS --- */
-
-/* Tablets (up to 1200px) */
 @media (max-width: 1200px) {
     .g-home-stats-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* 2 colonnes */
     }
 
     .g-home-main-grid {
         grid-template-columns: 1fr;
-        /* 1 colonne */
         gap: 25px;
     }
 
     .g-home-upcoming-trips-card {
         min-height: auto;
-        /* Reset min height */
     }
 
     .g-home-requests-card,
@@ -293,11 +266,9 @@
     }
 }
 
-/* Mobile (up to 768px) */
 @media (max-width: 768px) {
     .g-home-stats-grid {
         grid-template-columns: 1fr;
-        /* 1 colonne pour les cartes de stats */
         gap: 20px;
     }
 
@@ -317,13 +288,11 @@
         font-size: 18px;
     }
 
-    /* Responsive Table (Display block) */
     .g-home-requests-table {
         display: block;
     }
 
     .g-home-requests-table thead {
-        /* Cacher l'en-tête de la table classique */
         display: none;
     }
 
@@ -351,7 +320,6 @@
         font-size: 14px;
     }
 
-    /* Afficher l'étiquette de la colonne comme titre */
     .g-home-requests-table td::before {
         content: attr(data-label);
         font-weight: 600;

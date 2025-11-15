@@ -1,6 +1,3 @@
-/* src/components/NavigatorsManagement.css */
-
-/* --- Header et Bouton d'Ajout --- */
 
 .navigators-header-area {
     display: flex;
@@ -71,7 +68,6 @@
     color: var(--color-text-subtle);
 }
 
-/* --- Tableau --- */
 
 .navigators-table-card {
     background-color: white;
@@ -82,7 +78,6 @@
 
 .responsive-table-wrapper {
     overflow-x: auto;
-    /* Permet le défilement horizontal sur les petits écrans */
 }
 
 .navigators-table {
@@ -169,7 +164,6 @@
 
 .edit-btn {
     color: #007bff;
-    /* Bleu pour édition */
 }
 
 .edit-btn:hover {
@@ -178,14 +172,12 @@
 
 .delete-btn {
     color: #dc3545;
-    /* Rouge pour suppression */
 }
 
 .delete-btn:hover {
     background-color: #f8d7da;
 }
 
-/* --- Pagination --- */
 
 .navigators-pagination {
     display: flex;
@@ -279,7 +271,6 @@
     }
 }
 
-/* ------------------- RÉACTIVITÉ ------------------- */
 
 @media (max-width: 768px) {
     .navigators-header-area {
@@ -297,7 +288,6 @@
         justify-content: center;
     }
 
-    /* Masquer les colonnes pour la vue mobile */
     .hide-on-mobile {
         display: none;
     }
@@ -316,7 +306,6 @@
         position: relative;
     }
 
-    /* Afficher le label de la colonne */
     .navigators-table td::before {
         content: attr(data-label);
         position: absolute;
@@ -344,12 +333,10 @@
         background-color: white;
     }
 
-    /* Centrer/Aligner la cellule Profil */
     .navigator-profile-cell {
         justify-content: flex-end;
     }
 
-    /* Réajuster les actions */
     .actions-cell {
         border-bottom: none !important;
     }

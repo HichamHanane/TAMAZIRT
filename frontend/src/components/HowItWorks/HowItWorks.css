@@ -1,17 +1,14 @@
-
 :root {
-  --color-dark-brown: #5d4a3b; 
-  --color-light-beige: #f1e9d8; 
-  --color-text-dark: #333333; 
-  --color-cta-primary: #8c6a5a; 
-  --color-icon-bg: #e6f7e4; 
+    --color-dark-brown: #5d4a3b;
+    --color-light-beige: #f1e9d8;
+    --color-text-dark: #333333;
+    --color-cta-primary: #8c6a5a;
+    --color-icon-bg: #e6f7e4;
 }
 
-/* ------------------- SECTION HOW IT WORKS ------------------- */
 
 .how-it-works-section {
-    /* Utilise la couleur de fond claire de ton image */
-    background-color: #f7f3e8; 
+    background-color: #f7f3e8;
     padding: 80px 60px;
     border-top: 1px solid #e0e0e0;
 }
@@ -22,14 +19,13 @@
     text-align: center;
 }
 
-/* --- Entête de la section --- */
 .hiw-header {
     margin-bottom: 60px;
 }
 
 .hiw-title {
     font-size: 42px;
-    font-weight: 800; /* Plus gras pour l'impact */
+    font-weight: 800;
     color: var(--color-text-dark);
     margin: 0;
 }
@@ -40,72 +36,63 @@
     margin-top: 10px;
 }
 
-/* --- Grille des étapes --- */
 .hiw-steps-grid {
     display: grid;
-    /* 4 colonnes égales comme dans l'image */
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin-bottom: 60px;
-    text-align: left; /* Aligner le texte des étapes à gauche */
+    text-align: left;
     position: relative;
 }
 
-/* Ligne de séparation entre les étapes (comme dans l'image) */
 .hiw-steps-grid::before {
     content: '';
     position: absolute;
-    top: 35px; /* Aligné avec le milieu des cercles */
-    left: 10%; /* Démarre après le premier cercle */
-    right: 10%; /* S'arrête avant le dernier cercle */
+    top: 35px;
+    left: 10%;
+    right: 10%;
     height: 2px;
-    background-color: #e0e0e0; /* Couleur de ligne subtile */
+    background-color: #e0e0e0;
     z-index: 1;
 }
 
 .hiw-step-item {
-    padding-top: 50px; /* Espace pour le chevauchement de l'icône */
-    position: relative; /* Pour positionner correctement l'icône */
+    padding-top: 50px;
+    position: relative;
     z-index: 10;
 }
 
-/* --- Icônes et numéros --- */
 .hiw-icon-wrapper {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    /* Utilise une couleur d'arrière-plan verte très pâle */
-    background-color: var(--color-icon-bg); 
+    background-color: var(--color-icon-bg);
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     top: 0;
     left: 0;
-    /* Bordure subtile pour l'effet de cercle dans l'image */
-    border: 2px solid #a8df9e; 
+    border: 2px solid #a8df9e;
 }
 
 .step-number {
     position: absolute;
     font-size: 14px;
     font-weight: 700;
-    /* Couleur similaire à l'orange du bouton ou un marron */
-    color: var(--color-cta-primary); 
+    color: var(--color-cta-primary);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0; /* Cacher le numéro dans le design de l'image (il y a juste une icône) */
+    opacity: 0;
 }
 
-/* Couleur et taille de l'icône */
 .step-icon {
-    color: var(--color-cta-primary); /* Couleur du thème TAMAZIRET */
+    color: var(--color-cta-primary);
     width: 28px;
     height: 28px;
 }
 
-/* --- Contenu de l'étape --- */
 .step-title {
     font-size: 18px;
     font-weight: 600;
@@ -119,14 +106,12 @@
     line-height: 1.5;
 }
 
-/* --- CTA --- */
 .hiw-cta-wrapper {
     padding-top: 30px;
 }
 
 .hiw-cta-button {
-    /* Style du bouton CTA adapté pour le orange/corail de l'image */
-    background-color: var(--color-cta-secondary); /* Orange/Corail de l'image */
+    background-color: var(--color-cta-secondary);
     border-color: var(--color-cta-secondary);
     color: white;
     padding: 15px 40px;
@@ -145,26 +130,24 @@
 
 @media (max-width: 992px) {
     .hiw-steps-grid {
-        /* Passe de 4 à 2 colonnes sur tablette */
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
         gap: 40px 30px;
         margin-bottom: 40px;
     }
-    
-    /* Retire la ligne de séparation qui n'est pas claire en 2x2 */
+
     .hiw-steps-grid::before {
-        content: none; 
+        content: none;
     }
 
     .hiw-step-item {
-        text-align: center; /* Centre le texte des étapes */
-        padding-top: 70px; /* Plus d'espace pour le centrage de l'icône */
+        text-align: center;
+        padding-top: 70px;
     }
-    
+
     .hiw-icon-wrapper {
         top: 0;
         left: 50%;
-        transform: translateX(-50%); /* Centre l'icône au-dessus du texte */
+        transform: translateX(-50%);
     }
 
     .hiw-title {
@@ -176,13 +159,12 @@
     .how-it-works-section {
         padding: 50px 20px;
     }
-    
+
     .hiw-steps-grid {
-        /* Passe à une seule colonne sur mobile */
         grid-template-columns: 1fr;
         gap: 50px;
     }
-    
+
     .hiw-title {
         font-size: 28px;
     }

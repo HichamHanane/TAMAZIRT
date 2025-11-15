@@ -1,7 +1,4 @@
-/* src/pages/guide/GuideReviewsPage.css */
-
 :root {
-    /* Couleurs générales héritées des autres composants Guide */
     --g-rev-bg-color: #f9f7f4;
     --g-rev-text-dark: #333333;
     --g-rev-text-light: #6c757d;
@@ -10,15 +7,13 @@
     --g-rev-shadow: rgba(0, 0, 0, 0.08);
     --g-rev-border-light: #e0e0e0;
 
-    /* Couleur Accent pour les étoiles */
-    --g-rev-accent-gold: #FFC300; 
+    --g-rev-accent-gold: #FFC300;
 }
 
 .g-rev-container {
     padding: 20px 0;
 }
 
-/* --- Header et Recherche --- */
 
 .g-rev-header {
     display: flex;
@@ -40,7 +35,7 @@
 }
 
 .g-rev-icon {
-    color: var(--g-rev-accent-gold); 
+    color: var(--g-rev-accent-gold);
 }
 
 .g-search-bar {
@@ -71,11 +66,9 @@
 }
 
 
-/* --- Liste des Avis --- */
 
 .g-rev-list {
     display: grid;
-    /* Utilise une grille pour afficher les cartes côte à côte sur les grands écrans */
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 25px;
 }
@@ -92,7 +85,6 @@
     transform: translateY(-2px);
 }
 
-/* --- Header de la Carte (Avatar, Titre, Note) --- */
 .g-rev-card-header {
     display: flex;
     justify-content: space-between;
@@ -130,13 +122,11 @@
     margin: 3px 0 0 0;
 }
 
-/* Étoiles */
 .g-review-stars {
     display: flex;
     gap: 2px;
 }
 
-/* --- Commentaire --- */
 .g-rev-comment-section {
     margin-bottom: 25px;
 }
@@ -148,7 +138,6 @@
     margin: 0;
 }
 
-/* --- Footer (Date et Bouton Répondre) --- */
 .g-rev-footer {
     display: flex;
     justify-content: space-between;
@@ -179,12 +168,12 @@
 }
 
 .g-rev-action-btn:hover {
-    background-color: #5a3c30; 
+    background-color: #5a3c30;
 }
 
-/* Message d'absence de résultats/chargement */
-.g-no-results-message, .g-loading-state {
-    grid-column: 1 / -1; /* Permet de centrer sur toute la largeur de la grille */
+.g-no-results-message,
+.g-loading-state {
+    grid-column: 1 / -1;
     text-align: center;
     padding: 40px 20px;
     color: var(--g-rev-text-light);
@@ -212,13 +201,9 @@
 }
 
 
-/* --- RESPONSIVITY (Mobile) --- */
-
-/* Tablettes et petits écrans (jusqu'à 992px) */
 @media (max-width: 992px) {
     .g-rev-list {
-        /* Permet une seule colonne sur les tablettes pour un meilleur affichage */
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
     }
 
     .g-rev-header {
@@ -232,7 +217,6 @@
     }
 }
 
-/* Mobiles (jusqu'à 600px) */
 @media (max-width: 600px) {
     .g-rev-title {
         font-size: 26px;
@@ -249,8 +233,7 @@
     }
 
     .g-review-stars {
-        /* Déplacer les étoiles en bas du bloc d'informations pour la clarté */
-        order: 1; 
+        order: 1;
     }
 
     .g-rev-tourist-info {
@@ -265,13 +248,13 @@
         align-items: flex-start;
         gap: 10px;
     }
-    
+
     .g-rev-date {
         order: 2;
     }
 
     .g-rev-action-btn {
-        width: 100%; 
+        width: 100%;
         justify-content: center;
         order: 1;
     }

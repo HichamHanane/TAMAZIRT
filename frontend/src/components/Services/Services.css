@@ -1,6 +1,4 @@
-/*
-  --- VARIABLES DE COULEUR (réutilisées) ---
-*/
+
 :root {
     --color-dark-brown: #5d4a3b;
     --color-text-light: #f1e9d8;
@@ -11,7 +9,6 @@
     --section-padding-x: 60px;
 }
 
-/* ------------------- SECTION SERVICES ------------------- */
 
 .services-section {
     padding: 80px var(--section-padding-x);
@@ -23,7 +20,6 @@
     margin: 0 auto;
 }
 
-/* --- Entête de la section --- */
 .services-header {
     text-align: left;
     margin-bottom: 50px;
@@ -43,14 +39,11 @@
     line-height: 1.5;
 }
 
-/* --- Grille des services --- */
 .services-grid {
     display: grid;
-    /* ASSURE LA HAUTEUR DE LA VUE SUR DESKTOP */
     min-height: 100vh;
 
     grid-template-columns: repeat(2, 1fr);
-    /* Les 3 lignes se partagent la hauteur (1fr) */
     grid-template-rows: repeat(3, 1fr);
     gap: 30px;
 }
@@ -85,8 +78,6 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    /* width:100%; */
-    /* PADDING UNIFORME DE 30PX */
     padding: 30px;
 
     background: var(--color-overlay-gradient);
@@ -110,34 +101,28 @@
     line-height: 1.5;
 }
 
-/* --- DISPOSITION SPÉCIFIQUE DE LA GRILLE (pour les 4 cartes) --- */
 
 .service-card-1 {
     grid-column: 1 / 2;
     grid-row: 1 / span 2;
-    /* S'étend sur les 2 premières lignes */
 }
 
 .service-card-2 {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    /* Ligne 1 */
 }
 
 .service-card-3 {
     grid-column: 1 / 2;
     grid-row: 3 / 4;
-    /* Ligne 3 */
 }
 
 .service-card-4 {
     grid-column: 2 / 3;
     grid-row: 2 / span 2;
-    /* S'étend de la ligne 2 à la 3 */
 }
 
 
-/* ------------------- RESPONSIVE DESIGN ------------------- */
 
 @media (max-width: 992px) {
     .services-section {
@@ -148,7 +133,6 @@
         font-size: 30px;
     }
 
-    /* MOBILE: Retire min-height: 100vh et passe en colonne */
     .services-grid {
         min-height: auto;
         grid-template-columns: 1fr;
@@ -156,7 +140,6 @@
         gap: 25px;
     }
 
-    /* Toutes les cartes reprennent une taille normale sur mobile */
     .service-card-1,
     .service-card-2,
     .service-card-3,
@@ -169,7 +152,6 @@
     .service-card-overlay {
         
         padding: 20px;
-        /* Réduit le padding du texte sur mobile */
     }
 
     .service-card-title {

@@ -38,7 +38,6 @@ const HowItWorks = () => {
     <section className="how-it-works-section" id="navigators">
       <div className="how-it-works-container">
         
-        {/* Titre de la section */}
         <div className="hiw-header">
           <h2 className="hiw-title">Your Journey, Step by Step</h2>
           <p className="hiw-subtitle">
@@ -46,25 +45,21 @@ const HowItWorks = () => {
           </p>
         </div>
         
-        {/* Grille des étapes */}
         <div className="hiw-steps-grid">
           {steps.map((step) => (
             <div key={step.number} className="hiw-step-item">
               
-              {/* Le numéro de l'étape et l'icône */}
               <div className="hiw-icon-wrapper">
                 <span className="step-number">{step.number}</span>
                 <step.icon size={24} className="step-icon" />
               </div>
               
-              {/* Le contenu de l'étape */}
               <h3 className="step-title">{step.title}</h3>
               <p className="step-description">{step.description}</p>
             </div>
           ))}
         </div>
         
-        {/* Bouton d'appel à l'action */}
         <div className="hiw-cta-wrapper">
           <button className="cta-button primary hiw-cta-button">
             Find Your Navigator

@@ -12,16 +12,13 @@ const TermsPolicyPage = () => {
             <main className="terms-policy-main">
                 <div className="terms-policy-container">
 
-                    {/* Bannière de titre */}
                     <div className="policy-header-banner">
                         <h1 className="policy-main-title">Terms & Privacy</h1>
                         <p className="policy-subtitle">Your trust and safety are our priority</p>
                     </div>
 
-                    {/* Contenu des termes */}
                     <div className="policy-content">
 
-                        {/* Introduction */}
                         <section className="policy-section">
                             <h2 className="policy-section-title">Introduction</h2>
                             <p>
@@ -29,7 +26,6 @@ const TermsPolicyPage = () => {
                             </p>
                         </section>
 
-                        {/* User Agreement */}
                         <section className="policy-section">
                             <h2 className="policy-section-title">User Agreement</h2>
                             <p>
@@ -37,7 +33,6 @@ const TermsPolicyPage = () => {
                             </p>
                         </section>
 
-                        {/* Privacy Policy */}
                         <section className="policy-section">
                             <h2 className="policy-section-title">Privacy Policy</h2>
                             <p>
@@ -45,7 +40,6 @@ const TermsPolicyPage = () => {
                             </p>
                         </section>
 
-                        {/* Cookies */}
                         <section className="policy-section">
                             <h2 className="policy-section-title">Cookies</h2>
                             <p>
@@ -53,7 +47,6 @@ const TermsPolicyPage = () => {
                             </p>
                         </section>
 
-                        {/* Data Protection */}
                         <section className="policy-section">
                             <h2 className="policy-section-title">Data Protection</h2>
                             <p>
@@ -61,7 +54,6 @@ const TermsPolicyPage = () => {
                             </p>
                         </section>
 
-                        {/* Contact Information */}
                         <section className="policy-section">
                             <h2 className="policy-section-title">Contact Information</h2>
                             <p>
@@ -74,7 +66,6 @@ const TermsPolicyPage = () => {
 
                     </div>
 
-                    {/* Bouton de retour */}
                     <div className="policy-return-cta">
                         <a href="/" className="cta-button primary return-button">
                             Back to Home

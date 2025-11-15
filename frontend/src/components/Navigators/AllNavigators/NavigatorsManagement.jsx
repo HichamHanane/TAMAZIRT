@@ -122,7 +122,7 @@ const NavigatorsManagement = () => {
                                     <td data-label="Name">
                                         <div className="navigator-profile-cell">
                                             <img
-                                                src={`${avatarPlaceholder}?img=${profile?.user?.id}`}
+                                                src={`${import.meta.env.VITE_BACKEND_BASE_URL}${profile?.profile_picture_url }`|| `${avatarPlaceholder}?img=${profile?.user?.id}`}
                                                 alt={profile?.user?.name}
                                                 className="navigator-avatar"
                                             />

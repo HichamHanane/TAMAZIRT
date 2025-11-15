@@ -1,6 +1,3 @@
-/* src/components/EditNavigatorModal.css */
-
-/* --- Modal Overlay & Base Content --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -20,15 +17,11 @@
     padding: 30px;
     width: 100%;
     max-width: 800px;
-    /* Largeur pour deux colonnes */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-
-    /* GESTION DE LA HAUTEUR : Rendre le modal scrollable dans l'overlay */
     max-height: 90vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    /* Cache le défilement général */
 }
 
 .modal-header {
@@ -37,7 +30,6 @@
     align-items: center;
     margin-bottom: 25px;
     flex-shrink: 0;
-    /* Empêche l'en-tête de rétrécir lors du défilement */
 }
 
 .modal-title {
@@ -57,25 +49,18 @@
     transition: color 0.2s, background-color 0.2s;
 }
 
-/* --- Formulaire Défilable (Le corps) --- */
 .edit-form-scrollable {
     flex-grow: 1;
-    /* Prend l'espace restant entre le header et le footer */
     overflow-y: auto;
-    /* REND LE CONTENU DU FORMULAIRE DÉFILABLE */
     padding-right: 10px;
-    /* Espace pour la barre de défilement */
     margin-right: -10px;
-    /* Compense le padding pour la barre de défilement */
 }
 
-/* --- Form Layout (Two Columns) --- */
 .edit-form-layout {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     padding-bottom: 20px;
-    /* Espace avant le pied de page */
 }
 
 .form-column {
@@ -99,7 +84,6 @@
     border-bottom: 2px solid var(--color-border-light);
 }
 
-/* --- Form Groups & Inputs --- */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -140,11 +124,9 @@
 .form-group textarea {
     padding: 14px 15px;
     height: 100px;
-    /* Hauteur réduite pour le besoin */
     resize: vertical;
 }
 
-/* Styles d'erreur et d'indice */
 .error-message {
     color: var(--color-error);
     font-size: 12px;
@@ -160,7 +142,6 @@
 }
 
 
-/* --- Avatar Section --- */
 .avatar-preview-section {
     display: flex;
     flex-direction: column;
@@ -191,7 +172,6 @@
     transition: background-color 0.2s;
 }
 
-/* --- Verification Toggle (Switch custom) --- */
 .verification-group {
     flex-direction: row;
     align-items: center;
@@ -212,9 +192,7 @@
     gap: 15px;
 }
 
-/* Styles du switch (bascule) */
 .switch {
-    /* ... (copier ici les styles du switch) ... */
     position: relative;
     display: inline-block;
     width: 45px;
@@ -267,7 +245,6 @@ input:checked+.slider:before {
 }
 
 
-/* --- Form Actions (Footer fixé) --- */
 .modal-actions.full-width-actions {
     width: 100%;
     margin-top: 20px;
@@ -277,10 +254,8 @@ input:checked+.slider:before {
     justify-content: flex-end;
     gap: 15px;
     flex-shrink: 0;
-    /* Empêche le pied de page de rétrécir lors du défilement */
 }
 
-/* Styles des boutons */
 .cancel-btn,
 .add-btn {
     padding: 10px 20px;
@@ -310,7 +285,6 @@ input:checked+.slider:before {
     background-color: #483a2d;
 }
 
-/* --- Responsivity --- */
 @media (max-width: 850px) {
     .edit-modal-content {
         max-width: 95%;
@@ -320,7 +294,6 @@ input:checked+.slider:before {
 
     .edit-form-layout {
         flex-direction: column;
-        /* Empile les colonnes sur les petits écrans */
         gap: 20px;
     }
 

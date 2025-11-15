@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
     LayoutDashboard,
@@ -48,7 +47,6 @@ const Sidebar = () => {
             <div className="sidebar-header">
                 <MessageSquareText size={24} className="sidebar-logo-icon" />
                 <h1 className="sidebar-app-name">TAMAZIRT</h1>
-                {/* <p className="sidebar-admin-panel">Admin Panel</p> */}
             </div>
             <nav className="sidebar-nav">
                 <ul>

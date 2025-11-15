@@ -200,10 +200,8 @@ body {
 
 .g-req-btn-accept:hover {
     background-color: #0e9f6e;
-    /* Vert plus foncé */
 }
 
-/* Message d'absence de résultats/chargement */
 .g-req-no-results,
 .g-req-loading-state {
     text-align: center;
@@ -235,7 +233,6 @@ body {
 
 /* --- RESPONSIVITY --- */
 
-/* Tablettes et petits ordinateurs portables (jusqu'à 1024px) */
 @media (max-width: 1024px) {
     .g-req-container {
         padding: 20px;
@@ -261,17 +258,14 @@ body {
 
     .g-req-tourist-info {
         flex-grow: 1;
-        /* Permet à l'info de prendre plus de place */
     }
 
     .g-req-card-header {
         flex-wrap: wrap;
-        /* Permet au badge de passer en dessous si pas assez de place */
         gap: 10px;
     }
 }
 
-/* Mobiles (jusqu'à 768px) */
 @media (max-width: 768px) {
     .g-req-container {
         padding: 15px;
@@ -292,7 +286,6 @@ body {
 
     .g-req-tourist-info {
         flex-direction: column;
-        /* Stack avatar et texte */
         align-items: flex-start;
         text-align: left;
         gap: 8px;
@@ -318,24 +311,20 @@ body {
 
     .g-req-details-grid {
         grid-template-columns: 1fr;
-        /* 1 colonne pour les détails */
         gap: 15px;
     }
 
     .g-req-actions {
         flex-direction: column;
-        /* Stack les boutons verticalement */
         gap: 10px;
     }
 
     .g-req-btn {
         width: 100%;
-        /* Boutons pleine largeur */
         min-width: auto;
     }
 }
 
-/* Très petits mobiles (jusqu'à 480px) */
 @media (max-width: 480px) {
     .g-req-header {
         margin-bottom: 20px;

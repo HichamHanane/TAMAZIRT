@@ -24,6 +24,7 @@ import GuideDashboardHome from './components/NavigatorDashboard/GuideDashboardHo
 import GuideProfilePage from './components/NavigatorDashboard/GuideProfilePage/GuideProfilePage'
 import GuideRequestsPage from './components/NavigatorDashboard/GuideRequestsPage/GuideRequestsPage'
 import GuideReviewsPage from './components/NavigatorDashboard/GuideReviewsPage/GuideReviewsPage'
+import GuideProtectedRoutes from './components/ProtectedRoutes/GuideProtectedRoutes'
 
 function App() {
 
@@ -70,16 +71,19 @@ function App() {
         </Route>
 
         {/* navigator dashboard */}
-
-        <Route path="/guide" element={<GuideDashboardLayout />}>
-          <Route index element={<GuideProfilePage />} />
-          <Route path="dashboard" element={<GuideProfilePage />} />
-          <Route path="profile" element={<GuideProfilePage />} />
-          <Route path="requests" element={<GuideRequestsPage />} />
-          <Route path="reviews" element={<GuideReviewsPage />} />
-          {/* Add other guide-specific pages here (Trip Requests, Reviews, Calendar) */}
-          {/* <Route path="calendar" element={<GuideCalendarPage />} /> */}
+        <Route element={<GuideProtectedRoutes />} >
+          <Route path="/guide" element={<GuideDashboardLayout />}>
+            <Route index element={<GuideProfilePage />} />
+            <Route path="dashboard" element={<GuideProfilePage />} />
+            <Route path="profile" element={<GuideProfilePage />} />
+            <Route path="requests" element={<GuideRequestsPage />} />
+            <Route path="reviews" element={<GuideReviewsPage />} />
+            {/* Add other guide-specific pages here (Trip Requests, Reviews, Calendar) */}
+            {/* <Route path="calendar" element={<GuideCalendarPage />} /> */}
+          </Route>
         </Route>
+
+
         <Route path="dashboard/navigator/profile" element={<Test />} />
 
         <Route path="/terms" element={<TermsPolicyPage />} />

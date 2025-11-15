@@ -2,31 +2,25 @@
     --color-primary-brown: #5d4a3b;
     --color-light-beige: #f1e9d8;
     --color-primary-brown: #8c6a5a;
-    /* Primary CTA / Orange */
     --color-text-dark: #333333;
     --color-text-subtle: #6c757d;
     --color-border-light: #e0e0e0;
     --color-input-bg: white;
     --color-error: #dc3545;
-    /* Red for error messages */
 }
 
-/* ------------------- REGISTER PAGE FINAL LAYOUT ------------------- */
 
 .register-final-container {
     display: flex;
     min-height: 100vh;
     width: 100%;
-    /* Right panel background */
     background-color: var(--color-light-beige);
 }
 
-/* --- 1. Visual Panel (Left Column - Image) --- */
 .register-final-visual-panel {
     flex: 1;
     position: relative;
     overflow: hidden;
-    /* Hidden by default, shown on desktop (min-width: 992px) */
     display: none;
 }
 
@@ -38,7 +32,6 @@
 }
 
 
-/* --- 2. Form Panel (Right Column - Beige Background) --- */
 .register-final-form-panel {
     flex: 1;
     display: flex;
@@ -50,12 +43,10 @@
 .register-final-card {
     width: 100%;
     max-width: 400px;
-    /* Form width limit */
     text-align: center;
     padding: 0 20px;
 }
 
-/* --- Form Headers --- */
 .register-final-logo {
     font-family: "Keania One", sans-serif;
     font-size: 1.5rem;
@@ -78,12 +69,10 @@
     margin-bottom: 30px;
 }
 
-/* --- Form Elements (Shared with Login) --- */
 .register-final-form-body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    /* Reduced gap slightly for more fields */
 }
 
 .form-group-final {

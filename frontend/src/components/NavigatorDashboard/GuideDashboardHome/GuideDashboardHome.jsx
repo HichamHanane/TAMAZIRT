@@ -1,18 +1,16 @@
-// src/pages/guide/GuideDashboardHome.jsx
 
 import React from 'react';
 import {
-    CalendarCheck, // Upcoming Trips
-    MessageSquareText, // New Requests
-    Star, // Total Reviews
-    TrendingUp, // Earnings
-    ChevronRight, // Action icon
+    CalendarCheck, 
+    MessageSquareText, 
+    Star, 
+    TrendingUp, 
+    ChevronRight, 
     Loader2
 } from 'lucide-react';
 import './GuideDashboardHome.css';
 import { useSelector } from 'react-redux';
 
-// --- MOCK DATA ---
 const statsData = [
     {
         title: "Upcoming Trips",
@@ -70,10 +68,8 @@ const latestRequests = [
         status: "Completed",
     },
 ];
-// --- END MOCK DATA ---
 
 
-// StatCard Component (Extrait du DashboardHome pour la lisibilité)
 const StatCard = ({ title, value, icon: Icon, colorClass }) => (
     <div className={`g-home-stat-card ${colorClass}`}>
         <div className="g-home-card-icon-wrapper">
@@ -98,17 +94,14 @@ const GuideDashboardHome = () => {
                 </div>
 
             </header>
-            {/* --- 1. Statistics Cards Grid --- */}
             <div className="g-home-stats-grid">
                 {statsData.map((stat, index) => (
                     <StatCard key={index} {...stat} />
                 ))}
             </div>
 
-            {/* --- 2. Main Content Wrapper (Latest Requests & Upcoming Trips) --- */}
             <div className="g-home-main-grid">
 
-                {/* --- Latest Tour Requests --- */}
                 <div className="g-home-requests-card">
                     <h3 className="g-home-section-title">Latest Tour Requests</h3>
                     <div className="g-home-requests-table-container">
@@ -146,7 +139,6 @@ const GuideDashboardHome = () => {
                     </div>
                 </div>
 
-                {/* --- Upcoming Trips Card --- */}
                 <div className="g-home-upcoming-trips-card">
                     <h3 className="g-home-section-title">Upcoming Trips</h3>
                     <p className="g-home-placeholder-text">Next trip: Marrakech Adventure, November 15th-18th. View details in Calendar.</p>

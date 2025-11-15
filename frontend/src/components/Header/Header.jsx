@@ -1,5 +1,3 @@
-// src/components/Header.jsx
-
 import React, { useState } from 'react';
 import { LayoutDashboard, LogOut, Menu, X } from 'lucide-react';
 import './Header.css'
