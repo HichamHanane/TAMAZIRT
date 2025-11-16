@@ -49,7 +49,7 @@ const LoginPage = () => {
                     return
                 }
                 if (result.payload.user.role == "tourist") {
-                    navigate('/dashboard')
+                    navigate('/tourist')
                     return
                 }
 

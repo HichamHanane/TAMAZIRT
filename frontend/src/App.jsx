@@ -25,6 +25,7 @@ import GuideProfilePage from './components/NavigatorDashboard/GuideProfilePage/G
 import GuideRequestsPage from './components/NavigatorDashboard/GuideRequestsPage/GuideRequestsPage'
 import GuideReviewsPage from './components/NavigatorDashboard/GuideReviewsPage/GuideReviewsPage'
 import GuideProtectedRoutes from './components/ProtectedRoutes/GuideProtectedRoutes'
+import TouristDashboardLayout from './Layouts/TouristDashboardLayout/TouristDashboardLayout'
 
 function App() {
 
@@ -81,6 +82,12 @@ function App() {
             {/* Add other guide-specific pages here (Trip Requests, Reviews, Calendar) */}
             {/* <Route path="calendar" element={<GuideCalendarPage />} /> */}
           </Route>
+        </Route>
+
+        {/* Tourist dashboard */}
+
+        <Route path='/tourist' element={<TouristDashboardLayout />}>
+          <Route index element={<GuideProfilePage />} />
         </Route>
 
 
