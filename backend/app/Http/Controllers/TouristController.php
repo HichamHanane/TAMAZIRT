@@ -178,4 +178,42 @@ class TouristController extends Controller
         ], 200);
     }
 
+    public function updateRequest(Request $request, $id)
+    {
+        $tourist = $request->user();
+
+        if (!$tourist->hasRole('tourist')) {
+            return response()->json([
+                'message' => 'Unauthorized: tourist access required.'
+            ], 403);
+        }
+
+        $requestModel = \App\Models\Request::with('navigator:id,name,email')->findOrFail($id);
+
+        if ($requestModel->tourist_id !== $tourist->id) {
+            return response()->json([
+                'message' => 'You can only edit your own requests.'
+            ], 403);
+        }
+
+        if ($requestModel->status !== 'Pending') {
+            return response()->json([
+                'message' => 'Cannot edit a request that is not pending.'
+            ], 400);
+        }
+
+        $validated = $request->validate([
+            'date' => 'required|date|after:now',
+            'message' => 'nullable|string|max:1000',
+            'destination' => 'required|string|max:255',
+            'number_of_people' => 'required|integer|min:1',
+        ]);
+
+        $requestModel->update($validated);
+
+        return response()->json([
+            'message' => 'Request updated successfully!',
+            'data' => $requestModel->fresh(),
+        ]);
+    }
 }

@@ -1,0 +1,565 @@
+/* --- TouristRequestsPage.css --- */
+
+/* --- Custom Variables --- */
+:root {
+    --t-profile-bg-light: #f9f7f4;
+    --t-profile-text-dark: #5d4a3b;
+    --t-profile-text-subtle: #6c757d;
+    --t-profile-border-light: #e0e0e0;
+    --t-profile-card-bg: #ffffff;
+    --t-profile-shadow: rgba(0, 0, 0, 0.08);
+
+    --t-profile-btn-primary-bg: #6f4e37;
+    /* Primary Brown/Sienna */
+    --t-profile-btn-primary-hover: #5a3c30;
+    --t-profile-btn-text-light: #ffffff;
+    --t-profile-error-red: #e53e3e;
+
+    /* Request Specific Colors */
+    --t-req-color-primary: var(--t-profile-btn-primary-bg);
+    --t-req-color-error: var(--t-profile-error-red);
+    --t-req-detail-icon-color: var(--t-profile-btn-primary-bg);
+}
+
+/* Base Container and Headers */
+.t-req-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Poppins', 'Georgia', serif;
+    /* Use a mix for unique label feel */
+}
+
+.t-req-header {
+    font-size: 2.8rem;
+    color: var(--t-profile-text-dark);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.t-req-subtitle {
+    font-size: 1.1rem;
+    color: var(--t-profile-text-subtle);
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--t-profile-border-light);
+    padding-bottom: 15px;
+}
+
+/* Request List (Responsive Grid) */
+.t-req-list {
+    display: grid;
+    gap: 40px;
+    /* Increased gap for separation */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+/* --- Unique Request Card Style --- */
+.t-req-card {
+    background: var(--t-profile-card-bg);
+    border-radius: 15px;
+    /* Softer corners */
+    box-shadow: 0 8px 30px var(--t-profile-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 1. Header Section - Guide Name and Status */
+.t-req-card-header-new {
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--t-profile-bg-light);
+    /* Light background for contrast */
+}
+
+.t-req-guide-label {
+    font-size: 0.85rem;
+    color: var(--t-profile-text-subtle);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.t-req-navigator-name-unique {
+    font-size: 1.8rem;
+    color: var(--t-profile-text-dark);
+    font-weight: 800;
+    /* Extra bold */
+    line-height: 1.1;
+    margin-top: 2px;
+}
+
+/* Status Badge */
+.t-req-status-badge {
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 2px solid;
+}
+
+/* Status Colors (Unified) */
+.t-req-status-pending {
+    color: var(--t-req-color-primary);
+    border-color: var(--t-req-color-primary);
+}
+
+/* Confirmed (Use a slightly darker Primary Color for distinction, or just Primary) */
+.t-req-status-confirmed {
+    color: var(--t-req-color-primary);
+    border-color: var(--t-req-color-primary);
+}
+
+/* Cancelled (Use Error Red Color) */
+.t-req-status-cancelled {
+    color: var(--t-req-color-error);
+    border-color: var(--t-req-color-error);
+}
+
+/* Separator Line */
+.t-req-card-separator {
+    height: 1px;
+    background-color: var(--t-profile-border-light);
+    margin: 0 30px;
+}
+
+
+/* 2. Body Section - Details and Message */
+.t-req-card-body {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* Details Grid */
+.t-req-details-grid-unique {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 20px;
+    margin-bottom: 30px;
+}
+
+.t-req-detail-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 2px solid var(--t-profile-border-light);
+    padding-left: 15px;
+}
+
+.t-req-detail-icon {
+    color: var(--t-req-detail-icon-color);
+    margin-bottom: 5px;
+}
+
+.t-req-detail-label {
+    font-weight: 600;
+    color: var(--t-profile-text-subtle);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.t-req-detail-value {
+    font-weight: 700;
+    color: var(--t-profile-text-dark);
+    font-size: 1rem;
+    margin-top: 3px;
+}
+
+/* Message Container */
+.t-req-message-container {
+    background: var(--t-profile-bg-light);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.t-req-message-label-unique {
+    font-weight: 700;
+    color: var(--t-profile-text-dark);
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.t-req-message-text-unique {
+    font-size: 0.9rem;
+    color: var(--t-profile-text-dark);
+    line-height: 1.5;
+}
+
+/* 3. Actions */
+.t-req-card-actions-unique {
+    border-top: 1px solid var(--t-profile-border-light);
+    padding: 20px 30px;
+    display: flex;
+    gap: 15px;
+    margin-top: auto;
+}
+
+.t-req-action-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.t-req-edit-btn {
+    background-color: var(--t-profile-btn-primary-bg);
+    color: var(--t-profile-btn-text-light);
+}
+
+.t-req-edit-btn:hover {
+    background-color: var(--t-profile-btn-primary-hover);
+}
+
+.t-req-delete-btn {
+    background-color: var(--t-req-status-cancelled-bg);
+    color: var(--t-profile-btn-text-light);
+}
+
+.t-req-delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.t-req-delete-btn {
+    background-color: var(--t-req-color-error);
+    /* Use the same color as the Cancelled status */
+    color: var(--t-profile-btn-text-light);
+}
+
+.t-req-delete-btn:hover {
+    background-color: #c0392b;
+    /* Darker red on hover */
+}
+
+/* --- TouristRequestsPage.css (ADDITIONAL STYLES) --- */
+
+.t-req-loading-state,
+.t-req-error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.t-req-loader-spin {
+    /* Define primary color in :root first */
+    animation: spin 1s linear infinite;
+    color: var(--t-req-color-primary);
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.t-req-error-state .t-req-header {
+    color: var(--t-req-color-error);
+    margin-top: 10px;
+}
+
+.t-req-error-message {
+    color: var(--t-profile-text-dark);
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* --- TouristRequestsPage.css (Styles pour la Modal de Confirmation) --- */
+
+.t-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fond sombre et transparent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Assure que la modal est au-dessus de tout */
+}
+
+.t-delete-modal-content {
+    background: var(--t-profile-card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    text-align: center;
+}
+
+.t-modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--t-profile-text-subtle);
+    transition: color 0.2s;
+}
+
+.t-modal-close-btn:hover {
+    color: var(--t-req-color-error);
+}
+
+.t-modal-title {
+    font-size: 1.8rem;
+    color: var(--t-req-color-error);
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.t-modal-message {
+    font-size: 1rem;
+    color: var(--t-profile-text-dark);
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.t-modal-message strong {
+    font-weight: 700;
+}
+
+.t-modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.t-modal-delete-btn {
+    background-color: var(--t-req-color-error);
+    color: var(--t-profile-btn-text-light);
+    flex-grow: 1;
+    padding: 12px 20px;
+    font-weight: 700;
+    border: none
+}
+
+.t-modal-delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.t-modal-cancel-btn {
+    /* Bouton d'annulation - Style léger */
+    background-color: var(--t-profile-bg-light);
+    color: var(--t-profile-text-dark);
+    border: 1px solid var(--t-profile-border-light);
+    flex-grow: 1;
+    padding: 12px 20px;
+    font-weight: 600;
+}
+
+.t-modal-cancel-btn:hover {
+    background-color: #e6e6e6;
+}
+
+/* --- TouristRequestsPage.css (Styles pour la Modal d'Édition) --- */
+
+/* (Les styles existants pour .t-modal-backdrop, .t-modal-close-btn, .t-modal-title sont réutilisés) */
+
+.t-edit-modal-content {
+    /* ... (unchanged) ... */
+    background: var(--t-profile-card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.t-modal-subtitle-unique {
+    font-size: 1rem;
+    color: var(--t-profile-text-subtle);
+    margin-bottom: 25px;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.t-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Ensure consistent gap between form groups */
+}
+
+.t-form-group {
+    margin-bottom: 10px;
+    /* Espace entre les groupes de formulaires */
+}
+
+.t-form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--t-profile-text-dark);
+    margin-bottom: 8px;
+}
+
+.t-form-input,
+.t-form-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--t-profile-input-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--t-profile-text-dark);
+    background-color: var(--t-profile-bg-light);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none; 
+    box-sizing: border-box; /* IMPORTANT: Ensures padding doesn't push width over 100% */
+}
+
+.t-form-input:focus,
+.t-form-textarea:focus {
+    border-color: var(--t-profile-input-focus-border);
+    box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.2);
+    /* Ombre légère avec couleur primaire */
+    outline: none;
+}
+
+.t-form-textarea {
+    resize: vertical;
+    /* Permet de redimensionner verticalement */
+    min-height: 100px;
+}
+
+/* Style spécifique pour l'input de type date */
+.t-form-input[type="date"]::-webkit-calendar-picker-indicator {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%235d4a3b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>') no-repeat;
+    background-size: 18px 18px;
+    padding-right: 25px;
+    /* Espace pour l'icône */
+    cursor: pointer;
+}
+
+
+.t-form-error {
+    color: var(--t-profile-error-red);
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+.t-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; /* Ensure gap exists between grid items */
+    /* NEW: Explicitly define row gap for when it collapses to single column */
+    row-gap: 20px; 
+}
+
+/* Boutons de la modal d'édition */
+.t-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    /* Aligne les boutons à droite */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.t-modal-save-btn {
+    background-color: var(--t-profile-btn-primary-bg);
+    /* Couleur primaire */
+    color: var(--t-profile-btn-text-light);
+    flex-grow: 1;
+    /* Permet au bouton de s'étendre */
+    padding: 12px 20px;
+    font-weight: 700;
+    max-width: 180px;
+    border: none;
+    /* Limite la largeur du bouton */
+}
+
+.t-modal-save-btn:hover:not(:disabled) {
+    background-color: var(--t-profile-btn-primary-hover);
+}
+
+.t-modal-save-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Spin loader for saving */
+.t-loader-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive adjustments for Edit Modal */
+@media (max-width: 600px) {
+    .t-edit-modal-content {
+        padding: 20px;
+    }
+
+    .t-modal-title {
+        font-size: 1.5rem;
+    }
+
+    .t-form-grid {
+        grid-template-columns: 1fr;
+        /* Une seule colonne sur petits écrans */
+        gap: 15px;
+    }
+
+    .t-modal-actions {
+        flex-direction: column;
+        /* Boutons en colonne sur petits écrans */
+    }
+
+    .t-modal-save-btn,
+    .t-modal-cancel-btn {
+        max-width: 100%;
+        /* Boutons pleine largeur */
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .t-req-card-header-new {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .t-req-details-grid-unique {
+        grid-template-columns: 1fr;
+    }
+
+    .t-req-card-actions-unique {
+        flex-direction: column;
+    }
+
+    .t-req-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

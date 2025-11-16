@@ -88,6 +88,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/tourist/requests', [TouristController::class, 'storeRequest']);
     Route::get('/tourist/requests', [TouristController::class, 'myRequests']);
     Route::delete('/tourist/requests/{id}', [TouristController::class, 'destroy']);
+    Route::patch('/tourist/requests/{id}', [TouristController::class, 'updateRequest']); // <-- NOUVELLE ROUTE
     Route::put('/tourist/profile', [TouristController::class, 'updateProfile']);
     // Route::delete(uri: '/tourist/requests/{id}', [TouristController::class, 'destroy']);
 
