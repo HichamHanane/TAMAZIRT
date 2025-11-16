@@ -8,10 +8,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import default_image from '../../../assets/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-profile-picture-business-profile-woman-suitable-social-media-profiles-icons-screensavers-as-templatex9_.avif'
 import { updatePassword, updateTouristProfile } from '../../../feature/ProfileSlice';
 import { toast } from 'sonner';
+
 const personalInfoSchema = yup.object({
     name: yup.string().required('Full Name is required').min(3, 'Full Name must be at least 3 characters'),
     email: yup.string().email('Invalid email address').required('Email is required'),
 }).required();
+
 
 const accountSecuritySchema = yup.object({
     currentPassword: yup.string().required('Current Password is required'),
@@ -20,15 +22,21 @@ const accountSecuritySchema = yup.object({
         .min(8, 'Password must be at least 8 characters'),
     newPasswordConfirmation: yup.string()
         .required('Confirm Password is required')
-        .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
+        .oneOf([yup.ref('newPassword'), null], 'Passwords must match'),
+    avatar: yup.mixed()
+        .test('fileSize', 'The file size is too large (max 1MB)', (value) => {
+            return !value || !(value.size > 1024 * 1024); // 1MB limit
+        })
+        .nullable(),
 }).required();
 
 const TouristProfilePage = () => {
     const dispatch = useDispatch();
     const { user } = useSelector(state => state.auth);
     const { tourist_profile, password_update_status } = useSelector(state => state.profile);
-    // const { profile, isLoading, error } = useSelector(state => state.touristProfile); // Supposons un slice touristProfile
 
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [previewUrl, setPreviewUrl] = useState(null);
 
     const [loading, setLoading] = useState(false);
 
@@ -36,20 +44,32 @@ const TouristProfilePage = () => {
         register: registerPersonalInfo,
         handleSubmit: handleSubmitPersonalInfo,
         formState: { errors: personalInfoErrors, isSubmitting: isSubmittingPersonalInfo },
-        reset: resetPersonalInfo
+        reset: resetPersonalInfo,
+        setValue: setValuePersonalInfo
     } = useForm({
         resolver: yupResolver(personalInfoSchema),
         defaultValues: {
             name: user?.name,
             email: user?.email,
+            avatar: null,
         }
     });
+    const avatarRegister = registerPersonalInfo('avatar');
+
+    useEffect(() => {
+        resetPersonalInfo({
+            name: user?.name,
+            email: user?.email,
+            avatar: null,
+        });
+    }, [user, resetPersonalInfo]);
 
     const {
         register: registerAccountSecurity,
         handleSubmit: handleSubmitAccountSecurity,
         formState: { errors: accountSecurityErrors, isSubmitting: isSubmittingAccountSecurity },
         reset: resetAccountSecurity
+
     } = useForm({
         resolver: yupResolver(accountSecuritySchema),
         defaultValues: {
@@ -59,7 +79,28 @@ const TouristProfilePage = () => {
         }
     });
 
+    // cleanup blob URLs on change/unmount 
+    useEffect(() => {
+        return () => {
+            if (previewUrl && previewUrl.startsWith('blob:')) {
+                URL.revokeObjectURL(previewUrl);
+            }
+        };
+    }, [previewUrl]);
 
+    const handleFileChange = (event) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            if (previewUrl && previewUrl.startsWith('blob:')) {
+                URL.revokeObjectURL(previewUrl);
+            }
+
+            const objectUrl = URL.createObjectURL(file);
+            setSelectedFile(file);
+            setPreviewUrl(objectUrl);
+            setValuePersonalInfo('avatar', file, { shouldValidate: true });
+        }
+    };
 
 
     const onPersonalInfoSubmit = async (data) => {
@@ -92,6 +133,20 @@ const TouristProfilePage = () => {
         }
     };
 
+    const getProfileImageSrc = () => {
+        if (previewUrl) return previewUrl;
+
+        const currentPictureUrl = user?.avatar_url;
+        const defaultPictureUrl = default_image;
+
+        if (!currentPictureUrl) return defaultPictureUrl;
+
+        if (/^https?:\/\//i.test(currentPictureUrl)) return currentPictureUrl;
+        
+        const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL.replace(/\/$/, '');
+        return `${baseUrl}${currentPictureUrl.startsWith('/') ? '' : '/'}${currentPictureUrl}`;
+    };
+
     if (loading) {
         return (
             <div className="t-profile-container" style={{ textAlign: 'center', padding: '50px' }}>
@@ -108,7 +163,6 @@ const TouristProfilePage = () => {
                 <p className="t-profile-page-subtitle">Manage your personal information and account settings.</p>
             </div>
 
-            {/* --- Section Informations Personnelles --- */}
             <div className="t-profile-section-card">
                 <div className="t-profile-section-header">
                     <h2 className="t-profile-section-title">Personal Information</h2>
@@ -123,10 +177,30 @@ const TouristProfilePage = () => {
                     </div>
 
                     <div className="t-profile-photo-upload">
-                        <img src={user?.avatar || default_image} alt="Profile" className="t-profile-avatar" />
+                        <img src={getProfileImageSrc()} alt="Profile" className="t-profile-avatar" />
+
                         <div>
-                            <button type="button" className="t-profile-change-photo-btn">Change Photo</button>
+                            <label htmlFor="avatar-upload-input">
+                                <span className="t-profile-change-photo-btn" role="button" tabIndex={0}>
+                                    Change Photo
+                                </span>
+
+                                <input
+                                    id="avatar-upload-input"
+                                    type="file"
+                                    style={{ display: 'none' }}
+                                    accept="image/jpeg,image/png,image/gif"
+                                    {...avatarRegister}
+                                    onChange={(e) => {
+                                        avatarRegister?.onChange?.(e);
+                                        handleFileChange(e);
+                                    }}
+                                />
+                            </label>
+
                             <p className="t-profile-photo-info">JPG, GIF or PNG. 1MB max.</p>
+
+                            {personalInfoErrors.avatar && <p className="t-error-message">{personalInfoErrors.avatar.message}</p>}
                         </div>
                     </div>
 
@@ -158,7 +232,6 @@ const TouristProfilePage = () => {
                 </form>
             </div>
 
-            {/* --- Section Sécurité du Compte --- */}
             <div className="t-profile-section-card">
                 <div className="t-profile-section-header">
                     <h2 className="t-profile-section-title">Account Security</h2>

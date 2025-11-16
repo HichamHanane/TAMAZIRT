@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Contracts\LaratrustUser;
 use Laratrust\Traits\HasRolesAndPermissions;
@@ -23,6 +24,7 @@ class User extends Authenticatable implements LaratrustUser
         'name',
         'email',
         'password',
+        'avatar',
     ];
 
     /**
@@ -35,6 +37,8 @@ class User extends Authenticatable implements LaratrustUser
         'remember_token',
     ];
 
+    protected $appends = ['avatar_url'];
+
     /**
      * The attributes that should be cast.
      *
@@ -44,6 +48,15 @@ class User extends Authenticatable implements LaratrustUser
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getAvatarUrlAttribute()
+    {
+        if (!$this->avatar) {
+            return null; // Let the frontend use its default image
+        }
+        // Use Storage::url() which is perfect for generating public URLs from stored paths
+        return Storage::url($this->avatar);
+    }
 
 
     public function navigatorProfile()

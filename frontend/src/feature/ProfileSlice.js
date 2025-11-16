@@ -92,9 +92,17 @@ export const updateTouristProfile = createAsyncThunk(
     'touristProfile/update',
     async (data, { rejectWithValue }) => {
         console.log('Data To send update tourist profile :', data);
+        
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('email', data.email);
+        formData.append('_method', 'PUT');
 
+        if (data.avatar instanceof File) {
+            formData.append('avatar', data.avatar);
+        }
         try {
-            const response = await api.put(`/tourist/profile`, data);
+            const response = await api.post(`/tourist/profile`, formData);
             console.log('Edit tourist profile response : ', response);
             return response.data.user;
         } catch (error) {

@@ -97,7 +97,6 @@ body {
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     display: flex;
-    /* Pour centrer l'icône de chargement */
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -128,7 +127,6 @@ body {
 }
 
 
-/* --- Photo de Profil --- */
 .t-profile-photo-upload {
     display: flex;
     align-items: center;
@@ -169,7 +167,6 @@ body {
     margin: 5px 0 0 0;
 }
 
-/* --- Grille des champs de formulaire --- */
 .t-profile-form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -179,7 +176,7 @@ body {
 .t-form-group {
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .t-form-group label {
@@ -219,7 +216,6 @@ body {
     margin-bottom: 0;
 }
 
-/* --- Sécurité du Compte Actions --- */
 .t-profile-password-actions {
     display: flex;
     justify-content: flex-end;
@@ -227,7 +223,6 @@ body {
 }
 
 
-/* --- Loader Spin --- */
 .t-profile-loader-spin {
     animation: spin 1s linear infinite;
 }
@@ -241,7 +236,6 @@ body {
 
 /* --- RESPONSIVITY --- */
 
-/* Tablettes et petits écrans (jusqu'à 992px) */
 @media (max-width: 992px) {
     .t-profile-container {
         padding: 20px;
@@ -261,23 +255,18 @@ body {
 
     .t-profile-form-grid {
         grid-template-columns: 1fr;
-        /* Une seule colonne sur tablette */
     }
 
     .t-profile-actions-header {
         flex-direction: column;
-        /* Boutons de sauvegarde en colonne */
         align-items: stretch;
-        /* Pleine largeur */
         gap: 10px;
     }
 
     .t-profile-btn-primary,
     .t-profile-btn-secondary {
         min-width: unset;
-        /* Retire le min-width */
         width: 100%;
-        /* Pleine largeur */
     }
 }
 
@@ -301,7 +290,6 @@ body {
 
     .t-profile-photo-upload {
         flex-direction: column;
-        /* Stack avatar et boutons verticalement */
         align-items: flex-start;
         gap: 10px;
     }
@@ -313,7 +301,6 @@ body {
 
     .t-profile-password-actions {
         justify-content: center;
-        /* Centrer le bouton "Update Password" */
     }
 
     .t-profile-password-actions .t-profile-btn-primary {

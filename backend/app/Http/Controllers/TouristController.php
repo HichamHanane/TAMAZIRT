@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\SentRequest;
 use App\Models\NavigatorProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class TouristController extends Controller
@@ -131,12 +132,10 @@ class TouristController extends Controller
     {
         $user = $request->user();
 
-        // 1. Role Check: Ensure only tourists can use this
         if (!$user->hasRole('tourist')) {
             return response()->json(['message' => 'Unauthorized: Only tourists can update their profile.'], 403);
         }
 
-        // 2. Validation
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => [
@@ -146,18 +145,35 @@ class TouristController extends Controller
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
+            'avatar' => 'nullable|image|max:1024',
         ]);
 
-        $user->update([
+        $updateData = [
             'name' => $validated['name'],
             'email' => $validated['email'],
-        ]);
+        ];
+
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+
+            if ($user->avatar) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+
+            $path = $file->store('avatars', 'public');
+            $updateData['avatar'] = $path;
+        }
+
+        $user->update($updateData);
+
+        $updatedUser = $user->fresh();
 
         return response()->json([
             'message' => 'Profile updated successfully!',
             'user' => [
-                'name' => $user->name,
-                'email' => $user->email,
+                'name' => $updatedUser->name,
+                'email' => $updatedUser->email,
+                'avatar_url' => $updatedUser->avatar_url,
             ],
         ], 200);
     }

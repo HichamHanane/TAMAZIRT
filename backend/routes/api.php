@@ -28,6 +28,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
         'user' => [
             'name' => $user->name,
             'email' => $user->email,
+            'avatar_url' => $user->avatar_url,
             'role' => $user->roles->pluck('name')->first(),
         ],
     ], 200);
