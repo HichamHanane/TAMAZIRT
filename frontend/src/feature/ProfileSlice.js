@@ -70,12 +70,12 @@ export const updateUserProfile = createAsyncThunk(
     }
 );
 
-//update navigtore password
+//update profile password
 export const updatePassword = createAsyncThunk(
     'user/updatePassword',
     async (payload, { rejectWithValue }) => {
-        console.log('the data inside the slice : ',payload);
-        
+        console.log('the data inside the slice : ', payload);
+
         try {
             const response = await api.put('/user/password', payload);
             console.log('Password update response:', response);
@@ -86,6 +86,25 @@ export const updatePassword = createAsyncThunk(
         }
     }
 );
+
+//update tourist profile (name and email)
+export const updateTouristProfile = createAsyncThunk(
+    'touristProfile/update',
+    async (data, { rejectWithValue }) => {
+        console.log('Data To send update tourist profile :', data);
+
+        try {
+            const response = await api.put(`/tourist/profile`, data);
+            console.log('Edit tourist profile response : ', response);
+            return response.data.user;
+        } catch (error) {
+            console.log('Error while editing the tourist profile :', error);
+            const message = error.response?.data?.message || error.message || 'Failed to update tourist profile';
+            return rejectWithValue(message);
+        }
+    }
+);
+
 
 const ProfileSlice = createSlice({
     name: 'userProfile',
@@ -106,6 +125,10 @@ const ProfileSlice = createSlice({
         password_update_status: {
             isLoading: false,
             error: null,
+        },
+        tourist_profile: {
+            isLoading: false,
+            error: false
         }
     },
     reducers: {},
@@ -196,6 +219,23 @@ const ProfileSlice = createSlice({
             .addCase(updatePassword.rejected, (state, action) => {
                 state.password_update_status.isLoading = false;
                 state.password_update_status.error = action.payload;
+            })
+
+            //update tourist profile
+            .addCase(updateTouristProfile.pending, (state) => {
+                console.log('update tourist profile pending');
+                state.tourist_profile.isLoading = true;
+                state.tourist_profile.error = null;
+            })
+            .addCase(updateTouristProfile.fulfilled, (state, action) => {
+                console.log('update tourist profile fulfilled :', action);
+                state.tourist_profile.isLoading = false;
+                state.user = { ...state.user, ...action.payload };
+            })
+            .addCase(updateTouristProfile.rejected, (state, action) => {
+                console.log('update tourist profile rejected :', action);
+                state.tourist_profile.isLoading = false;
+                state.tourist_profile.error = action.payload;
             })
     },
 });

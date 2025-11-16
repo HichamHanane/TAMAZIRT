@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\SentRequest;
 use App\Models\NavigatorProfile;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TouristController extends Controller
 {
@@ -124,4 +125,41 @@ class TouristController extends Controller
             'message' => 'Request deleted successfully.'
         ]);
     }
+
+    //edit my profile 
+    public function updateProfile(Request $request)
+    {
+        $user = $request->user();
+
+        // 1. Role Check: Ensure only tourists can use this
+        if (!$user->hasRole('tourist')) {
+            return response()->json(['message' => 'Unauthorized: Only tourists can update their profile.'], 403);
+        }
+
+        // 2. Validation
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($user->id),
+            ],
+        ]);
+
+        $user->update([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+        ]);
+
+        return response()->json([
+            'message' => 'Profile updated successfully!',
+            'user' => [
+                'name' => $user->name,
+                'email' => $user->email,
+            ],
+        ], 200);
+    }
+
 }

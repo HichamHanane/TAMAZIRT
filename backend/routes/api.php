@@ -87,6 +87,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/tourist/requests', [TouristController::class, 'storeRequest']);
     Route::get('/tourist/requests', [TouristController::class, 'myRequests']);
     Route::delete('/tourist/requests/{id}', [TouristController::class, 'destroy']);
+    Route::put('/tourist/profile', [TouristController::class, 'updateProfile']);
     // Route::delete(uri: '/tourist/requests/{id}', [TouristController::class, 'destroy']);
 
 });
@@ -101,6 +102,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 // navigator profile
 Route::get('/navigator-profile', [NavigatorProfileController::class, 'myProfile'])->middleware('auth:sanctum');
+
 Route::put('/user/password', [NavigatorProfileController::class, 'updatePassword'])->middleware('auth:sanctum');
 
 Route::get('/test', function () {

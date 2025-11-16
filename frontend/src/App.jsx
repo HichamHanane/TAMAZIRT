@@ -26,6 +26,7 @@ import GuideRequestsPage from './components/NavigatorDashboard/GuideRequestsPage
 import GuideReviewsPage from './components/NavigatorDashboard/GuideReviewsPage/GuideReviewsPage'
 import GuideProtectedRoutes from './components/ProtectedRoutes/GuideProtectedRoutes'
 import TouristDashboardLayout from './Layouts/TouristDashboardLayout/TouristDashboardLayout'
+import TouristProfilePage from './components/TouristDashboard/TouristProfilePage/TouristProfilePage'
 
 function App() {
 
@@ -85,9 +86,8 @@ function App() {
         </Route>
 
         {/* Tourist dashboard */}
-
         <Route path='/tourist' element={<TouristDashboardLayout />}>
-          <Route index element={<GuideProfilePage />} />
+          <Route index element={<TouristProfilePage />} />
         </Route>
 
 

@@ -1,0 +1,322 @@
+:root {
+    --t-profile-bg-light: #f9f7f4;
+    --t-profile-text-dark: #5d4a3b;
+    --t-profile-text-subtle: #6c757d;
+    --t-profile-border-light: #e0e0e0;
+    --t-profile-card-bg: #ffffff;
+    --t-profile-shadow: rgba(0, 0, 0, 0.08);
+
+    --t-profile-btn-primary-bg: #6f4e37;
+    --t-profile-btn-primary-hover: #5a3c30;
+    --t-profile-btn-secondary-bg: #e0e0e0;
+    --t-profile-btn-secondary-hover: #d0d0d0;
+    --t-profile-btn-text-light: #ffffff;
+    --t-profile-btn-text-dark: #333333;
+    --t-profile-input-border: #ccc;
+    --t-profile-input-focus-border: #6f4e37;
+    --t-profile-error-red: #e53e3e;
+}
+
+body {
+    background-color: var(--t-profile-bg-light);
+}
+
+.t-profile-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--t-profile-bg-light);
+    min-height: calc(100vh - 60px);
+}
+
+.t-profile-page-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--t-profile-border-light);
+}
+
+.t-profile-page-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--t-profile-text-dark);
+    margin: 0 0 10px 0;
+}
+
+.t-profile-page-subtitle {
+    font-size: 18px;
+    color: var(--t-profile-text-subtle);
+    margin: 0;
+}
+
+.t-profile-section-card {
+    background-color: var(--t-profile-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--t-profile-shadow);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.t-profile-section-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--t-profile-border-light);
+}
+
+.t-profile-section-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--t-profile-text-dark);
+    margin: 0;
+}
+
+.t-profile-section-description {
+    font-size: 15px;
+    color: var(--t-profile-text-subtle);
+    margin: 5px 0 0 0;
+}
+
+/* --- Formulaire --- */
+.t-profile-form {
+    /* Style de base pour le formulaire */
+}
+
+.t-profile-actions-header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.t-profile-btn-primary,
+.t-profile-btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    /* Pour centrer l'icône de chargement */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 120px;
+}
+
+.t-profile-btn-primary {
+    background-color: var(--t-profile-btn-primary-bg);
+    color: var(--t-profile-btn-text-light);
+}
+
+.t-profile-btn-primary:hover:not(:disabled) {
+    background-color: var(--t-profile-btn-primary-hover);
+}
+
+.t-profile-btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.t-profile-btn-secondary {
+    background-color: var(--t-profile-btn-secondary-bg);
+    color: var(--t-profile-btn-text-dark);
+}
+
+.t-profile-btn-secondary:hover:not(:disabled) {
+    background-color: var(--t-profile-btn-secondary-hover);
+}
+
+
+/* --- Photo de Profil --- */
+.t-profile-photo-upload {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--t-profile-border-light);
+}
+
+.t-profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--t-profile-border-light);
+}
+
+.t-profile-change-photo-btn {
+    background-color: transparent;
+    border: 1px solid var(--t-profile-border-light);
+    color: var(--t-profile-text-dark);
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.t-profile-change-photo-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #c0c0c0;
+}
+
+.t-profile-photo-info {
+    font-size: 13px;
+    color: var(--t-profile-text-subtle);
+    margin: 5px 0 0 0;
+}
+
+/* --- Grille des champs de formulaire --- */
+.t-profile-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.t-form-group {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.t-form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--t-profile-text-dark);
+    margin-bottom: 8px;
+}
+
+.t-profile-form input[type="text"],
+.t-profile-form input[type="email"],
+.t-profile-form input[type="password"],
+.t-profile-form input[type="tel"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--t-profile-input-border);
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--t-profile-text-dark);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.t-profile-form input:focus {
+    border-color: var(--t-profile-input-focus-border);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(111, 78, 55, 0.2);
+}
+
+.t-input-error {
+    border-color: var(--t-profile-error-red) !important;
+}
+
+.t-error-message {
+    color: var(--t-profile-error-red);
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+/* --- Sécurité du Compte Actions --- */
+.t-profile-password-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+
+/* --- Loader Spin --- */
+.t-profile-loader-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* --- RESPONSIVITY --- */
+
+/* Tablettes et petits écrans (jusqu'à 992px) */
+@media (max-width: 992px) {
+    .t-profile-container {
+        padding: 20px;
+    }
+
+    .t-profile-page-title {
+        font-size: 32px;
+    }
+
+    .t-profile-page-subtitle {
+        font-size: 16px;
+    }
+
+    .t-profile-section-card {
+        padding: 25px;
+    }
+
+    .t-profile-form-grid {
+        grid-template-columns: 1fr;
+        /* Une seule colonne sur tablette */
+    }
+
+    .t-profile-actions-header {
+        flex-direction: column;
+        /* Boutons de sauvegarde en colonne */
+        align-items: stretch;
+        /* Pleine largeur */
+        gap: 10px;
+    }
+
+    .t-profile-btn-primary,
+    .t-profile-btn-secondary {
+        min-width: unset;
+        /* Retire le min-width */
+        width: 100%;
+        /* Pleine largeur */
+    }
+}
+
+/* Mobiles (jusqu'à 600px) */
+@media (max-width: 600px) {
+    .t-profile-container {
+        padding: 15px;
+    }
+
+    .t-profile-page-title {
+        font-size: 28px;
+    }
+
+    .t-profile-page-subtitle {
+        font-size: 14px;
+    }
+
+    .t-profile-section-card {
+        padding: 20px;
+    }
+
+    .t-profile-photo-upload {
+        flex-direction: column;
+        /* Stack avatar et boutons verticalement */
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .t-profile-avatar {
+        width: 70px;
+        height: 70px;
+    }
+
+    .t-profile-password-actions {
+        justify-content: center;
+        /* Centrer le bouton "Update Password" */
+    }
+
+    .t-profile-password-actions .t-profile-btn-primary {
+        width: 100%;
+    }
+}
