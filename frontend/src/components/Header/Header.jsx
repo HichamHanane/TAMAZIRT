@@ -84,6 +84,10 @@ const AuthButtons = ({ navigate, handleLinkClick }) => {
               navigate('/guide');
               return
             }
+            if (user?.role == "tourist") {
+              navigate('/tourist');
+              return
+            }
           }}
         >
           <LayoutDashboard size={18} />

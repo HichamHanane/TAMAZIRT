@@ -28,6 +28,7 @@ import GuideProtectedRoutes from './components/ProtectedRoutes/GuideProtectedRou
 import TouristDashboardLayout from './Layouts/TouristDashboardLayout/TouristDashboardLayout'
 import TouristProfilePage from './components/TouristDashboard/TouristProfilePage/TouristProfilePage'
 import TouristRequestsPage from './components/TouristDashboard/TouristRequestsPage/TouristRequestsPage'
+import TouristProtectedRoutes from './components/ProtectedRoutes/TouristProductedRoutes'
 
 function App() {
 
@@ -81,22 +82,20 @@ function App() {
             <Route path="profile" element={<GuideProfilePage />} />
             <Route path="requests" element={<GuideRequestsPage />} />
             <Route path="reviews" element={<GuideReviewsPage />} />
-            {/* Add other guide-specific pages here (Trip Requests, Reviews, Calendar) */}
-            {/* <Route path="calendar" element={<GuideCalendarPage />} /> */}
           </Route>
         </Route>
 
         {/* Tourist dashboard */}
-        <Route path='/tourist' element={<TouristDashboardLayout />}>
-          <Route index element={<TouristProfilePage />} />
-          <Route path="profile" element={<TouristProfilePage />} />
-          <Route path="requests" element={<TouristRequestsPage />} />
+        <Route element={<TouristProtectedRoutes />}>
+          <Route path='/tourist' element={<TouristDashboardLayout />}>
+            <Route index element={<TouristProfilePage />} />
+            <Route path="profile" element={<TouristProfilePage />} />
+            <Route path="requests" element={<TouristRequestsPage />} />
 
+          </Route>
         </Route>
 
-
-        <Route path="dashboard/navigator/profile" element={<Test />} />
-
+        {/* <Route path="dashboard/navigator/profile" element={<Test />} /> */}
         <Route path="/terms" element={<TermsPolicyPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
