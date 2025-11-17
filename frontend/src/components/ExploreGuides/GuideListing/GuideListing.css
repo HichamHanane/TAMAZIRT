@@ -10,7 +10,7 @@
 .guide-listing-page {
     background-color: var(--color-background-light);
     padding: 20px;
-    /* font-family: 'Poppins', Times, serif; */
+    font-family: 'Poppins', Times, serif;
 }
 
 
@@ -68,10 +68,8 @@
 
 .search-button:hover {
     background-color: #A0522D;
-    /* Une teinte plus foncée */
 }
 
-/* --- Section 2: Liste des Guides --- */
 
 .featured-guides-section {
     padding: 40px 20px;
@@ -85,14 +83,12 @@
     margin-bottom: 30px;
 }
 
-/* Grille des guides (Desktop: 3 colonnes) */
 .guides-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
-/* Carte du Guide */
 .guide-card {
     background-color: var(--color-card-background);
     border-radius: 15px;
@@ -102,15 +98,10 @@
 }
 
 .guide-image-container {
-    /* Set a consistent aspect ratio container */
     width: 100%;
-    /* Use a fixed height or padding-bottom for aspect ratio, e.g., 75% for 4:3 */
-    /* Let's use a fixed height as before, but ensure the image fits properly */
     height: 300px;
-    /* Keeping your previous fixed height */
     overflow: hidden;
     border-top-left-radius: 15px;
-    /* Match card radius */
     border-top-right-radius: 15px;
 }
 
@@ -165,18 +156,16 @@
     display: flex;
     gap: 10px;
     padding: 0 20px;
-    /* Alignement avec le contenu de la carte */
 }
 
 .guide_card_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: blueviolet; */
 }
 
 .guide_avg_rating {
-    color: var( --color-text-dark);
+    color: var(--color-text-dark);
     text-transform: capitalize;
     font-size: 1rem;
     margin: 10px 0 5px;
@@ -213,7 +202,6 @@
     background-color: var(--color-tag-background);
 }
 
-/* --- Pagination Styles --- */
 .pagination-controls {
     display: flex;
     justify-content: center;
@@ -252,55 +240,41 @@
     color: #555;
 }
 
-/* --- RÉACTIVITÉ (Mobile & Tablette) --- */
-
-/* Appareils Tablette (entre 768px et 1024px) */
 @media (max-width: 1024px) {
     .guides-grid {
-        /* Deux colonnes au lieu de trois */
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 }
 
-/* Appareils Mobiles (moins de 768px) */
 @media (max-width: 768px) {
 
     .hero-title {
         font-size: 2rem;
     }
 
-    /* La barre de recherche passe en mode empilé (full width) */
     .search-bar-container {
         flex-direction: column;
         gap: 15px;
         padding: 15px;
-        /* Plus d'espace autour */
         max-width: 90%;
-        /* Prend plus de place sur l'écran */
     }
 
     .search-input {
         padding: 12px 15px;
-        /* Rendre l'input plus facile à taper */
     }
 
     .search-button {
         width: 100%;
-        /* Le bouton prend toute la largeur */
         padding: 12px 0;
     }
 
-    /* Les cartes de guide passent en mode une seule colonne */
     .guides-grid {
         grid-template-columns: 1fr;
         gap: 25px;
     }
 
-    /* Les actions sur la carte restent en deux boutons de pleine largeur */
     .guide-actions {
         flex-direction: row;
-        /* Maintenir les boutons côte à côte si l'espace le permet */
-        /* Si tu voulais les empiler: flex-direction: column; */
     }
 }

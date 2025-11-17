@@ -31,40 +31,81 @@ export const fetchNavigators = createAsyncThunk(
     }
 );
 
+// setn request to the guide
+export const sendNavigatorRequest = createAsyncThunk(
+    'navigators/sendRequest',
+    async (requestData, { rejectWithValue }) => {
+        console.log('the recieved data from the component :', requestData);
+
+        try {
+            const response = await api.post(
+                'tourist/requests',
+                requestData
+            );
+            console.log('Setn request to the guide response : ', response);
+
+            return response.data;
+
+        } catch (error) {
+            const errorMessage = error.response?.data?.message || 'Submission failed.';
+            return rejectWithValue(errorMessage);
+        }
+    }
+);
+
 const guideSlice = createSlice({
     name: 'guides',
     initialState: {
-        items: [],          // Array of navigator data
-        status: 'idle',     // 'idle' | 'loading' | 'succeeded' | 'failed'
+        items: [],
+        status: 'idle',
         error: null,
-        // Pagination state
         currentPage: 1,
         lastPage: 1,
         total: 0,
+        sent_request: {
+            isLoading: false,
+            error: null
+        }
     },
     reducers: {
-        // Reducers for simple synchronous actions (none needed here for now)
     },
     extraReducers: (builder) => {
         builder
-            // Handling the PENDING state (loading)
+            // fetch all the navigators
             .addCase(fetchNavigators.pending, (state) => {
                 state.status = 'loading';
             })
-            // Handling the FULFILLED state (success)
             .addCase(fetchNavigators.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                // action.payload contains the paginated response object from Laravel
-                state.items = action.payload.data; // The actual list of guides
+                state.items = action.payload.data;
                 state.currentPage = action.payload.current_page;
                 state.lastPage = action.payload.last_page;
                 state.total = action.payload.total;
                 state.error = null;
             })
-            // Handling the REJECTED state (error)
             .addCase(fetchNavigators.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.payload || action.error.message;
+            })
+
+
+            // sent request to the guide
+            .addCase(sendNavigatorRequest.pending, (state) => {
+                console.log("setn request to guide pending :");
+
+                state.sent_request.isLoading = true
+                state.sent_request.error = null;
+            })
+            .addCase(sendNavigatorRequest.fulfilled, (state, action) => {
+                console.log("setn request to guide fulfilled :", action);
+
+                state.sent_request.isLoading = false
+                state.sent_request.error = null;
+            })
+            .addCase(sendNavigatorRequest.rejected, (state, action) => {
+                console.log("setn request to guide rejected :", action);
+                state.sent_request.isLoading = false
+                state.sent_request.error = action.payload;
             });
     },
 });

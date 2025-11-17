@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchNavigators } from '../../../feature/GuideSlice';
 import { Star, StarIcon } from 'lucide-react';
 import GuideDetailsModal from '../GuideDetailsModal/GuideDetailsModal';
+import SendRequestModal from '../SendRequestModal/SendRequestModal';
 
 const base_url = import.meta.env.VITE_BACKEND_BASE_URL
 
 
-const GuideCard = ({ guide, onDetailsClick }) => (
+const GuideCard = ({ guide, onDetailsClick, onSendRequestClick }) => (
     <div className="guide-card">
         <div className="guide-image-container">
             {/* Display the guide's avatar or a default image */}
@@ -35,7 +36,12 @@ const GuideCard = ({ guide, onDetailsClick }) => (
                 ))}
             </div>
             <div className="guide-actions">
-                <button className="btn-request">Send Request</button>
+                <button
+                    className="btn-request"
+                    onClick={() => onSendRequestClick(guide)}
+                >
+                    Send Request
+                </button>
                 <button
                     className="btn-details"
                     onClick={() => onDetailsClick(guide)}
@@ -59,6 +65,8 @@ const GuideListing = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedGuide, setSelectedGuide] = useState(null)
 
+    const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
+
     const openModal = (guide) => {
         setSelectedGuide(guide);
         setIsModalOpen(true);
@@ -68,6 +76,20 @@ const GuideListing = () => {
         setIsModalOpen(false);
         setSelectedGuide(null);
     }
+
+
+    const openRequestModal = (guide) => {
+        setSelectedGuide(guide);
+        setIsRequestModalOpen(true);
+    };
+
+    const closeRequestModal = () => {
+        setIsRequestModalOpen(false);
+        setSelectedGuide(null);
+    }
+
+
+
 
 
     const handlePageChange = (page) => {
@@ -101,8 +123,12 @@ const GuideListing = () => {
         content = (
             <div className="guides-grid">
                 {items.map((guide) => (
-                    // Note: Using guide.id as the key is safer in a real app
-                    <GuideCard key={guide.id} guide={guide} onDetailsClick={openModal} />
+                    <GuideCard
+                        key={guide.id}
+                        guide={guide}
+                        onDetailsClick={openModal}
+                        onSendRequestClick={openRequestModal}
+                    />
                 ))}
             </div>
         );
@@ -121,6 +147,7 @@ const GuideListing = () => {
                         placeholder="Search by city..."
                         className="search-input"
                         onChange={(e) => setCity(e.target.value)}
+
                     />
                     <button className="search-button" onClick={handleSearch}>Search</button>
                 </div>
@@ -159,6 +186,13 @@ const GuideListing = () => {
 
             </section>
             {isModalOpen && <GuideDetailsModal guide={selectedGuide} onClose={closeModal} />}
+
+            {isRequestModalOpen && (
+                <SendRequestModal
+                    guide={selectedGuide}
+                    onClose={closeRequestModal}
+                />
+            )}
         </div>
     );
 };

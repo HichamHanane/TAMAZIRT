@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\SentRequest;
 use App\Models\NavigatorProfile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -42,6 +43,8 @@ class TouristController extends Controller
             return response()->json(['message' => 'Unauthorized. Only tourists can send requests.'], 403);
         }
 
+        logger($request->all());
+
         $validated = $request->validate([
             'navigator_id' => 'required|exists:users,id',
             'date' => 'required|date|after:now',
@@ -61,6 +64,8 @@ class TouristController extends Controller
                 'message' => 'You already have a pending or confirmed request with this navigator.'
             ], 409);
         }
+
+        $validated['date'] = Carbon::parse($validated['date'])->toDateTimeString();
 
         $requestData = \App\Models\Request::create([
             'tourist_id' => $user->id,
@@ -208,6 +213,7 @@ class TouristController extends Controller
             'destination' => 'required|string|max:255',
             'number_of_people' => 'required|integer|min:1',
         ]);
+        $validated['date'] = Carbon::parse($validated['date'])->toDateTimeString();
 
         $requestModel->update($validated);
 
