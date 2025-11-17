@@ -25,7 +25,7 @@ class TouristController extends Controller
             $query->whereJsonContains('languages', $request->language);
         }
 
-        $navigators = $query->get();
+        $navigators = $query->paginate(15);
 
         return response()->json([
             'data' => $navigators

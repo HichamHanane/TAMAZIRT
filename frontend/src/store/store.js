@@ -6,6 +6,9 @@ import touristsReducer from '../feature/touristsSlice'
 import ProfileSlice from '../feature/ProfileSlice'
 import RequestSlice from '../feature/RequestSlice'
 import ReviewSlice from '../feature/ReviewSlice'
+import GuideSlice from '../feature/GuideSlice'
+
+
 export const store = configureStore({
     reducer: {
         auth: AuthSlice,
@@ -15,5 +18,6 @@ export const store = configureStore({
         profile: ProfileSlice,
         requests: RequestSlice,
         reviews: ReviewSlice,
+        guides: GuideSlice
     },
 });

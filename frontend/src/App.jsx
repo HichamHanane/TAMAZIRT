@@ -29,6 +29,9 @@ import TouristDashboardLayout from './Layouts/TouristDashboardLayout/TouristDash
 import TouristProfilePage from './components/TouristDashboard/TouristProfilePage/TouristProfilePage'
 import TouristRequestsPage from './components/TouristDashboard/TouristRequestsPage/TouristRequestsPage'
 import TouristProtectedRoutes from './components/ProtectedRoutes/TouristProductedRoutes'
+import ExploreNavigators from './pages/guides/GuidesPage'
+import GuideListing from './pages/guides/GuidesPage'
+import GuidesPage from './pages/guides/GuidesPage'
 
 function App() {
 
@@ -63,6 +66,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/test" element={<Test />} />
         <Route path="/application-form" element={<NavigatorApplication />} />
+        <Route path="/guides" element={<GuidesPage />} />
 
         {/* admin dashboard */}
         <Route element={<AdminProtectedRoutes />}>
