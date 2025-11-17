@@ -337,8 +337,8 @@ const TouristRequestsPage = () => {
 
             {modalOpen && requestToDelete && (
                 <DeleteConfirmationModal
-                    requestId={requestToDelete.id}
-                    requestName={requestToDelete.navigator.name}
+                    requestId={requestToDelete?.id}
+                    requestName={requestToDelete?.navigator?.name}
                     onClose={handleCloseModal}
                     onConfirm={handleConfirmDelete}
                     isDeleting={isDeleting}

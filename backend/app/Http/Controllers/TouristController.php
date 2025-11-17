@@ -65,7 +65,7 @@ class TouristController extends Controller
             ], 409);
         }
 
-        $validated['date'] = Carbon::parse($validated['date'])->toDateTimeString();
+        // $validated['date'] = Carbon::parse($validated['date'])->toDateTimeString();
 
         $requestData = \App\Models\Request::create([
             'tourist_id' => $user->id,
@@ -213,7 +213,7 @@ class TouristController extends Controller
             'destination' => 'required|string|max:255',
             'number_of_people' => 'required|integer|min:1',
         ]);
-        $validated['date'] = Carbon::parse($validated['date'])->toDateTimeString();
+        // $validated['date'] = Carbon::parse($validated['date'])->toDateTimeString();
 
         $requestModel->update($validated);
 

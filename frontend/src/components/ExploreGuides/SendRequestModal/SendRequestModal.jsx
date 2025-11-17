@@ -16,6 +16,7 @@ const base_url = import.meta.env.VITE_BACKEND_BASE_URL
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
+const pad = (n) => String(n).padStart(2, '0');
 const requestSchema = yup.object().shape({
     navigator_id: yup
         .number()
@@ -67,25 +68,41 @@ const SendRequestModal = ({ guide, onClose }) => {
         }
     });
 
+    const normalizeDateToNoon = (dateStr) => {
+        if (!dateStr) return '';
+        // plain YYYY-MM-DD -> keep date and set local noon
+        if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+            return `${dateStr} 12:00:00`;
+        }
+        // ISO or datetime string -> parse and format to "YYYY-MM-DD HH:mm:ss" (local)
+        const dt = new Date(dateStr);
+        if (isNaN(dt)) return dateStr; // fallback
+        return `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())} ${pad(dt.getHours())}:${pad(dt.getMinutes())}:${pad(dt.getSeconds())}`;
+    };
+
 
     const guideName = guide.user.name;
 
     const onSubmit = async (data) => {
-        
+        const payload = {
+            ...data,
+            date: normalizeDateToNoon(data.date),
+        };
 
         try {
-            console.log('data to sent to the backend :', data);
+            console.log('data to sent to the backend :', payload);
 
-            let result = await dispatch(sendNavigatorRequest(data));
+            let result = await dispatch(sendNavigatorRequest(payload));
 
             if (result.meta.requestStatus === "fulfilled") {
                 onClose();
                 toast.success('Your request is sent succesfully');
             }
             else {
-                toast.error(error)
-                console.log('the backend is return an error :', error);
 
+
+                toast.error(result.payload);
+                console.log('the backend returned an error :', result);
             }
 
         } catch (error) {
