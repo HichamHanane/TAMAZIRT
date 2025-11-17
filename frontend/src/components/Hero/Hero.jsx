@@ -21,7 +21,7 @@ const Hero = () => {
         </p>
 
         <div className="hero-ctas">
-          <button className="cta-button primary" >EXPLORE NAVIGATORS</button>
+          <button className="cta-button primary" onClick={() => navigate('/guides')}>EXPLORE NAVIGATORS</button>
           <button className="cta-button secondary" onClick={() => navigate('/application-form')}>BECOME A NAVIGATOR</button>
         </div>
       </div>
