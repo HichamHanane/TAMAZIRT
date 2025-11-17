@@ -53,6 +53,18 @@ class TouristController extends Controller
             'number_of_people' => 'required|integer|min:1',
         ]);
 
+
+        $check_availability = \App\Models\Request::where('navigator_id', $validated['navigator_id'])
+            ->where('date', $validated['date'])
+            ->exists();
+
+
+        if ($check_availability) {
+            return response()->json([
+                "message" => "This guide unavailable in this date"
+            ],409);
+        }
+
         // stop duplicate requests
         $exists = \App\Models\Request::where('tourist_id', $user->id)
             ->where('navigator_id', $validated['navigator_id'])
