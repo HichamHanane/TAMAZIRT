@@ -101,7 +101,7 @@ const EditNavigatorModal = ({ isOpen, onClose, navigator }) => {
                     <form onSubmit={handleSubmit(onSubmit)} className="edit-form-layout">
 
                         <div className="form-column core-details">
-                            <h3 className="column-title">Core Details</h3>
+                            {/* <h3 className="column-title">Core Details</h3>
 
                             <div className="avatar-preview-section">
                                 <img
@@ -110,7 +110,7 @@ const EditNavigatorModal = ({ isOpen, onClose, navigator }) => {
                                     className="profile-avatar-preview"
                                 />
                                 <button type="button" className="change-photo-btn">Change Photo</button>
-                            </div>
+                            </div> */}
 
                             <div className="form-group">
                                 <label htmlFor="fullName">Full Name</label>
@@ -206,9 +206,9 @@ const EditNavigatorModal = ({ isOpen, onClose, navigator }) => {
                                 {errors.bio && <p className="error-message">{errors.bio.message}</p>}
                             </div>
 
-                            <div className="form-group verification-group">
+                            <div className="edit-navigator-modal-form-group verification-group">
                                 <Briefcase size={20} className="status-icon" />
-                                <div className="toggle-container">
+                                <div className="edit-navigator-modal-toggle-container">
                                     <label htmlFor="verified">Verified Status</label>
                                     <label className="switch">
                                         <input
@@ -227,7 +227,7 @@ const EditNavigatorModal = ({ isOpen, onClose, navigator }) => {
                 </div>
 
                 <div className="modal-actions full-width-actions">
-                    <button type="button" className="cancel-btn" onClick={handleClose} disabled={isSubmitting}>
+                    <button type="button" className="edit-navigator-modal-cancel-btn" onClick={handleClose} disabled={isSubmitting}>
                         Cancel
                     </button>
                     <button

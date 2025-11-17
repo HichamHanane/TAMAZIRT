@@ -1,5 +1,3 @@
-// src/components/NavigatorsManagement.jsx (Mis à jour)
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Search, Eye, Edit, Trash2, Plus, ChevronLeft, ChevronRight, Loader2, AlertTriangle } from 'lucide-react';
@@ -142,7 +140,7 @@ const NavigatorsManagement = () => {
                                             </button>
                                             <button
                                                 title="Edit"
-                                                className="action-btn edit-btn"
+                                                className="list-navigator-action-btn edit-btn"
                                                 onClick={() => openEditModal(profile)}
                                             >
                                                 <Edit size={18} />

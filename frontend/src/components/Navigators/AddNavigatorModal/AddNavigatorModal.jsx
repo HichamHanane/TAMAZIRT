@@ -86,7 +86,7 @@ const AddNavigatorModal = ({ isOpen, onClose, onAddNavigator }) => {
                                 className={errors.fullName ? 'input-error' : ''}
                             />
                         </div>
-                        {errors.full_name && <p className="error-message">{errors.full_name.message}</p>}
+                        {errors.full_name && <p className="add-navigator-error-message">{errors.full_name.message}</p>}
                     </div>
 
                     <div className="form-group">
@@ -101,7 +101,7 @@ const AddNavigatorModal = ({ isOpen, onClose, onAddNavigator }) => {
                                 className={errors.email ? 'input-error' : ''}
                             />
                         </div>
-                        {errors.email && <p className="error-message">{errors.email.message}</p>}
+                        {errors.email && <p className="add-navigator-error-message">{errors.email.message}</p>}
                     </div>
 
                     <div className="form-group">
@@ -116,7 +116,7 @@ const AddNavigatorModal = ({ isOpen, onClose, onAddNavigator }) => {
                                 className={errors.password ? 'input-error' : ''}
                             />
                         </div>
-                        {errors.password && <p className="error-message">{errors.password.message}</p>}
+                        {errors.password && <p className="add-navigator-error-message">{errors.password.message}</p>}
                     </div>
 
                     <div className="form-group">
@@ -131,12 +131,12 @@ const AddNavigatorModal = ({ isOpen, onClose, onAddNavigator }) => {
                                 className={errors.city ? 'input-error' : ''}
                             />
                         </div>
-                        {errors.city && <p className="error-message">{errors.city.message}</p>}
+                        {errors.city && <p className="add-navigator-error-message">{errors.city.message}</p>}
                     </div>
 
-                    {error && <p className="error-message">{error}</p>}
+                    {error && <p className="add-navigator-error-message">{error}</p>}
                     <div className="modal-actions">
-                        <button type="button" className="cancel-btn" onClick={handleClose} disabled={isSubmitting}>
+                        <button type="button" className="add-navigator-cancel-btn" onClick={handleClose} disabled={isSubmitting}>
                             Cancel
                         </button>
                         <button

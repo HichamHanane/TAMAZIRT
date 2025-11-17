@@ -84,13 +84,13 @@
     border-bottom: 2px solid var(--color-border-light);
 }
 
-.form-group {
+.edit-navigator-modal-form-group {
     display: flex;
     flex-direction: column;
     text-align: left;
 }
 
-.form-group label {
+.edit-navigator-modal-form-group label {
     font-size: 14px;
     font-weight: 600;
     color: var(--color-text-dark);
@@ -110,7 +110,7 @@
 }
 
 .input-with-icon input,
-.form-group textarea {
+.edit-navigator-modal-form-group textarea {
     width: 100%;
     padding: 14px 15px 14px 45px;
     border: 1px solid var(--color-border-light);
@@ -121,7 +121,7 @@
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.form-group textarea {
+.edit-navigator-modal-form-group textarea {
     padding: 14px 15px;
     height: 100px;
     resize: vertical;
@@ -186,7 +186,7 @@
     color: var(--color-primary-brown);
 }
 
-.verification-group .toggle-container {
+.verification-group .edit-navigator-modal-toggle-container {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -256,7 +256,7 @@ input:checked+.slider:before {
     flex-shrink: 0;
 }
 
-.cancel-btn,
+.edit-navigator-modal-cancel-btn,
 .add-btn {
     padding: 10px 20px;
     border-radius: 8px;
@@ -265,7 +265,7 @@ input:checked+.slider:before {
     transition: background-color 0.2s;
 }
 
-.cancel-btn {
+.edit-navigator-modal-cancel-btn {
     background: none;
     border: 1px solid var(--color-border-light);
     color: var(--color-text-dark);
@@ -313,7 +313,7 @@ input:checked+.slider:before {
         gap: 10px;
     }
 
-    .cancel-btn,
+    .edit-navigator-modal-cancel-btn,
     .add-btn {
         width: 100%;
     }

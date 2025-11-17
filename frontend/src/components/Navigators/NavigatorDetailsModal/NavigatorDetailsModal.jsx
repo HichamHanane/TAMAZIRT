@@ -36,7 +36,7 @@ const NavigatorDetailsModal = ({ isOpen, onClose, navigator }) => {
 
                 <div className="details-card-container">
 
-                    <div className="profile-header">
+                    <div className="details-navigator-modal-profile-header">
                         <img
                             src={getAvatarUrl(id)}
                             alt={name}

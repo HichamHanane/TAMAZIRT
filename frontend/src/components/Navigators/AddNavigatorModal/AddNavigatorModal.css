@@ -134,10 +134,10 @@
     border-color: var(--color-error);
 }
 
-.error-message {
+.add-navigator-error-message{
     color: var(--color-error);
     font-size: 12px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     margin-left: 5px;
 }
 
@@ -148,7 +148,7 @@
     margin-top: 25px;
 }
 
-.cancel-btn,
+.add-navigator-cancel-btn,
 .add-btn {
     padding: 12px 25px;
     border-radius: 8px;
@@ -159,12 +159,12 @@
     border: none;
 }
 
-.cancel-btn {
+.add-navigator-cancel-btn {
     background-color: transparent;
     color: var(--color-text-subtle);
 }
 
-.cancel-btn:hover {
+.add-navigator-cancel-btn:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -195,7 +195,7 @@
         gap: 10px;
     }
 
-    .cancel-btn,
+    .add-navigator-cancel-btn,
     .add-btn {
         width: 100%;
         text-align: center;
