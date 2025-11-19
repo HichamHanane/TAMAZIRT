@@ -49,9 +49,7 @@ const GuideDetailsModal = ({ guide, onClose }) => {
                             <p><Phone size={18} className="lucide-icon" /> {guide.phone_number}</p>
                         </div>
 
-                        <div className="modal-book-action">
-                            <button className="btn-book-now">Book Now</button>
-                        </div>
+                        
                     </div>
 
                 </div>

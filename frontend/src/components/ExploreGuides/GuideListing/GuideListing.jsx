@@ -119,12 +119,12 @@ const GuideListing = () => {
         content = <div className="loading-message">Loading guides...</div>;
     } else if (status === 'failed') {
         content = <div className="error-message">Error: {error}</div>;
-    } else if (status === 'succeeded' && items.length > 0) {
+    } else if (status === 'succeeded' && items?.length > 0) {
         content = (
             <div className="guides-grid">
-                {items.map((guide) => (
+                {items?.map((guide) => (
                     <GuideCard
-                        key={guide.id}
+                        key={guide?.id}
                         guide={guide}
                         onDetailsClick={openModal}
                         onSendRequestClick={openRequestModal}
@@ -132,7 +132,7 @@ const GuideListing = () => {
                 ))}
             </div>
         );
-    } else if (status === 'succeeded' && items.length === 0) {
+    } else if (status === 'succeeded' && items?.length === 0) {
         content = <div className="no-guides-message">No guides found matching your criteria.</div>;
     }
 

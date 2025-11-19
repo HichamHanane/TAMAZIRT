@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { X, User, Mail, Home, Phone, Star, CheckCircle, Clock, MapPin } from 'lucide-react';
 import './NavigatorDetailsModal.css';
+import default_image from '../../../assets/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-profile-picture-business-profile-woman-suitable-social-media-profiles-icons-screensavers-as-templatex9_.avif'
 
-const getAvatarUrl = (userId) => {
-    return `https://i.pravatar.cc/150?img=${userId}`;
-};
+
 
 const NavigatorDetailsModal = ({ isOpen, onClose, navigator }) => {
     if (!isOpen || !navigator) return null;
@@ -38,7 +37,7 @@ const NavigatorDetailsModal = ({ isOpen, onClose, navigator }) => {
 
                     <div className="details-navigator-modal-profile-header">
                         <img
-                            src={getAvatarUrl(id)}
+                            src={`${import.meta.env.VITE_BACKEND_BASE_URL}${navigator?.profile_picture_url}` || default_image}
                             alt={name}
                             className="profile-avatar"
                         />
@@ -54,7 +53,7 @@ const NavigatorDetailsModal = ({ isOpen, onClose, navigator }) => {
                             </span>
                             <span className="meta-tag rating">
                                 <Star size={14} fill="#FFC72C" color="#FFC72C" />
-                                {average_rating }
+                                {average_rating}
                             </span>
                         </div>
                     </div>

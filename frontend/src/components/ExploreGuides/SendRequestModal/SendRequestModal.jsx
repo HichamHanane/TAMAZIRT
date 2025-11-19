@@ -50,7 +50,8 @@ const requestSchema = yup.object().shape({
 
 const SendRequestModal = ({ guide, onClose }) => {
     const dispatch = useDispatch();
-    const { error, isLoading } = useSelector(state => state.guides.sent_request)
+    const { error, isLoading } = useSelector(state => state.guides.sent_request);
+    const { isAuthenticated } = useSelector(state => state.auth);
     if (!guide) return null;
 
     const {
@@ -76,7 +77,7 @@ const SendRequestModal = ({ guide, onClose }) => {
         }
         // ISO or datetime string -> parse and format to "YYYY-MM-DD HH:mm:ss" (local)
         const dt = new Date(dateStr);
-        if (isNaN(dt)) return dateStr; // fallback
+        if (isNaN(dt)) return dateStr;
         return `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())} ${pad(dt.getHours())}:${pad(dt.getMinutes())}:${pad(dt.getSeconds())}`;
     };
 
@@ -91,7 +92,10 @@ const SendRequestModal = ({ guide, onClose }) => {
 
         try {
             console.log('data to sent to the backend :', payload);
-
+            if (!isAuthenticated) {
+                toast.error('Please Try Login First');
+                return;
+            }
             let result = await dispatch(sendNavigatorRequest(payload));
 
             if (result.meta.requestStatus === "fulfilled") {

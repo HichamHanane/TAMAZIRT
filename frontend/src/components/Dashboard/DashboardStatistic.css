@@ -48,6 +48,7 @@
 
 .requests-table th,
 .requests-table td {
+    text-transform: capitalize;
     padding: 15px 20px;
     text-align: left;
     border-bottom: 1px solid var(--color-border-light);

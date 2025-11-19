@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section className="hero-section" id="hero">
       <div className="hero-content">
-        <h1 className="hero-title">
+        <h1 className="hero-section-title">
           DISCOVER MOROCCO <br />
           WITH LOCAL <br />
           NAVIGATORS

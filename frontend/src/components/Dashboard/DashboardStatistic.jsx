@@ -1,24 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './DashboardStatistic.css';
+import axios from 'axios';
+import api from '../../utils/api/axios';
 
 const DashboardStatistic = () => {
-    const stats = [
-        { title: 'Total Navigators', value: '124' },
-        { title: 'Total Tourists', value: '857' },
-        { title: 'Total Trip Requests', value: '1,249' },
+    const [stats, setStats] = useState({
+        navigators_count: 0,
+        tourists_count: 0,
+        requests_count: 0,
+        this_month_requests: [],
+        today_requests: [],
+        loading: true,
+        error: null,
+    });
+
+    const [requestsToShow, setRequestsToShow] = useState([]);
+
+    useEffect(() => {
+        const fetchStatistics = async () => {
+            try {
+                const response = await api.get('admin/statistics');
+
+                const data = response.data;
+
+                setStats({
+                    navigators_count: data.navigators_count,
+                    tourists_count: data.tourists_count,
+                    requests_count: data.requests_count,
+                    this_month_requests: data.this_month_requests,
+                    today_requests: data.today_requests,
+                    loading: false,
+                    error: null,
+                });
+                setRequestsToShow(data.this_month_requests);
+
+
+            } catch (err) {
+                console.error("Error while fetching admin statistics :", err);
+                setStats(prevStats => ({
+                    ...prevStats,
+                    loading: false,
+                    error: "Faild to fetch admin statistics"
+                }));
+            }
+        };
+
+        fetchStatistics();
+    }, []);
+
+    const statCardsData = [
+        { title: 'Total Navigators', value: stats.navigators_count.toLocaleString() },
+        { title: 'Total Tourists', value: stats.tourists_count.toLocaleString() },
+        { title: 'Total Trip Requests', value: stats.requests_count.toLocaleString() },
     ];
 
-    const requests = [
-        { id: 1, tourist: 'Olivia Martinez', navigator: 'Youssef Ait Benhaddou', status: 'Confirmed', date: '2023-10-15' },
-        { id: 2, tourist: 'Benjamin Carter', navigator: 'Fatima Al-Fassi', status: 'Pending', date: '2023-10-14' },
-        { id: 3, tourist: 'Sophia Rodriguez', navigator: 'Hassan El Olaoui', status: 'Completed', date: '2023-10-12' },
-        { id: 4, tourist: 'Liam Goldberg', navigator: 'Amina Zari', status: 'Pending', date: '2023-10-11' },
-    ];
+    if (stats.loading) {
+        return <div className="loading-message">Loading Statistics...</div>;
+    }
+
+    if (stats.error) {
+        return <div className="error-message">{stats.error}</div>;
+    }
+
 
     return (
         <div>
             <div className="stats-grid">
-                {stats.map((stat, index) => (
+                {statCardsData.map((stat, index) => (
                     <div className="stat-card" key={index}>
                         <p className="stat-card-title">{stat.title}</p>
                         <h2 className="stat-card-value">{stat.value}</h2>
@@ -26,34 +74,41 @@ const DashboardStatistic = () => {
                 ))}
             </div>
 
-            <h3 className="requests-section-title">This Month's Requests</h3>
+            <h3 className="requests-section-title">This Month's Requests ({requestsToShow.length})</h3>
             <div className="requests-table-container">
                 <table className="requests-table">
                     <thead>
                         <tr>
-                            <th>Tourist Name</th>
-                            <th>Assigned Navigator</th>
+                            <th>Tourist</th> 
                             <th>Status</th>
+                            <th>Guide</th>
+
                             <th>Date</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {requests.map((request) => (
-                            <tr key={request.id}>
-                                <td>{request.tourist}</td>
-                                <td>{request.navigator}</td>
-                                <td>
-                                    <span className={`status-badge ${request.status.toLowerCase()}`}>
-                                        {request.status}
-                                    </span>
-                                </td>
-                                <td>{request.date}</td>
-                                <td>
-                                    <button className="view-details-btn">View Details</button>
-                                </td>
+                        {requestsToShow.length > 0 ? (
+                            requestsToShow.map((request) => (
+                                <tr key={request.id}>
+                                    <td>{request?.tourist.name}</td>
+                                    <td>
+                                        <span className={`status-badge ${request.status ? request.status.toLowerCase() : 'pending'}`}>
+                                            {request.status || 'Pending'}
+                                        </span>
+                                    </td>
+                                    <td>{request?.navigator.name}</td>
+
+                                    <td>{new Date(request.created_at).toLocaleDateString()}</td>
+                                    {/* <td>
+                                        <button className="view-details-btn">View Details</button>
+                                    </td> */}
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="4">No Requests Found For now.</td>
                             </tr>
-                        ))}
+                        )}
                     </tbody>
                 </table>
             </div>

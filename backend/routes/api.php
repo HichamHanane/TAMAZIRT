@@ -40,6 +40,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('/profile/{id}', [AdminStatisticsController::class, 'editProfile']);
 });
 
+//admin 
+Route::get('/admin/statistics', [AdminStatisticsController::class, 'index'])->middleware('auth:sanctum');
 
 //applications routes 
 Route::post('/navigator-applications', [NavigatorApplicationController::class, 'store']);

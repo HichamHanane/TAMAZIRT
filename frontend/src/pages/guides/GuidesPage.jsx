@@ -1,6 +1,7 @@
 import './GuidesPage.css'
 import Header from '../../components/Header/Header';
 import GuideListing from '../../components/ExploreGuides/GuideListing/GuideListing';
+import Footer from '../../components/Footer/Footer';
 
 
 
@@ -13,6 +14,7 @@ const GuidesPage = () => {
             <div className="guide-listing-page">
                 <GuideListing />
             </div>
+            <Footer />
         </>
 
     );

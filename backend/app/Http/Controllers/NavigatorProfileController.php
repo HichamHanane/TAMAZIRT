@@ -104,7 +104,6 @@ class NavigatorProfileController extends Controller
     public function store(Request $request)
     {
         $admin = $request->user();
-
         if (!$admin->hasRole('admin')) {
             return response()->json([
                 'message' => 'Unauthorized: admin access required.'

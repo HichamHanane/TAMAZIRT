@@ -14,6 +14,9 @@ class AdminStatisticsController extends Controller
     {
         $admin = $req->user();
 
+        logger($admin);
+
+
         if (!$admin->hasRole('admin')) {
             return response()->json([
                 'status' => 'error',
@@ -23,7 +26,7 @@ class AdminStatisticsController extends Controller
 
         // Total number of navigators
         $navigatorsCount = User::all()->filter(function ($user) {
-            return $user->hasRole('navigators');
+            return $user->hasRole('navigator');
         })->count();
 
         // Total number of tourists
@@ -37,6 +40,7 @@ class AdminStatisticsController extends Controller
         // Requests this month
         $thisMonthRequests = \App\Models\Request::whereMonth('created_at', Carbon::now()->month)
             ->whereYear('created_at', Carbon::now()->year)
+            ->with(['tourist','navigator'])
             ->get();
 
         // Requests today

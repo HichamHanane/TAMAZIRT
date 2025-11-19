@@ -18,6 +18,7 @@ const Sidebar = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
     const isActive = (path) => {
         const currentPath = location.pathname;
         if (path === '/dashboard') {
@@ -45,7 +46,6 @@ const Sidebar = () => {
     return (
         <aside className="dashboard-sidebar">
             <div className="sidebar-header">
-                <MessageSquareText size={24} className="sidebar-logo-icon" />
                 <h1 className="sidebar-app-name">TAMAZIRT</h1>
             </div>
             <nav className="sidebar-nav">

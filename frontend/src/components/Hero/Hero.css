@@ -23,7 +23,7 @@
   gap: 20px;
 }
 
-.hero-title {
+.hero-section-title {
   font-size: 64px;
   line-height: 1.1;
   font-weight: 700;
@@ -168,7 +168,7 @@
     margin-bottom: 40px;
   }
 
-  .hero-title {
+  .hero-section-title {
     font-size: 48px;
   }
 
@@ -192,7 +192,7 @@
     padding: 40px 20px 220px 20px;
   }
 
-  .hero-title {
+  .hero-section-title {
     font-size: 36px;
     line-height: 1.2;
   }

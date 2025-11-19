@@ -19,36 +19,23 @@
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 
-  /* Styles de base */
   height: var(--header-height);
   display: flex;
   justify-content: center;
-  /* Centrer le contenu à l'intérieur */
 
   border-bottom-left-radius: 5px;
-  /* Pour un effet initial plus joli */
   border-bottom-right-radius: 5px;
 }
 
 .header-content {
-  /* Largeur et marges initiales */
   width: 100%;
-  /* La max-width calcule l'espace entre le contenu et les bords */
   max-width: calc(100% - var(--header-initial-margin-left) - var(--header-initial-margin-right));
-
-  /* Centrage du contenu dans le header sticky */
   margin: 0 auto;
-
-  /* Rangement interne */
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* Padding pour l'espace vertical du contenu */
   padding: 0 10px;
-  /* Petit padding horizontal pour ne pas coller aux bords */
   height: 100%;
-  /* S'assurer qu'il prend toute la hauteur du header parent */
 }
 
 .header-logo {
@@ -149,7 +136,6 @@
   background-color: #f1e9d856;
 }
 
-/* ------------------- MEDIA QUERIES (RESPONSIVE) ------------------- */
 
 @media (max-width: 900px) {
   .header-content {

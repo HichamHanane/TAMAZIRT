@@ -8,10 +8,10 @@ import { deleteTourist, fetchAllTourists } from '../../../feature/touristsSlice'
 import AddTouristModal from '../AddTouristModal/AddTouristModal';
 import DeleteConfirmationModal from '../../Navigators/DeleteConfirmationModal/DeleteConfirmationModal';
 import { toast } from 'sonner';
+import default_image from '../../../assets/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-profile-picture-business-profile-woman-suitable-social-media-profiles-icons-screensavers-as-templatex9_.avif';
 
 
-
-const avatarPlaceholder = "https://i.pravatar.cc/150";
+// const default_image = "https://i.pravatar.cc/150";
 
 
 const TouristManagement = () => {
@@ -108,7 +108,7 @@ const TouristManagement = () => {
                                     <td data-label="Tourist">
                                         <div className="profile-info">
                                             <img
-                                                src={`${avatarPlaceholder}?img=${tourist?.id}`}
+                                                src={`${import.meta.env.VITE_BACKEND_BASE_URL}${tourist?.avatar_url} ` || default_image}
                                                 alt={tourist.name}
                                                 className="table-avatar"
                                             />

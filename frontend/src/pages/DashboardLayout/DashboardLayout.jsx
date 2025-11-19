@@ -4,6 +4,7 @@ import { User2, User as UserIcon } from 'lucide-react';
 import './DashboardLayout.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useSelector } from 'react-redux';
+import default_image from '../../assets/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-profile-picture-business-profile-woman-suitable-social-media-profiles-icons-screensavers-as-templatex9_.avif'
 
 const DashboardLayout = () => {
     const {user , role} = useSelector(state=> state.auth)
@@ -19,8 +20,8 @@ const DashboardLayout = () => {
                         <span className="user-role">{user?.role}</span>
                     </div>
                     <div className="header-avatar">
-                        {/* <img src={userAvatar} alt="User Avatar" className="avatar-img" /> */}
-                        {/* <User2 /> */}
+                        <img src={default_image} alt="admin avatar" className="avatar-img" /> 
+                         {/* <User2 /> */}
                     </div>
                 </header>
 
