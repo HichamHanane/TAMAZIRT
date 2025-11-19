@@ -94,7 +94,7 @@ const LoginPage = () => {
                                     {...register('email')}
                                 />
                             </div>
-                            {errors.email && <p className="error-message">{errors.email.message}</p>}
+                            {errors.email && <p className="auth-error-message">{errors.email.message}</p>}
                         </label>
 
                         <label className="form-group-final">
@@ -113,7 +113,7 @@ const LoginPage = () => {
                                     <Eye size={18} className="password-icon-final" />
                                 </div>
                             </div>
-                            {errors.password && <p className="error-message">{errors.password.message}</p>}
+                            {errors.password && <p className="auth-error-message">{errors.password.message}</p>}
                         </label>
 
                         <button

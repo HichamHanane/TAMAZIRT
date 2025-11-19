@@ -92,7 +92,7 @@ const RegisterPage = () => {
                                     {...register('name')}
                                 />
                             </div>
-                            {errors.name && <p className="error-message">{errors.name.message}</p>}
+                            {errors.name && <p className="auth-error-message">{errors.name.message}</p>}
                         </label>
 
                         <label className="form-group-final">
@@ -106,7 +106,7 @@ const RegisterPage = () => {
                                     {...register('email')}
                                 />
                             </div>
-                            {errors.email && <p className="error-message">{errors.email.message}</p>}
+                            {errors.email && <p className="auth-error-message">{errors.email.message}</p>}
                         </label>
 
                         <label className="form-group-final">
@@ -123,7 +123,7 @@ const RegisterPage = () => {
                                     <Eye size={18} className="password-icon-final" />
                                 </div>
                             </div>
-                            {errors.password && <p className="error-message">{errors.password.message}</p>}
+                            {errors.password && <p className="auth-error-message">{errors.password.message}</p>}
                         </label>
 
                         <label className="form-group-final">
@@ -140,7 +140,7 @@ const RegisterPage = () => {
                                     <Eye size={18} className="password-icon-final" />
                                 </div>
                             </div>
-                            {errors.password_confirmation && <p className="error-message">{errors.password_confirmation.message}</p>}
+                            {errors.password_confirmation && <p className="auth-error-message">{errors.password_confirmation.message}</p>}
                         </label>
 
                         <button
