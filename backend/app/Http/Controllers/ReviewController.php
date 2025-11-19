@@ -167,7 +167,7 @@ class ReviewController extends Controller
                 'message' => 'Unauthorized. Only navigator can view their reviews.'
             ], 403);
         }
-        $reviews = Review::with('tourist:id,name,email')
+        $reviews = Review::with(['tourist:id,name,email' , 'navigator'])
             ->where('navigator_id', $user->id)
             ->latest()
             ->get();

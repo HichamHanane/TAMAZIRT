@@ -21,29 +21,25 @@ const EditRequestModal = ({ request, onClose }) => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(editRequestSchema),
-        // Remplir le formulaire avec les données actuelles de la requête
         defaultValues: {
             destination: request.destination,
             number_of_people: request.number_of_people,
-            // Formater la date en 'YYYY-MM-DD' pour les inputs de type 'date'
             date: request.date,
             message: request.message,
         }
     });
 
     const onSubmit = (data) => {
-        // Dispatch le thunk de mise à jour
         dispatch(updateTouristRequest({ id: request.id, requestData: data }))
-            .unwrap() // Gère les promesses pour savoir si la mise à jour a réussi
+            .unwrap() 
             .then(() => {
-                onClose(); // Ferme la modal en cas de succès
+                onClose(); 
             })
             .catch(() => {
                 // Le toast d'erreur est déjà géré dans le thunk
             });
     };
 
-    // Pour formater la date pour l'affichage dans le titre de la modal
     const formatDateForDisplay = (dateString) => {
         if (!dateString) return '';
         const [year, month, day] = dateString.split('-');

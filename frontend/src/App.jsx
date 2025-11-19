@@ -32,6 +32,7 @@ import TouristProtectedRoutes from './components/ProtectedRoutes/TouristProducte
 import ExploreNavigators from './pages/guides/GuidesPage'
 import GuideListing from './pages/guides/GuidesPage'
 import GuidesPage from './pages/guides/GuidesPage'
+import MyReviewsPage from './components/TouristDashboard/MyReviewsPage/MyReviewsPage'
 
 function App() {
 
@@ -95,6 +96,7 @@ function App() {
             <Route index element={<TouristProfilePage />} />
             <Route path="profile" element={<TouristProfilePage />} />
             <Route path="requests" element={<TouristRequestsPage />} />
+            <Route path="reviews" element={<MyReviewsPage />} />
 
           </Route>
         </Route>

@@ -1,0 +1,126 @@
+/* Fichier : EditReviewModal.css */
+
+/*
+   NOTE: Ce composant réutilise le g-rev-modal-backdrop défini pour ConfirmationModal.
+   Assure-toi que les styles de ConfirmationModal.css sont inclus dans ta page.
+*/
+
+.g-rev-edit-modal-content {
+    background-color: var(--color-card-background, #FFFFFF);
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 550px;
+    /* Taille idéale pour un formulaire dans un modal */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    /* Animation d'entrée */
+    transform: scale(0.95) translateY(-20px);
+    transition: transform 0.3s ease-out;
+    position: relative;
+}
+
+/* Assure que la modale est animée lors de l'ouverture (doit être combiné avec le CSS du backdrop) */
+.g-rev-modal-backdrop.is-open .g-rev-edit-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.g-rev-edit-modal-content h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-dark, #333333);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.g-rev-edit-form-group {
+    margin-bottom: 20px;
+}
+
+.g-rev-edit-form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-dark, #333);
+    margin-bottom: 8px;
+}
+
+/* Style des inputs/textarea */
+.g-rev-edit-form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border-light, #EBEBEB);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--color-text-dark, #333);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+}
+
+.g-rev-edit-form-group textarea:focus {
+    border-color: var(--color-primary-brown, #964B00);
+    box-shadow: 0 0 0 2px rgba(150, 75, 0, 0.1);
+    outline: none;
+}
+
+.g-rev-edit-error {
+    color: #C62828;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Style des étoiles pour la note */
+.g-rev-edit-rating-input {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.g-rev-edit-star-icon {
+    cursor: pointer;
+    transition: fill 0.2s, stroke 0.2s, transform 0.1s;
+}
+
+.g-rev-edit-star-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Boutons d'action */
+.g-rev-edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.g-rev-edit-btn-cancel,
+.g-rev-edit-btn-submit {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+    border: none;
+}
+
+.g-rev-edit-btn-cancel {
+    background-color: #F0F0F0;
+    color: var(--color-text-dark, #333333);
+}
+
+.g-rev-edit-btn-cancel:hover {
+    background-color: #E0E0E0;
+}
+
+.g-rev-edit-btn-submit {
+    background-color: var(--color-primary-brown, #964B00);
+    color: white;
+}
+
+.g-rev-edit-btn-submit:hover {
+    background-color: #7A3D00;
+}
+
+.g-rev-edit-btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

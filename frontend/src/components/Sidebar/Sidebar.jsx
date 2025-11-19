@@ -18,7 +18,7 @@ const Sidebar = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const isActive = (path) => {
         const currentPath = location.pathname;
         if (path === '/dashboard') {
@@ -68,7 +68,7 @@ const Sidebar = () => {
                                         to="/dashboard/navigators"
                                         className={`nav-item ${isActive('/dashboard/navigators') ? 'active' : ''}`}
                                     >
-                                        <Briefcase size={20} className="nav-icon" />
+                                        <Users size={20} className="nav-icon" />
                                         <span>Navigators</span>
                                     </Link>
 

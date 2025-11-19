@@ -4,6 +4,8 @@ import './GuideReviewsPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNavigatorReviews } from '../../../feature/ReviewSlice';
 import defaul_image from '../../../assets/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-profile-picture-business-profile-woman-suitable-social-media-profiles-icons-screensavers-as-templatex9_.avif'
+
+
 const formatDateTime = (timestamp) => {
     if (!timestamp) return 'N/A';
     try {
