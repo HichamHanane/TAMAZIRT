@@ -240,6 +240,112 @@
     color: #555;
 }
 
+.skeleton-card {
+    position: relative;
+    /* Enlève la shadow box pour un look plus plat pendant le chargement */
+    box-shadow: none;
+    overflow: hidden;
+}
+
+/* Base des blocs du squelette */
+.skeleton-line,
+.skeleton-tag,
+.skeleton-button,
+.skeleton-image {
+    background-color: #e2e2e2;
+    /* Couleur de base du squelette */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.skeleton-image {
+    /* La hauteur est déjà définie dans .guide-image-container */
+    width: 100%;
+    height: 300px;
+}
+
+.skeleton-line {
+    height: 15px;
+}
+
+.skeleton-line.short-line {
+    width: 60%;
+    /* Nom du guide */
+}
+
+.skeleton-line.medium-line {
+    width: 80%;
+}
+
+.skeleton-line.full-line {
+    width: 100%;
+    /* Ligne de description */
+}
+
+.skeleton-line.tiny-line {
+    width: 30px;
+    /* Note */
+    height: 15px;
+    border-radius: 50px;
+    /* Pour simuler un petit badge */
+    margin: 10px 0 5px auto;
+    /* Aligner à droite pour le rating */
+}
+
+.guide_card_header .skeleton-line.short-line,
+.guide_card_header .skeleton-line.tiny-line {
+    margin-bottom: 0;
+}
+
+.skeleton-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.skeleton-tag {
+    width: 50px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.skeleton-button {
+    height: 38px;
+    /* Correspond à la hauteur des vrais boutons */
+    flex-grow: 1;
+    border-radius: 8px;
+    margin-bottom: 0;
+}
+
+
+/* Animation Shimmer */
+.skeleton-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.2) 20%,
+            rgba(255, 255, 255, 0.5) 60%,
+            rgba(255, 255, 255, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Retirer le message de chargement qui est devenu redondant */
+.loading-message {
+    display: none;
+}
+
 @media (max-width: 1024px) {
     .guides-grid {
         grid-template-columns: repeat(2, 1fr);

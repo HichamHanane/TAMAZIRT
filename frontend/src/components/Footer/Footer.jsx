@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Instagram, Facebook, Linkedin, Heart, Youtube } from 'lucide-react';
 import './Footer.css';
 import { HashLink } from 'react-router-hash-link';
+import { useNavigate } from 'react-router-dom';
 
 
 const scrollWithOffset = (el, offset) => {
@@ -10,7 +11,18 @@ const scrollWithOffset = (el, offset) => {
   window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
 };
 
+
+const cities = ["Casablanca", "Chefchaouen", "Fès", "Marrakech"]
+
 const Footer = () => {
+
+  const [city, setCity] = useState();
+  const navigate = useNavigate();
+  const handleCityClicked = (city) => {
+    console.log('City :', city);
+
+    navigate(`/guides/${city}`) 
+  }
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -57,10 +69,16 @@ const Footer = () => {
         <div className="footer-col footer-cities">
           <h4 className="footer-heading">EXPLORE CITIES</h4>
           <ul className="footer-link-list">
-            <li><a href="#">Marrakech</a></li>
-            <li><a href="#">Casablanca</a></li>
-            <li><a href="#">Fès</a></li>
-            <li><a href="#">Chefchaouen</a></li>
+            {
+              cities?.map((city, index) => {
+                return (
+                  <li key={index} style={{ cursor: 'pointer' }} onClick={() => handleCityClicked(city)}>
+                    {city}
+                  </li>
+                )
+              })
+            }
+
           </ul>
         </div>
 

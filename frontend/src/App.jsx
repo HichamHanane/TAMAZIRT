@@ -67,7 +67,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/test" element={<Test />} />
         <Route path="/application-form" element={<NavigatorApplication />} />
-        <Route path="/guides" element={<GuidesPage />} />
+        <Route path="/guides/:name?" element={<GuidesPage />} />
 
         {/* admin dashboard */}
         <Route element={<AdminProtectedRoutes />}>

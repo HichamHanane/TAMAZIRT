@@ -6,6 +6,8 @@ import { fetchNavigators } from '../../../feature/GuideSlice';
 import { Star, StarIcon } from 'lucide-react';
 import GuideDetailsModal from '../GuideDetailsModal/GuideDetailsModal';
 import SendRequestModal from '../SendRequestModal/SendRequestModal';
+import GuideSkeletonCard from '../GuideSkeletonCard';
+import { useParams } from 'react-router-dom';
 
 const base_url = import.meta.env.VITE_BACKEND_BASE_URL
 
@@ -54,12 +56,13 @@ const GuideCard = ({ guide, onDetailsClick, onSendRequestClick }) => (
 );
 
 const GuideListing = () => {
+    const { name } = useParams()
 
     const dispatch = useDispatch();
     const { items, status, error, currentPage, lastPage } = useSelector(
         (state) => state.guides
     );
-    let [city, setCity] = useState()
+    let [city, setCity] = useState(name)
 
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -110,16 +113,30 @@ const GuideListing = () => {
 
 
     useEffect(() => {
-        dispatch(fetchNavigators({ page: 1 }));
+        console.log('City in the guides page : ', name);
+        dispatch(fetchNavigators({ page: 1, city }));
     }, [dispatch]);
 
     let content;
-
+    const SKELETON_COUNT = 9;
     if (status === 'loading') {
-        content = <div className="loading-message">Loading guides...</div>;
-    } else if (status === 'failed') {
+
+        content = (
+            <div className="guides-grid">
+                {Array(SKELETON_COUNT).fill(0).map((_, index) => (
+                    <GuideSkeletonCard key={index} />
+                ))}
+            </div>
+        );
+
+    }
+    else if (status === 'failed') {
+
         content = <div className="error-message">Error: {error}</div>;
-    } else if (status === 'succeeded' && items?.length > 0) {
+
+    }
+    else if (status === 'succeeded' && items?.length > 0) {
+
         content = (
             <div className="guides-grid">
                 {items?.map((guide) => (
@@ -131,9 +148,13 @@ const GuideListing = () => {
                     />
                 ))}
             </div>
+
         );
-    } else if (status === 'succeeded' && items?.length === 0) {
+    }
+    else if (status === 'succeeded' && items?.length === 0) {
+
         content = <div className="no-guides-message">No guides found matching your criteria.</div>;
+
     }
 
     return (
@@ -147,6 +168,7 @@ const GuideListing = () => {
                         placeholder="Search by city..."
                         className="search-input"
                         onChange={(e) => setCity(e.target.value)}
+                        value={city}
 
                     />
                     <button className="search-button" onClick={handleSearch}>Search</button>
@@ -156,10 +178,8 @@ const GuideListing = () => {
             <section className="featured-guides-section">
                 <h2 className="section-title">Meet Our Local Experts</h2>
 
-                {/* Display the dynamic content (loading, error, or guides) */}
                 {content}
 
-                {/* --- Pagination Controls --- */}
                 {status === 'succeeded' && lastPage > 1 && (
                     <div className="pagination-controls">
                         <button

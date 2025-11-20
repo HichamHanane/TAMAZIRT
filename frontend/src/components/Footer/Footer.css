@@ -67,12 +67,20 @@
 
 .footer-link-list li {
     margin-bottom: 10px;
+    transition: color 0.3s;
+
 }
 
 .footer-link-list a {
     color: var(--color-text-subtle);
     text-decoration: none;
     transition: color 0.3s;
+}
+
+.footer-link-list li:hover {
+    color: var(--color-cta-primary1);
+
+
 }
 
 .footer-link-list a:hover {
