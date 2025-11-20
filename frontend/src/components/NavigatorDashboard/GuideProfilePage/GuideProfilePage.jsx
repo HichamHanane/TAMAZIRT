@@ -195,7 +195,7 @@ const GuideProfilePage = () => {
                                     {...register('name')}
                                     className={errors.fullName ? 'input-error' : ''}
                                 />
-                                {errors.name && <p className="error-message">{errors.name.message}</p>}
+                                {errors.name && <p className="guide-profile-error-message">{errors.name.message}</p>}
                             </div>
 
                             <div className="guide-form-group guide-full-width">
@@ -206,7 +206,7 @@ const GuideProfilePage = () => {
                                     {...register('emailAddress')}
                                     className={errors.emailAddress ? 'input-error' : ''}
                                 />
-                                {errors.emailAddress && <p className="error-message">{errors.emailAddress.message}</p>}
+                                {errors.emailAddress && <p className="guide-profile-error-message">{errors.emailAddress.message}</p>}
                             </div>
 
                             <div className="guide-form-group guide-full-width">
@@ -217,7 +217,7 @@ const GuideProfilePage = () => {
                                     {...register('phone_number')}
                                     className={errors.phoneNumber ? 'input-error' : ''}
                                 />
-                                {errors.phone_number && <p className="error-message">{errors.phone_number.message}</p>}
+                                {errors.phone_number && <p className="guide-profile-error-message">{errors.phone_number.message}</p>}
                             </div>
 
                             <div className="guide-form-group guide-full-width">
@@ -228,7 +228,7 @@ const GuideProfilePage = () => {
                                     {...register('bio')}
                                     className={errors.bio ? 'input-error' : ''}
                                 />
-                                {errors.bio && <p className="error-message">{errors.bio.message}</p>}
+                                {errors.bio && <p className="guide-profile-error-message">{errors.bio.message}</p>}
                             </div>
 
                             <div className="guide-form-group">
@@ -239,7 +239,7 @@ const GuideProfilePage = () => {
                                     {...register('city')}
                                     className={errors.city ? 'input-error' : ''}
                                 />
-                                {errors.city && <p className="error-message">{errors.city.message}</p>}
+                                {errors.city && <p className="guide-profile-error-message">{errors.city.message}</p>}
                             </div>
 
                             <div className="guide-form-group">
@@ -250,7 +250,7 @@ const GuideProfilePage = () => {
                                     {...register('languages')}
                                     className={errors.languages ? 'input-error' : ''}
                                 />
-                                {errors.languages && <p className="error-message">{errors.languages.message}</p>}
+                                {errors.languages && <p className="guide-profile-error-message">{errors.languages.message}</p>}
                             </div>
                         </div>
                         <button

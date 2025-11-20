@@ -15,14 +15,15 @@ const scrollWithOffset = (el, offset) => {
 const cities = ["Casablanca", "Chefchaouen", "Fès", "Marrakech"]
 
 const Footer = () => {
-
-  const [city, setCity] = useState();
   const navigate = useNavigate();
+
+
   const handleCityClicked = (city) => {
     console.log('City :', city);
-
-    navigate(`/guides/${city}`) 
+    navigate(`/guides/${city}`)
   }
+
+  
   return (
     <footer className="footer">
       <div className="footer-container">

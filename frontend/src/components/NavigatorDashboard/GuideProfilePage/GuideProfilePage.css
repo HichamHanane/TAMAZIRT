@@ -239,7 +239,7 @@
     border-color: var(--profile-error-red) !important;
 }
 
-.error-message {
+.guide-profile-error-message {
     font-size: 12px;
     color: var(--profile-error-red);
     margin-top: 5px;
