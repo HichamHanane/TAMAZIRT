@@ -137,9 +137,9 @@ class NavigatorProfileController extends Controller
             'phone_number' => $validated['phone_number'] ?? null,
         ]);
 
+        $password = $validated['password'];
 
-
-        SentCredentialsJob::dispatch($user);
+        SentCredentialsJob::dispatch($user, $password);
 
         return response()->json([
             'message' => 'Navigator account and profile created successfully.',

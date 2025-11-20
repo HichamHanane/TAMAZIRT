@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import './EditReviewModal.css';
-import { Star } from 'lucide-react'; // Icône étoile
+import { Star } from 'lucide-react'; 
 import * as yup from 'yup';
 
 const reviewValidationSchema = yup.object().shape({
